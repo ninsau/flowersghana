@@ -54,11 +54,11 @@ const footers = [
             },
   {
     title: 'Categores',
-    description: [{name: 'All Items', link: '/all'},
-                  {name: 'Featured Bouquets', link: '/featured'},
-                  {name: 'Popular Bouquets', link: '/popular'},
-                  {name: 'Birthday', link: '/birthday'},
-                  {name: 'Budget Friendly', link: '/budget'},
+    description: [{name: 'All Items', link: '/flowers'},
+                  {name: 'Featured Bouquets', link: '/flowers/featured'},
+                  {name: 'Popular Bouquets', link: '/flowers/popular'},
+                  {name: 'Birthday', link: '/flowers/birthday'},
+                  {name: 'Budget Friendly', link: '/flowers/budget'},
               ],
   },
   {
@@ -100,7 +100,7 @@ export default function Footer() {
              </Typography>
              <ul>
                {footer.description.map((item) => (
-                 <li key={item}>
+                 <li key={item.link}>
                    <Link href={item.link} variant="subtitle1" color="textSecondary">
                      {item.name}
                    </Link>

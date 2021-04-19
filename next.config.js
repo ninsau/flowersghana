@@ -1,5 +1,5 @@
-module.exports = {
-  images: {
-    domains: ['www.flowersghana.com'],
-  },
-}
+// module.exports = {
+//   images: {
+//     domains: ['www.flowersghana.com'],
+//   },
+// }

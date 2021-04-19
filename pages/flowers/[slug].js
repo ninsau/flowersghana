@@ -7,6 +7,8 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
 import Grid from '@material-ui/core/Grid'
 import Header from '../../components/header'
@@ -41,21 +43,53 @@ const useStyles = makeStyles((theme) => ({
 export default function Content() {
   const classes = useStyles()
   const router = useRouter()
-  let urlPath = router.asPath
+  
+  const [urlPath, setUrlPath] = useState([])
 
   const [category, setCategory] = useState([])
+  const [open] = useState(true)
+
+  const handleToggle = () => {
+    setOpen(!open);
+  }
 
 
-  useEffect(() => {
-    fetch(`http://127.0.0.1/api${urlPath}`)
-      .then(response => response.json())
-      .then(data =>
-              setCategory(data)
-            )
-          }, [setCategory])
-  
+//           useEffect(() => {
+//             const handleRouteChange = (url, { shallow }) => {
+//               setUrlPath(url)
+//             }
+        
+//             router.events.on('routeChangeStart', handleRouteChange)
+        
+//             // If the component is unmounted, unsubscribe
+//             // from the event with the `off` method:
+//             return () => {
+//               router.events.off('routeChangeStart', handleRouteChange)
+//             }
+//           }, [setUrlPath])
 
+//             useEffect(() => {
+//               fetch(`http://127.0.0.1/api${urlPath}`)
+//                 .then(response => response.json())
+//                 .then(data =>
+//                         setCategory(data) 
+//                       )
+//                     }, [setCategory])
 
+//           urlPath.length<1 ? <div>loading...</div> :           useEffect(() => {
+//             fetch(`http://127.0.0.1/api${urlPath}`)
+//               .then(response => response.json())
+//               .then(data =>
+//                       setCategory(data) 
+//                     )
+//                   }, [setCategory])
+
+//   console.log(urlPath)
+// console.log(category)
+          // if(category.length < 1 ) return (<> 
+          //   <Backdrop className={classes.backdrop} open={open} >
+          //     <CircularProgress color="inherit" />
+          //   </Backdrop></>) 
 
 
   return (
@@ -70,7 +104,7 @@ export default function Content() {
           <div className={classes.root}>
         <GridList cellHeight={160} className={classes.gridList} cols={3}>
           {category.map((tile) => (
-            <GridListTile key={tile.img} cols={tile.cols || 1}>
+            <GridListTile key={tile.id} cols={tile.cols || 1}>
               <img src={tile.img} alt={tile.title} />
               <Link href={`/item/${tile.slug}`}>
                 <GridListTileBar
