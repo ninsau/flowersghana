@@ -1,22 +1,33 @@
-import NextApp from 'next/app'
-import React from 'react'
-import { ThemeProvider } from 'styled-components'
-const theme = {
-  primary: 'green',
-}
-export default class App extends NextApp {
-  // remove it here
-  componentDidMount() {
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles && jssStyles.parentNode)
-      jssStyles.parentNode.removeChild(jssStyles)
-  }
-  render() {
-    const { Component, pageProps } = this.props
-    return (
-      <ThemeProvider theme={theme}>
+import React from "react";
+import HeadComponent from "../components/navigation/head";
+import HeaderComponent from "../components/navigation/header";
+import FooterComponent from "../components/navigation/footer";
+import Container from "@material-ui/core/Container";
+import "@shoelace-style/shoelace/dist/themes/base.css";
+import CustomEls from '../utils/shoelace'
+
+
+MyApp.getInitialProps = async (context) => {
+  const URL = process.env.BASE_URL;
+
+  return {
+    URL
+  };
+};
+
+
+function MyApp({ Component, pageProps, URL }) {
+  return (
+    <>
+      {process.browser && <CustomEls URL={URL} />}
+      <Container>
+        <HeadComponent />
+        <HeaderComponent />
         <Component {...pageProps} />
-      </ThemeProvider>
-    )
-  }
+        <FooterComponent />
+      </Container>
+    </>
+  );
 }
+
+export default MyApp;

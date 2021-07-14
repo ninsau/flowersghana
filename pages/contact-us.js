@@ -2,12 +2,7 @@ import React from 'react'
 import { useRouter } from "next/router"
 import Head from 'next/head'
 import { makeStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Header from '../components/header.js'
-import Footer from '../components/footer.js'
 import { textData } from "../store/textData"
 
 
@@ -45,22 +40,8 @@ export default function Info() {
   }, [])
   return (
 
-    <React.Fragment>
-    <Head>
-      <title>Contact Us | Flowers Ghana</title>
-      <link rel="icon" href="/banner.jpg" />
-    </Head>
-      <Container>
-        <Header />
-        <Grid container spacing={3}>
-        <Grid item xs={12}>
-
-
-         </Grid>
-         </Grid>
-        <Footer />
-      </Container>
-    </React.Fragment>
+    <>
+    </>
 
 
   )

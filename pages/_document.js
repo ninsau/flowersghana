@@ -26,7 +26,7 @@ export default class Document extends NextDocument {
           </React.Fragment>,
         ],
       }
-    } finally {
+    } finally { 
       styledComponentSheet.seal()
     }
   }

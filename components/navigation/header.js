@@ -37,7 +37,7 @@ const sections = [
   { title: "Reviews", url: "/reviews" },
 ];
 
-export default function Header() {
+export default function HeaderComponent() {
   const classes = useStyles();
 
   return (

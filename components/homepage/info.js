@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Header from "../components/header.js";
-import Footer from "../components/footer.js";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -19,12 +17,7 @@ export default function Info() {
 
   return (
     <>
-      <Head>
-        <title>About Us | Flowers Ghana</title>
-        <link rel="icon" href="/banner.jpg" />
-      </Head>
       <Container>
-        <Header />
         <Grid container spacing={3}>
           <Grid item xs={12}>
             {/* Hero unit */}
@@ -63,7 +56,6 @@ export default function Info() {
             {/* End hero unit */}
           </Grid>
         </Grid>
-        <Footer />
       </Container>
     </>
   );
