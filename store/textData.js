@@ -1,9 +1,8 @@
 export const textData = {
   about: {
     title: `About FlowersGhana`,
-    description:
-      `FlowerGhana has been delivering high quality foral arrangements and gift add-ons throughout Accra and Kumasi. We hand deliver all our products to give that personal touch to your friends and loved ones. Our packages serve to strengthen bonds between families, lovers, friends, and so on. We do same day deliveries if order comes in before 12 O'clock noon. Order a bouquet of freshly cut flowers as a gift for your loved ones for Val’s day, birthday, anniversary, and more. Our     arrangements are expertly-crafted and are delivered with the tone you intend. Shop with us today for a wonderful experience!`
-    },
+    description: `FlowerGhana has been delivering high quality foral arrangements and gift add-ons throughout Accra and Kumasi. We hand deliver all our products to give that personal touch to your friends and loved ones. Our packages serve to strengthen bonds between families, lovers, friends, and so on. We do same day deliveries if order comes in before 12 O'clock noon. Order a bouquet of freshly cut flowers as a gift for your loved ones for Val’s day, birthday, anniversary, and more. Our     arrangements are expertly-crafted and are delivered with the tone you intend. Shop with us today for a wonderful experience!`,
+  },
   terms: {
     title: `Terms & Conditions`,
     description: `Cookies
@@ -92,12 +91,11 @@ limit any of our or your liabilities in any way that is not permitted under appl
 exclude any of our or your liabilities that may not be excluded under applicable law.
 The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
 
-As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.`
+As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.`,
   },
   privacy: {
     title: `Privacy Policy for FlowersGhana`,
-    description:
-      `
+    description: `
       At FlowersGhana, accessible from https://www.flowersghana.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by FlowersGhana and how we use it.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
@@ -178,7 +176,6 @@ Another part of our priority is adding protection for children while using the i
 FlowersGhana does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
 
 
-      `
-    },
-
-}
+      `,
+  },
+};

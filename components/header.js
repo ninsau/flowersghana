@@ -1,16 +1,15 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from '@material-ui/core/Link'
-import { makeStyles } from '@material-ui/core/styles'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import SearchIcon from '@material-ui/icons/Search'
-import Typography from '@material-ui/core/Typography'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
-import Hidden from '@material-ui/core/Hidden'
-import Badge from '@material-ui/core/Badge'
-
+import React from "react";
+import Image from "next/image";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from "@material-ui/icons/Search";
+import Typography from "@material-ui/core/Typography";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import Hidden from "@material-ui/core/Hidden";
+import Badge from "@material-ui/core/Badge";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -20,32 +19,33 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
+    justifyContent: "space-between",
+    overflowX: "auto",
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
   },
-}))
+}));
 
 const sections = [
-  { title: 'Featured', url: '/flowers/featured' },
-  { title: 'Popular', url: '/flowers/popular' },
-  { title: 'Birthday', url: '/flowers/birthday' },
-  { title: 'Budget', url: '/flowers/budget' },
-  { title: 'Roses', url: '/flowers/roses' },
-  { title: 'Reviews', url: '/reviews' },
-]
+  { title: "Featured", url: "/flowers/featured" },
+  { title: "Popular", url: "/flowers/popular" },
+  { title: "Birthday", url: "/flowers/birthday" },
+  { title: "Budget", url: "/flowers/budget" },
+  { title: "Roses", url: "/flowers/roses" },
+  { title: "Reviews", url: "/reviews" },
+];
 
 export default function Header() {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <Toolbar className={classes.toolbar}>
-
-        <Button size="small" href="/">FlowersGhana</Button>
+        <Button size="small" href="/">
+          FlowersGhana
+        </Button>
         <Typography
           component="h2"
           variant="h5"
@@ -54,16 +54,16 @@ export default function Header() {
           noWrap
           className={classes.toolbarTitle}
         >
-        <Hidden smDown>
-        <Link href="/">
-        <Image
-          src="/banner.jpg"
-          alt="flowersghana logo"
-          width={200}
-          height={70}
-        />
-        </Link>
-        </Hidden >
+          <Hidden smDown>
+            <Link href="/">
+              <Image
+                src="/banner.jpg"
+                alt="flowersghana logo"
+                width={200}
+                height={70}
+              />
+            </Link>
+          </Hidden>
         </Typography>
 
         <IconButton>
@@ -71,11 +71,15 @@ export default function Header() {
         </IconButton>
         <IconButton>
           <Badge badgeContent={4} color="secondary">
-          <ShoppingCartOutlinedIcon />
+            <ShoppingCartOutlinedIcon />
           </Badge>
         </IconButton>
       </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      <Toolbar
+        component="nav"
+        variant="dense"
+        className={classes.toolbarSecondary}
+      >
         {sections.map((section) => (
           <Link
             color="inherit"
@@ -89,6 +93,6 @@ export default function Header() {
           </Link>
         ))}
       </Toolbar>
-    </React.Fragment>
-  )
+    </>
+  );
 }
