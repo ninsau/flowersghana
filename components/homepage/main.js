@@ -9,9 +9,9 @@ export default function Main() {
 
     <>
         <Hero />
-        <Container>
+        {/* <Container> */}
         <Content />
-        </Container>
+        {/* </Container> */}
         <SeeReviews />
     </>
 

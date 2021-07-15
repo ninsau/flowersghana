@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -127,6 +128,7 @@ export default function Content() {
                     {item.availability}
                   </sl-badge>
                 </div>
+                
                 <img slot="image" src={item.img} alt={item.alt} />
                 <sl-button class="add" href={item.link}>
                   Add to cart
