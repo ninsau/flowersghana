@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -121,16 +120,17 @@ export default function Content() {
         {images.map((item, i) => {
           return (
             <Grid item xs={6} md={4} key={i}>
-              <sl-card>
+              <sl-card class="card-header">
                 <div slot="header">
-                  <sl-badge type="info">
+                  {item.title} <sl-badge pulse>₵{item.amount}</sl-badge>
+                  <sl-badge class="avail" type="info">
                     {item.availability}
                   </sl-badge>
-                  {"  "}
-                  {item.title} - <sl-badge pulse>₵{item.amount}</sl-badge>
                 </div>
                 <img slot="image" src={item.img} alt={item.alt} />
-                <sl-button href={item.link}>Add to cart</sl-button>
+                <sl-button class="add" href={item.link}>
+                  Add to cart
+                </sl-button>
               </sl-card>
             </Grid>
           );
@@ -138,8 +138,6 @@ export default function Content() {
       </>
     );
   }
-
-  
 
   return (
     <div className={classes.root}>
