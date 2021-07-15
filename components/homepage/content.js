@@ -1,18 +1,153 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+}));
+
 export default function Content() {
+  const classes = useStyles();
+
+  const images = [
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+    {
+      img: "https://source.unsplash.com/random",
+      title: "Sample Product",
+      alt: "sample alt",
+      link: "/#",
+      availability: "In stock",
+      amount: 600,
+    },
+  ];
+  function ImageList() {
+    return (
+      <>
+        {images.map((item, i) => {
+          return (
+            <Grid item xs={6} md={4} key={i}>
+              <sl-card>
+                <div slot="header">
+                  <sl-badge type="info">
+                    {item.availability}
+                  </sl-badge>
+                  {"  "}
+                  {item.title} - <sl-badge pulse>₵{item.amount}</sl-badge>
+                </div>
+                <img slot="image" src={item.img} alt={item.alt} />
+                <sl-button href={item.link}>Add to cart</sl-button>
+              </sl-card>
+            </Grid>
+          );
+        })}
+      </>
+    );
+  }
+
+  
+
   return (
-    <>
-      <sl-image-comparer>
-        <img
-          slot="before"
-          src="https://images.unsplash.com/photo-1517331156700-3c241d2b4d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80&sat=-100&bri=-5"
-          alt="Grayscale version of kittens in a basket looking around."
-        />
-        <img
-          slot="after"
-          src="https://images.unsplash.com/photo-1517331156700-3c241d2b4d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-          alt="Color version of kittens in a basket looking around."
-        />
-      </sl-image-comparer>
-    </>
+    <div className={classes.root}>
+      <Grid container spacing={1}>
+        <Grid container item xs={12} spacing={3}>
+          <ImageList />
+        </Grid>
+      </Grid>
+    </div>
   );
 }

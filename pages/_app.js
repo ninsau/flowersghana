@@ -5,6 +5,7 @@ import FooterComponent from "../components/navigation/footer";
 import Container from "@material-ui/core/Container";
 import "@shoelace-style/shoelace/dist/themes/base.css";
 import CustomEls from '../utils/shoelace'
+import '../styles/globals.css'
 
 
 MyApp.getInitialProps = async (context) => {
