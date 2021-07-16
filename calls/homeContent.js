@@ -2,107 +2,11 @@ import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
+import { useRouter } from "next/router";
 
 export default function HomeContent() {
-  //   const images = [
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //     {
-  //       img: "https://source.unsplash.com/random",
-  //       title: "Sample Product",
-  //       alt: "sample alt",
-  //       link: "/#",
-  //       availability: "In stock",
-  //       amount: 600,
-  //     },
-  //   ];
-
+  const router = useRouter();
+  let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
 
   useEffect(() => {
@@ -117,6 +21,7 @@ export default function HomeContent() {
     return () => subscription.unsubscribe();
   }, []);
 
+
   return (
     <>
       {bouquets.length < 1 && (
@@ -125,7 +30,33 @@ export default function HomeContent() {
         </>
       )}
       {bouquets.map((item, i) => {
-        return (
+        if (item.category === slug || item.tags.includes(slug)) {
+          return (
+            <Grid item xs={6} md={4} key={i}>
+              <sl-card class="card-header">
+                <div slot="header">
+                  {item.title}{" "}
+                  <sl-badge type="danger" pulse>
+                    ₵{item.amount}
+                  </sl-badge>
+                  <sl-badge class="avail" type="info">
+                    {item.availability}
+                  </sl-badge>
+                </div>
+
+                <img
+                  slot="image"
+                  src={`/images/${item.img}`}
+                  alt={item.title}
+                />
+                <sl-button class="add" href={item.link}>
+                  Add to cart
+                </sl-button>
+              </sl-card>
+            </Grid>
+          );
+        }
+        if (slug === undefined) {
           <Grid item xs={6} md={4} key={i}>
             <sl-card class="card-header">
               <div slot="header">
@@ -143,8 +74,8 @@ export default function HomeContent() {
                 Add to cart
               </sl-button>
             </sl-card>
-          </Grid>
-        );
+          </Grid>;
+        }
       })}
     </>
   );
