@@ -123,7 +123,7 @@ export default function Content() {
             <Grid item xs={6} md={4} key={i}>
               <sl-card class="card-header">
                 <div slot="header">
-                  {item.title} <sl-badge pulse>₵{item.amount}</sl-badge>
+                  {item.title} <sl-badge type="danger" pulse>₵{item.amount}</sl-badge>
                   <sl-badge class="avail" type="info">
                     {item.availability}
                   </sl-badge>

@@ -1,0 +1,12 @@
+type Bouquets @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  img: String
+  title: String
+  alt: String
+  link: String
+  description: String
+  availability: String
+  amount: Int
+  slug: String
+}
+ 
