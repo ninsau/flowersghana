@@ -6,13 +6,13 @@ import Container from "@material-ui/core/Container";
 import "@shoelace-style/shoelace/dist/themes/base.css";
 import CustomEls from "../utils/shoelace";
 import "../styles/globals.css";
-// import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
-// import config from "../media/aws-exports";
+import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
+import config from "../media/aws-exports";
 
-// Amplify.configure({
-//   ...config,
-//   ssr: true,
-// });
+Amplify.configure({
+  ...config,
+  ssr: true,
+});
 
 MyApp.getInitialProps = async (context) => {
   const URL = process.env.BASE_URL;
