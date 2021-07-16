@@ -24,20 +24,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "alt": {
-                    "name": "alt",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "link": {
-                    "name": "link",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "description": {
                     "name": "description",
                     "isArray": false,
@@ -61,6 +47,20 @@ export const schema = {
                 },
                 "slug": {
                     "name": "slug",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "tags": {
+                    "name": "tags",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "category": {
+                    "name": "category",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -111,5 +111,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "73e17a0d7c31309891d98bbde4622cbb"
+    "version": "50b087eae6ddbb1d268935cb3b018dd3"
 };

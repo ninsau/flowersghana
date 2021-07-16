@@ -12,12 +12,12 @@ export declare class Bouquets {
   readonly id: string;
   readonly img?: string;
   readonly title?: string;
-  readonly alt?: string;
-  readonly link?: string;
   readonly description?: string;
   readonly availability?: string;
   readonly amount?: number;
   readonly slug?: string;
+  readonly tags?: string;
+  readonly category?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Bouquets, BouquetsMetaData>);

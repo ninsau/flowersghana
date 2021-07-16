@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SeeReviews() {
+export default function Bottom() {
   const classes = useStyles();
 
   return (

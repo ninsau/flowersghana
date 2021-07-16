@@ -4,9 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
-import { DataStore } from 'aws-amplify'
-import { useState, useEffect } from 'react'
-import { Bouquets } from '../../media/models'
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -40,21 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Hero() {
   const classes = useStyles();
-  const [posts, setPosts] = useState([])
 
-  useEffect(() => {
-    fetchPosts()
-    async function fetchPosts() {
-      const postData = await DataStore.query(Bouquets)
-      setPosts(postData)
-    }
-    const subscription = DataStore.observe(Bouquets).subscribe(() => fetchPosts())
-    return () => subscription.unsubscribe()
-  }, [])
-
-  posts.map((a)=>{
-    console.log(a.id)
-  })
   return (
     <>
       <Paper
@@ -73,7 +56,7 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                {posts.title}
+                Send Flowers
               </Typography>
               <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
