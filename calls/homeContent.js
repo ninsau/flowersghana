@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
-import { Bouquets } from "../media/models";
+import { Bouquets } from "../src/models";
 import { useRouter } from "next/router";
 
 export default function HomeContent() {

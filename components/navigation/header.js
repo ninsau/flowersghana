@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -56,7 +55,7 @@ export default function HeaderComponent() {
         >
           <Hidden smDown>
             <Link href="/">
-              <Image
+              <img
                 src="/banner.jpg"
                 alt="flowersghana logo"
                 width={200}
