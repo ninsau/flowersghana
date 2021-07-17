@@ -1,8 +1,10 @@
 import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
-import { Bouquets } from "../src/models";
+import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
+import Container from "@material-ui/core/Container";
+
 
 export default function HomeContent() {
   const router = useRouter();
@@ -25,7 +27,7 @@ export default function HomeContent() {
     <>
       {bouquets.length < 1 && (
         <>
-          <sl-spinner></sl-spinner>
+          <Container><sl-spinner></sl-spinner></Container>
         </>
       )}
       {bouquets.map((item, i) => {

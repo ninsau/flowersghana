@@ -7,7 +7,7 @@ import "@shoelace-style/shoelace/dist/themes/base.css";
 import CustomEls from "../utils/shoelace";
 import "../styles/globals.css";
 import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
-import config from "../src/aws-exports";
+import config from "../media/aws-exports.js";
 
 Amplify.configure({
   ...config,
