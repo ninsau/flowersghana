@@ -56,7 +56,7 @@ export default function HeaderComponent() {
           <Hidden smDown>
             <Link href="/">
               <img
-                src="/banner.jpg"
+                src="logo/banner.jpg"
                 alt="flowersghana logo"
                 width={200}
                 height={70}

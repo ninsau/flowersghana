@@ -1,6 +1,5 @@
 import React from 'react'
 import { useRouter } from "next/router"
-import Head from 'next/head'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { textData } from "../store/textData"
