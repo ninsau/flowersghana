@@ -3,8 +3,6 @@ import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
-import Container from "@material-ui/core/Container";
-
 
 export default function HomeContent() {
   const router = useRouter();
@@ -27,7 +25,7 @@ export default function HomeContent() {
     <>
       {bouquets.length < 1 && (
         <>
-          <Container><sl-spinner></sl-spinner></Container>
+          <sl-progress-bar indeterminate></sl-progress-bar>
         </>
       )}
       {bouquets.map((item, i) => {
