@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@aws-amplify/api": "^4.0.6",
-    "@material-ui/core": "^4.11.3",
+    "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
     "@shoelace-style/react-wrapper": "^1.0.3",
     "@shoelace-style/shoelace": "^2.0.0-beta.46",

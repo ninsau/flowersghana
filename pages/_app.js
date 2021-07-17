@@ -9,6 +9,7 @@ import "../styles/globals.css";
 import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
 import config from "../media/aws-exports.js";
 
+
 Amplify.configure({
   ...config,
   ssr: true,
