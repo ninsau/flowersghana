@@ -61,7 +61,7 @@ export default function HomeContent() {
 
                 <img
                   slot="image"
-                  src={`/images/${item.img}`}
+                  src={`${item.img}`}
                   alt={item.title}
                 />
               </Link>

@@ -43,7 +43,7 @@ export default function BouquetDetails() {
               <sl-card class="card-image">
                 <img
                   slot="image"
-                  src={`/images/${item.img}`}
+                  src={`${item.img}`}
                   alt={item.title}
                 />
 
