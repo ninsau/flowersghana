@@ -16,6 +16,7 @@ export default function HeadComponent() {
     "/category/birthday": "Birthday Bouquets | FlowersGhana",
     "/category/budget": "Budget Friendly | FlowersGhana",
     "/category/roses": "Roses | FlowersGhana",
+    "/reviews": "Customer Reviews | FlowersGhana",
   };
 
   return (

@@ -3,8 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
+import FetchReviews from "../../calls/fetchReviews";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -54,29 +53,9 @@ export default function Bottom() {
           </Grid>
         </Grid>
       </Paper>
-      <sl-details summary="John Doe">
-        <p>
-          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
-          ipsumLorem ipsum
-        </p>
-      </sl-details>
-      <br/>
-      <sl-details summary="Jane Doe">
-        <p>
-          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
-          ipsumLorem ipsum
-        </p>
-      </sl-details>
-      <br/>
-      <sl-details summary="JamieJulia Doe">
-        <p>
-          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
-          ipsumLorem ipsum
-        </p>
-      </sl-details>
+      <div>
+      <FetchReviews/>
+      </div>
     </>
   );
 }

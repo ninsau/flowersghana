@@ -1,3 +1,9 @@
+type Reviews @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  review: String
+}
+
 type Bouquets @model @auth(rules: [{allow: public}]) {
   id: ID!
   img: String
