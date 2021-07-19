@@ -42,9 +42,6 @@ export default function Hero() {
     <>
       <Paper
         className={classes.mainFeaturedPost}
-        style={{
-          backgroundImage: `url('https://www.flowersghana.com/images/1a511297-4675-478e-820c-54c9b9098dbf.JPG')`,
-        }}
       >
         <div className={classes.overlay} />
         <Grid container>

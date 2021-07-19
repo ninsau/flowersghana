@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundSize: "cover",
+    // backgroundImage:
+    // "url(https://www.flowersghana.com/images/1a511297-4675-478e-820c-54c9b9098dbf.JPG)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     marginTop: theme.spacing(8),
@@ -48,15 +50,33 @@ export default function Bottom() {
               <Typography variant="h5" color="inherit" paragraph>
                 Customers from all over are excited with our services!
               </Typography>
-              <Link variant="subtitle1" href="#">
-                <Button variant="outlined" size="small">
-                  See what they are saying
-                </Button>
-              </Link>
             </div>
           </Grid>
         </Grid>
       </Paper>
+      <sl-details summary="John Doe">
+        <p>
+          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
+          ipsumLorem ipsum
+        </p>
+      </sl-details>
+      <br/>
+      <sl-details summary="Jane Doe">
+        <p>
+          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
+          ipsumLorem ipsum
+        </p>
+      </sl-details>
+      <br/>
+      <sl-details summary="JamieJulia Doe">
+        <p>
+          Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+          Lorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem
+          ipsumLorem ipsum
+        </p>
+      </sl-details>
     </>
   );
 }

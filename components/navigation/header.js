@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: "Featured", url: "/bouquets/featured" },
-  { title: "Popular", url: "/bouquets/popular" },
-  { title: "Birthday", url: "/bouquets/birthday" },
-  { title: "Budget", url: "/bouquets/budget" },
-  { title: "Roses", url: "/bouquets/roses" },
+  { title: "Featured", url: "/category/featured" },
+  { title: "Popular", url: "/category/popular" },
+  { title: "Birthday", url: "/category/birthday" },
+  { title: "Budget", url: "/category/budget" },
+  { title: "Roses", url: "/category/roses" },
   { title: "Reviews", url: "/reviews" },
 ];
 

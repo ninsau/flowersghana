@@ -3,6 +3,7 @@ import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -47,17 +48,24 @@ export default function HomeContent() {
         return (
           <Grid item xs={6} md={4} key={i}>
             <sl-card class="card-header">
-              <div slot="header">
-                {item.title}{" "}
-                <sl-badge type="danger" pulse>
-                  ₵{item.amount}
-                </sl-badge>
-                <sl-badge class="avail" type="info">
-                  {item.availability}
-                </sl-badge>
-              </div>
+                <div slot="header">
+                  {item.title}{" "}
+                  <sl-badge type="danger" pulse>
+                    ₵{item.amount}
+                  </sl-badge>
+                  <sl-badge class="avail" type="info">
+                    {item.availability}
+                  </sl-badge>
+                </div>
+              <Link href={`/bouquet/${item.slug}`}>
 
-              <img slot="image" src={`/images/${item.img}`} alt={item.title} />
+                <img
+                  slot="image"
+                  src={`/images/${item.img}`}
+                  alt={item.title}
+                />
+              </Link>
+              
               <sl-button class="add" href={item.link}>
                 Add to cart
               </sl-button>

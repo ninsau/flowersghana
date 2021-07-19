@@ -11,11 +11,11 @@ export default function HeadComponent() {
     "/contact": "Contact Us | FlowersGhana",
     "/terms": "Terms & Conditions | FlowersGhana",
     "/privacy": "Privacy Policy | FlowersGhana",
-    "/bouquets/featured": "Featered Bouquets | FlowersGhana",
-    "/bouquets/popular": "Popular Bouquets | FlowersGhana",
-    "/bouquets/birthday": "Birthday Bouquets | FlowersGhana",
-    "/bouquets/budget": "Budget Friendly | FlowersGhana",
-    "/bouquets/roses": "Roses | FlowersGhana",
+    "/category/featured": "Featered Bouquets | FlowersGhana",
+    "/category/popular": "Popular Bouquets | FlowersGhana",
+    "/category/birthday": "Birthday Bouquets | FlowersGhana",
+    "/category/budget": "Budget Friendly | FlowersGhana",
+    "/category/roses": "Roses | FlowersGhana",
   };
 
   return (
