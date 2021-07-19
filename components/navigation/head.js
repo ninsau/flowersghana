@@ -26,7 +26,7 @@ export default function HeadComponent() {
             ? `${title[urlPath]}`
             : "Page Not Found | FlowersGhana"}
         </title>
-        <link rel="icon" href="/logo/banner.JPG" type="image/png" sizes="16x16" />
+        <link rel="icon" href="https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp" type="image/png" sizes="16x16" />
         <link
           href="https://fonts.googleapis.com/css?family=Nunito:100,300,400,600,700,800,900"
           rel="stylesheet"
