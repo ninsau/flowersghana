@@ -30,14 +30,14 @@ export default function HeadComponent() {
         </title>
         <link
           rel="icon"
-          href="https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
+          href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.jpg"
           type="image/png"
           sizes="16x16"
         />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css?family=Nunito:100,300,400,600,700,800,900"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
     </>
   );

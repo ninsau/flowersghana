@@ -56,7 +56,7 @@ export default function HeaderComponent() {
           <Hidden smDown>
             <Link href="/">
               <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
+                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_70,w_200/v1626707839/flowersghanaLogo.jpg"
                 alt="flowersghana logo"
                 width={200}
                 height={70}
