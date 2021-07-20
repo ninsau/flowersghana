@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import BackdropComponent from "../components/loader/backdrop";
 
 export default function BouquetDetails() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function BouquetDetails() {
     <>
       {bouquets.length < 1 && (
         <>
-          <sl-progress-bar indeterminate></sl-progress-bar>
+          <BackdropComponent />
         </>
       )}
       {bouquets.map((item, i) => {
@@ -41,11 +42,7 @@ export default function BouquetDetails() {
 
             <Grid m={4} item xs={12} md={4} key={Math.random()}>
               <sl-card class="card-image">
-                <img
-                  slot="image"
-                  src={`${item.img}`}
-                  alt={item.title}
-                />
+                <img slot="image" src={`${item.img}`} alt={item.title} />
 
                 <h1>{item.title}</h1>
                 <sl-badge type="danger">₵{item.amount}</sl-badge>
@@ -55,8 +52,10 @@ export default function BouquetDetails() {
               <h2>Details</h2>
               <p>{item.description}</p>
               <br />
-              {item.tags.split(',').map(tag=> <sl-badge type="info"> {tag} </sl-badge> )}
-              <br/>
+              {item.tags.split(",").map((tag) => (
+                <sl-badge type="info"> {tag} </sl-badge>
+              ))}
+              <br />
               <h4>Quantity: {quantity}</h4>
               <Grid item xs={12} md={4} key={Math.random()}>
                 <sl-input
@@ -68,10 +67,10 @@ export default function BouquetDetails() {
                 ></sl-input>
                 <br />
                 <sl-button type="success" class="add" href={item.link}>
-                Add to cart
-              </sl-button>
+                  Add to cart
+                </sl-button>
               </Grid>
-              <br/>
+              <br />
               <sl-details summary="What do we do if exact item is not available?">
                 <p>
                   If the exact flowers, plants, or container you have selected

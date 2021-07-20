@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Backdrop from '../components/loader/backdrop'
+
 
 export default function HomeContent() {
   const router = useRouter();
@@ -41,7 +43,7 @@ export default function HomeContent() {
     <>
       {bouquets.length < 1 && (
         <>
-          <sl-progress-bar indeterminate></sl-progress-bar>
+          <Backdrop/>
         </>
       )}
       {bouquets.map((item, i) => {
