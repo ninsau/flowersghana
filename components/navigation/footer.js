@@ -50,11 +50,11 @@ const footers = [
   {
     title: "Categores",
     description: [
-      { name: "All Items", link: "/flowers" },
-      { name: "Featured Bouquets", link: "/flowers/featured" },
-      { name: "Popular Bouquets", link: "/flowers/popular" },
-      { name: "Birthday", link: "/flowers/birthday" },
-      { name: "Budget Friendly", link: "/flowers/budget" },
+      { name: "All Items", link: "/category/all" },
+      { name: "Featured Bouquets", link: "/category/featured" },
+      { name: "Popular Bouquets", link: "/category/popular" },
+      { name: "Birthday", link: "/category/birthday" },
+      { name: "Budget Friendly", link: "/category/budget" },
     ],
   },
   {

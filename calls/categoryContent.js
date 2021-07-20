@@ -13,7 +13,7 @@ export default function HomeContent() {
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      if (slug === undefined) {
+      if (slug === undefined || slug === "all") {
         const bouquetsData = await DataStore.query(Bouquets);
         setBouquets(bouquetsData);
       } else {
@@ -48,24 +48,19 @@ export default function HomeContent() {
         return (
           <Grid item xs={6} md={4} key={i}>
             <sl-card class="card-header">
-                <div slot="header">
-                  {item.title}{" "}
-                  <sl-badge type="danger" pulse>
-                    ₵{item.amount}
-                  </sl-badge>
-                  <sl-badge class="avail" type="info">
-                    {item.availability}
-                  </sl-badge>
-                </div>
+              <div slot="header">
+                {item.title}{" "}
+                <sl-badge type="danger" pulse>
+                  ₵{item.amount}
+                </sl-badge>
+                <sl-badge class="avail" type="info">
+                  {item.availability}
+                </sl-badge>
+              </div>
               <Link href={`/bouquet/${item.slug}`}>
-
-                <img
-                  slot="image"
-                  src={`${item.img}`}
-                  alt={item.title}
-                />
+                <img slot="image" src={`${item.img}`} alt={item.title} />
               </Link>
-              
+
               <sl-button class="add" href={item.link}>
                 Add to cart
               </sl-button>

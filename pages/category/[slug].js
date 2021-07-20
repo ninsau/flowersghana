@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import HomeContent from "../../calls/homeContent";
+import CategoryContent from "../../calls/categoryContent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryContent() {
+export default function CategoryContentPage() {
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ export default function CategoryContent() {
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid container item xs={12} spacing={3}>
-            <HomeContent />
+            <CategoryContent />
           </Grid>
         </Grid>
       </div>

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import HomeContent from '../../calls/homeContent';
+import HomeContent from '../../calls/categoryContent';
 
 
 const useStyles = makeStyles((theme) => ({
