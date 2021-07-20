@@ -62,7 +62,9 @@ export default function ReviewsComponent() {
   });
   return (
     <>
-<div>
+      <div>
+        <br />
+        <br />
         <Button variant="outlined" onClick={handleClickOpen}>
           Add a review
         </Button>
@@ -110,7 +112,6 @@ export default function ReviewsComponent() {
           </DialogContent>
         </Dialog>
       </div>
-  
-</>
+    </>
   );
 }

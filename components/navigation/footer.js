@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
@@ -88,8 +87,8 @@ export default function FooterComponent() {
         <Grid container spacing={4} justify="space-evenly">
           <Hidden smUp>
             <Link href="/">
-              <Image
-                src="/banner.jpg"
+              <img
+                src="https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
                 alt="flowersghana logo"
                 width={200}
                 height={70}

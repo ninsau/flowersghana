@@ -11,7 +11,7 @@ export default function FetchReviews() {
     fetchPosts();
     async function fetchPosts() {
       const reviewsData = await DataStore.query(Reviews);
-      setReviews(reviewsData);
+      setReviews(reviewsData.reverse());
     }
     const subscription = DataStore.observe(Reviews).subscribe(() =>
       fetchPosts()
@@ -23,13 +23,24 @@ export default function FetchReviews() {
     <>
       {path === "/" && (
         <>
-          {reviews.slice(0, 4).map((review, i) => {
+          {reviews.slice(0, 5).map((review, i) => {
             return (
               <>
-                <sl-details summary={`${review.name}`} key={i}>
-                  <p>{review.review}</p>
-                </sl-details>
-                <br />
+                {i === 0 || i === 1 ? (
+                  <>
+                    <sl-details summary={`${review.name}`} key={i} open>
+                      <p>{review.review}</p>
+                    </sl-details>
+                    <br />
+                  </>
+                ) : (
+                  <>
+                    <sl-details summary={`${review.name}`} key={i}>
+                      <p>{review.review}</p>
+                    </sl-details>
+                    <br />
+                  </>
+                )}
               </>
             );
           })}
@@ -41,7 +52,7 @@ export default function FetchReviews() {
           {reviews.map((review, i) => {
             return (
               <>
-                <sl-details summary={`${review.name}`} key={i}>
+                <sl-details summary={`${review.name}`} key={i} open>
                   <p>{review.review}</p>
                 </sl-details>
                 <br />
