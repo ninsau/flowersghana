@@ -66,7 +66,9 @@ export default function HeaderComponent() {
         </Typography>
 
         <IconButton>
-          <SearchIcon />
+          <Link href="/search/random">
+            <SearchIcon />
+          </Link>
         </IconButton>
         <IconButton>
           <Badge badgeContent={4} color="secondary">

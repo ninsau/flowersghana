@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import { DataStore } from "aws-amplify";
+import { DataStore, Predicates } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
@@ -16,7 +16,10 @@ export default function HomeContent() {
     fetchPosts();
     async function fetchPosts() {
       if (slug === undefined || slug === "all") {
-        const bouquetsData = await DataStore.query(Bouquets);
+        const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
+          page: 0,
+          limit: 21
+        });
         setBouquets(bouquetsData);
       } else {
         const bouquetsData = await DataStore.query(

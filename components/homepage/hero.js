@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundImage:
-      "url(https://www.flowersghana.com/images/1a511297-4675-478e-820c-54c9b9098dbf.JPG)",
+      "url(https://res.cloudinary.com/deyudesls/image/upload/v1616906400/1a511297-4675-478e-820c-54c9b9098dbf_usqfex.webp)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -59,7 +59,7 @@ export default function Hero() {
                 All our flowers and plants are freshly cut, and are delivered
                 directly from the farm.
               </Typography>
-              <Link variant="subtitle1" href="#">
+              <Link variant="subtitle1" href="/category/featured">
                 <Button variant="contained" size="large">
                   Shop Now
                 </Button>

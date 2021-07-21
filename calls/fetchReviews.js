@@ -1,4 +1,4 @@
-import { DataStore } from "aws-amplify";
+import { DataStore, Predicates, SortDirection } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Reviews } from "../media/models";
 import { useRouter } from "next/router";
@@ -10,8 +10,33 @@ export default function FetchReviews() {
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      const reviewsData = await DataStore.query(Reviews);
-      setReviews(reviewsData.reverse());
+      if (path === "/") {
+        const reviewsData = await DataStore.query(
+          Reviews,
+          Predicates.ALL,
+          {
+            page: 0,
+            limit: 5,
+          },
+          {
+            sort: (s) => s.review(SortDirection.ASCENDING),
+          }
+        );
+        setReviews(reviewsData);
+      } else {
+        const reviewsData = await DataStore.query(
+          Reviews,
+          Predicates.ALL,
+          {
+            page: 0,
+            limit: 20,
+          },
+          {
+            sort: (s) => s.review(SortDirection.ASCENDING),
+          }
+        );
+        setReviews(reviewsData);
+      }
     }
     const subscription = DataStore.observe(Reviews).subscribe(() =>
       fetchPosts()
@@ -23,7 +48,7 @@ export default function FetchReviews() {
     <>
       {path === "/" && (
         <>
-          {reviews.slice(0, 5).map((review, i) => {
+          {reviews.map((review, i) => {
             return (
               <>
                 {i === 0 || i === 1 ? (

@@ -4,6 +4,31 @@
     justify-content: space-between;
   } 
 
+  /* .amount {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-evenly;
+  }
+  
+  .title {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+  }  */
+
+  .search {
+    margin: 5px;
+  }
+
+  .searchbar {
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
 
   /* .card-header {
     border-spacing: var(--sl-spacing-xxxx-large);
