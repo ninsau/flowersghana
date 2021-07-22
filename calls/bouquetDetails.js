@@ -5,6 +5,13 @@ import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import BackdropComponent from "../components/loader/backdrop";
+import { Typography } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import LinkIcon from "@material-ui/icons/Link";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import { CardContent } from "@material-ui/core";
 
 export default function BouquetDetails() {
   const router = useRouter();
@@ -40,21 +47,45 @@ export default function BouquetDetails() {
               <title>{item.title} | FlowersGhana</title>
             </Head>
 
-            <Grid m={4} item xs={12} md={4} key={Math.random()}>
-              <sl-card class="card-image">
+            <Grid m={4} item xs={12} md={5} key={Math.random()}>
+              <CardHeader
+                title={item.title}
+                subheader={
+                  <sl-badge type="danger" pulse>
+                    ₵{item.amount}
+                  </sl-badge>
+                }
+              />
+
+              <sl-card class="card-header">
                 <img slot="image" src={`${item.img}`} alt={item.title} />
 
-                <h1>{item.title}</h1>
-                <sl-badge type="danger">₵{item.amount}</sl-badge>
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    <br />
+                    Tags:{" "}
+                    {item.tags.split(",").map((tag) => (
+                      <sl-badge type="info"> {tag} </sl-badge>
+                    ))}
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <IconButton aria-label="share">
+                    <LinkIcon />
+                  </IconButton>
+                  {item.availability}
+                </CardActions>
               </sl-card>
             </Grid>
-            <Grid item xs={12} md={8} key={Math.random()}>
-              <h2>Details</h2>
-              <p>{item.description}</p>
+            <Grid item xs={12} md={7} key={Math.random()}>
+              <h2>Description</h2>
+              <Typography paragraph>{item.description}</Typography>
               <br />
-              {item.tags.split(",").map((tag) => (
-                <sl-badge type="info"> {tag} </sl-badge>
-              ))}
+
               <br />
               <h4>Quantity: {quantity}</h4>
               <Grid item xs={12} md={4} key={Math.random()}>

@@ -8,7 +8,12 @@ import { makeStyles } from "@material-ui/core";
 import Link from "next/link";
 import Fuse from "fuse.js";
 import { useRouter } from "next/router";
-import Head from 'next/head'
+import Head from "next/head";
+import { Typography } from "@material-ui/core";
+import CardHeader from "@material-ui/core/CardHeader";
+import LinkIcon from "@material-ui/icons/Link";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,9 +78,13 @@ export default function SearchComponent() {
 
   return (
     <>
-    <Head>
-        {slug !== undefined && searchParam === '' ? <title> {`Search '${slug}'`}| FlowersGhana</title> : <title>{`Search '${searchParam}'`} | FlowersGhana</title>}
-    </Head>
+      <Head>
+        {slug !== undefined && searchParam === "" ? (
+          <title> {`Search '${slug}'`}| FlowersGhana</title>
+        ) : (
+          <title>{`Search '${searchParam}'`} | FlowersGhana</title>
+        )}
+      </Head>
       <div style={{ margin: 20 }}>
         <Grid
           container
@@ -84,7 +93,6 @@ export default function SearchComponent() {
           alignItems="center"
           justify="center"
         >
-          {/* <p>Search with title, category, description, image name, or price</p> */}
           <Grid>
             <TextField
               margin="dense"
@@ -97,6 +105,10 @@ export default function SearchComponent() {
               value={searchParam}
               fullWidth
             />
+            <Typography variant="body2" color="textSecondary" component="p">
+              Find an item by searching title, description, amount less than, or
+              category.
+            </Typography>
           </Grid>
           <Grid style={{ margin: 20 }}>
             {options.map((option, i) => {
@@ -117,7 +129,7 @@ export default function SearchComponent() {
               <>
                 <sl-alert type="danger" open>
                   <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
-                  <strong>Please try a keyword</strong>
+                  <strong>Please try another keyword(s)</strong>
                   <br />
                   No items found.
                 </sl-alert>
@@ -130,29 +142,33 @@ export default function SearchComponent() {
                 {result.map((item, i) => {
                   return (
                     <Grid item xs={6} md={4} key={i}>
-                      <sl-card class="card-header">
-                        <div slot="header">
-                          {item.item.title}{" "}
-                          <sl-badge type="danger" pulse>
-                            ₵{item.item.amount}
-                          </sl-badge>
-                          <sl-badge class="avail" type="info">
-                            {item.item.availability}
-                          </sl-badge>
-                        </div>
-                        <Link href={`/bouquet/${item.item.slug}`}>
-                          <img
-                            slot="image"
-                            src={`${item.item.img}`}
-                            alt={item.item.title}
-                          />
-                        </Link>
-
-                        <sl-button class="add" href={item.item.link}>
-                          Add to cart
-                        </sl-button>
-                      </sl-card>
-                    </Grid>
+                    <sl-card class="card-header">
+                      <Link href={`/bouquet/${item.item.slug}`}>
+                        <CardHeader
+                          title={item.item.title}
+                          subheader={
+                            <sl-badge type="danger" pulse>
+                              ₵{item.item.amount}
+                            </sl-badge>
+                          }
+                        />
+                      </Link>
+                      <Link href={`/bouquet/${item.item.slug}`}>
+                        <img slot="image" src={`${item.item.img}`} alt={item.item.title} />
+                      </Link>
+                      <sl-button class="add" href={item.item.link}>
+                        Add to cart
+                      </sl-button>
+                      <Link href={`/bouquet/${item.item.slug}`}>
+                        <CardActions disableSpacing>
+                          <IconButton aria-label="share">
+                            <LinkIcon />
+                          </IconButton>
+                          {item.item.availability}
+                        </CardActions>
+                      </Link>
+                    </sl-card>
+                  </Grid>
                   );
                 })}
               </Grid>
