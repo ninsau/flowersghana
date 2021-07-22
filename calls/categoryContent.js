@@ -29,7 +29,7 @@ export default function HomeContent() {
           Bouquets,
           (item) =>
             item.or((item) =>
-              item.category("contains", slug).tags("contains", slug)
+              item.category("contains", slug).tags("contains", slug).description("contains", slug)
             ),
           {
             page: 0,

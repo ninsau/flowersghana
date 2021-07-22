@@ -33,6 +33,8 @@ const sections = [
   { title: "Birthday", url: "/category/birthday" },
   { title: "Budget", url: "/category/budget" },
   { title: "Roses", url: "/category/roses" },
+  { title: "Sympathy", url: "/category/sympathy" },
+  { title: "Anniversary", url: "/category/anniversary" },
   { title: "Reviews", url: "/reviews" },
 ];
 

@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { Bouquets } from "../../media/models";
-import { makeStyles } from "@material-ui/core";
 import Link from "next/link";
 import Fuse from "fuse.js";
 import { useRouter } from "next/router";
@@ -15,19 +14,8 @@ import LinkIcon from "@material-ui/icons/Link";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
 
 export default function SearchComponent() {
-  const classes = useStyles();
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
@@ -136,8 +124,7 @@ export default function SearchComponent() {
               </>
             )}
           </Grid>
-          <div className={classes.root}>
-            <Grid container spacing={1}>
+
               <Grid container item xs={12} spacing={3}>
                 {result.map((item, i) => {
                   return (
@@ -173,8 +160,7 @@ export default function SearchComponent() {
                 })}
               </Grid>
             </Grid>
-          </div>
-        </Grid>
+        
       </div>
     </>
   );

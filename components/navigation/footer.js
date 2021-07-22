@@ -55,6 +55,8 @@ const footers = [
       { name: "Popular Bouquets", link: "/category/popular" },
       { name: "Birthday", link: "/category/birthday" },
       { name: "Budget Friendly", link: "/category/budget" },
+      { name: "Anniversary", link: "/category/anniversary" },
+      { name: "Sympathy", link: "/category/sympathy" },
     ],
   },
   {

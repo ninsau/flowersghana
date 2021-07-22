@@ -20,7 +20,7 @@ export default function BackdropComponent() {
   return (
     <>
       <Backdrop className={classes.backdrop} open={open}>
-        <CircularProgress color="inherit" />
+        <CircularProgress color="inherit" /> 
       </Backdrop>
     </>
   );
