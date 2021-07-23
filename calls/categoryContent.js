@@ -6,9 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Backdrop from "../components/loader/backdrop";
 import CardHeader from "@material-ui/core/CardHeader";
-import LinkIcon from "@material-ui/icons/Link";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
+import AddToCartComponent from "../cart/addToCart";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -29,7 +27,10 @@ export default function HomeContent() {
           Bouquets,
           (item) =>
             item.or((item) =>
-              item.category("contains", slug).tags("contains", slug).description("contains", slug)
+              item
+                .category("contains", slug)
+                .tags("contains", slug)
+                .description("contains", slug)
             ),
           {
             page: 0,
@@ -55,31 +56,22 @@ export default function HomeContent() {
       {bouquets.map((item, i) => {
         return (
           <Grid item xs={6} md={4} key={i}>
-            <sl-card class="card-header">
-              <Link href={`/bouquet/${item.slug}`}>
-                <CardHeader
-                  title={item.title}
-                  subheader={
-                    <sl-badge type="danger" pulse>
-                      ₵{item.amount}
-                    </sl-badge>
-                  }
-                />
-              </Link>
+            <Link href={`/bouquet/${item.slug}`}>
+              <CardHeader
+                title={item.title}
+                avatar={
+                  <sl-badge type="danger" pulse>
+                    ₵{item.amount}
+                  </sl-badge>
+                }
+                subheader={item.availability}
+              />
+            </Link>
+            <sl-card>
               <Link href={`/bouquet/${item.slug}`}>
                 <img slot="image" src={`${item.img}`} alt={item.title} />
               </Link>
-              <sl-button class="add" href={item.link}>
-                Add to cart
-              </sl-button>
-              <Link href={`/bouquet/${item.slug}`}>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="share">
-                    <LinkIcon />
-                  </IconButton>
-                  {item.availability}
-                </CardActions>
-              </Link>
+              <AddToCartComponent itemTitle={item.title}/>
             </sl-card>
           </Grid>
         );

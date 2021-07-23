@@ -6,9 +6,8 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Hidden from "@material-ui/core/Hidden";
-import Badge from "@material-ui/core/Badge";
+import ShoppingCartComponent from "../../cart/shoppingCart";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -73,9 +72,7 @@ export default function HeaderComponent() {
           </Link>
         </IconButton>
         <IconButton>
-          <Badge badgeContent={4} color="secondary">
-            <ShoppingCartOutlinedIcon />
-          </Badge>
+          <ShoppingCartComponent/>
         </IconButton>
       </Toolbar>
       <Toolbar

@@ -125,35 +125,28 @@ export default function SearchComponent() {
             )}
           </Grid>
 
-              <Grid container item xs={12} spacing={3}>
+              <Grid container item spacing={3}>
                 {result.map((item, i) => {
                   return (
                     <Grid item xs={6} md={4} key={i}>
-                    <sl-card class="card-header">
-                      <Link href={`/bouquet/${item.item.slug}`}>
-                        <CardHeader
-                          title={item.item.title}
-                          subheader={
-                            <sl-badge type="danger" pulse>
-                              ₵{item.item.amount}
-                            </sl-badge>
-                          }
-                        />
-                      </Link>
+                    <Link href={`/bouquet/${item.item.slug}`}>
+                      <CardHeader
+                        title={item.item.title}
+                        avatar={
+                          <sl-badge type="danger" pulse>
+                            ₵{item.item.amount}
+                          </sl-badge>
+                        }
+                        subheader={item.item.availability}
+                      />
+                    </Link>
+                    <sl-card>
                       <Link href={`/bouquet/${item.item.slug}`}>
                         <img slot="image" src={`${item.item.img}`} alt={item.item.title} />
                       </Link>
                       <sl-button class="add" href={item.item.link}>
                         Add to cart
                       </sl-button>
-                      <Link href={`/bouquet/${item.item.slug}`}>
-                        <CardActions disableSpacing>
-                          <IconButton aria-label="share">
-                            <LinkIcon />
-                          </IconButton>
-                          {item.item.availability}
-                        </CardActions>
-                      </Link>
                     </sl-card>
                   </Grid>
                   );

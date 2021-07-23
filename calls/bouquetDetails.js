@@ -12,6 +12,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
+import AddToCartComponent from "../cart/addToCart";
 
 export default function BouquetDetails() {
   const router = useRouter();
@@ -86,20 +87,18 @@ export default function BouquetDetails() {
               <Typography paragraph>{item.description}</Typography>
               <br />
 
-              <br />
-              <h4>Quantity: {quantity}</h4>
+              {/* <br /> */}
+              {/* <h4>Quantity: {quantity}</h4> */}
               <Grid item xs={12} md={4} key={Math.random()}>
-                <sl-input
+                {/* <sl-input
                   type="number"
                   min={1}
                   max={500}
                   value={quantity}
                   onKeyUp={(e) => setQuantity(e.target.value)}
-                ></sl-input>
+                ></sl-input> */}
                 <br />
-                <sl-button type="success" class="add" href={item.link}>
-                  Add to cart
-                </sl-button>
+                <AddToCartComponent itemTitle={item.title}/>
               </Grid>
               <br />
               <sl-details summary="What do we do if exact item is not available?">
