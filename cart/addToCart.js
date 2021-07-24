@@ -8,12 +8,25 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as yup from "yup";
-import { useCookies } from "react-cookie";
-// import { parseCookies } from "./cookieHelper";
+import { useRouter } from "next/router"; 
+import localforage from "localforage";
 
 export default function AddToCartComponent({ itemTitle }) {
   const [open, setOpen] = useState(false);
-  const [cookie, setCookie] = useCookies(["cart"]);
+  const router = useRouter();
+  let path = router.asPath;
+  const [aa, setA] = useState('')
+
+
+  useEffect(()=>{
+    localforage.getItem(itemTitle, function (err, value) {
+    // if err is non-null, we got an error. otherwise, value is the value
+    setA(value)
+  });
+
+
+  }, [aa])
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,33 +56,14 @@ export default function AddToCartComponent({ itemTitle }) {
   });
 
 
-  // const CookieCount = () => {
-  //   let count = [];
-
-  //   for (const [key, value] of Object.entries(cookie)) {
-  //     if (
-  //       key !== "_ga" &&
-  //       key !== "_ga_F0MWV1FSS0" &&
-  //       key !== "next-auth.callback-url"
-  //     ) {
-  //       let quantity = value.quantity;
-  //       count.push({ key, quantity });
-  //     }
-  //   }
-  //   console.log( count);
-  // }
-  // useEffect(() => {
-
-  // CookieCount()
-
-  // }, [cookie]);
-
-  // console.log(count)
-
 
   return (
     <>
-      <sl-button class="add" onClick={handleClickOpen}>
+      <sl-button
+        class="add"
+        type={path.includes("/bouquet/") ? "success" : null}
+        onClick={handleClickOpen}
+      >
         Add to cart
       </sl-button>
       <Dialog
@@ -90,11 +84,13 @@ export default function AddToCartComponent({ itemTitle }) {
               await new Promise((resolve) => setTimeout(resolve, 500));
               // alert(JSON.stringify(values, null, 2));
 
-              setCookie("cart", JSON.stringify(values), {
-                path: "/",
-                maxAge: 3600, // Expires after 1hr
-                sameSite: true,
+              localforage.setItem(values.title, values.quantity, function (err) {
+                // if err is non-null, we got an error
+              
               });
+
+              
+
               //   handleClose();
             }}
           >
@@ -117,18 +113,3 @@ export default function AddToCartComponent({ itemTitle }) {
     </>
   );
 }
-
-// AddToCartComponent.getInitialProps = async ({ req }) => {
-//   const data = parseCookies(req)
-
-// if (res) {
-//     if (Object.keys(data).length === 0 && data.constructor === Object) {
-//       res.writeHead(301, { Location: "/" })
-//       res.end()
-//     }
-//   }
-
-//   return {
-//     data: data && data,
-//   }
-// }

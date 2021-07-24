@@ -1,52 +1,50 @@
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import { useCookies } from "react-cookie";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import localforage from "localforage";
 
 export default function ShoppingCartComponent() {
-  const [cookie, setCookie, removeCookie] = useCookies([]);
+  const [count, setCount] = useState(0);
+  // const [aa, setA] = useState('')
 
-    removeCookie("cart")
-//   removeCookie("Bright Places")
-//   removeCookie("Sweet Heart")
-//   removeCookie("Blue Bliss")
-//   removeCookie("Blush Hush")
-//   removeCookie("Honey Pot")
-//   removeCookie("Pong Tail")
+  // useEffect(()=>{
+  //   localforage.getItem('key', function (err, value) {
+  //   // if err is non-null, we got an error. otherwise, value is the value
+  //   setA(value)
+  // });
+
+  // }, [])
+
+  // console.log(aa)
+
+  useEffect(()=>{
+    localforage
+    .length()
+    .then(function (numberOfKeys) {
+      // Outputs the length of the database.
+      setCount(numberOfKeys);
+      // setB(numberOfKeys);
+    })
+    .catch(function (err) {
+      // This code runs if there were any errors
+      console.log(err);
+    });
+  }, [])
 
 
-const CookieCount = () => {
-    let count = [];
+  //   localforage.length().then(function(numberOfKeys) {
+  //     // Outputs the length of the database.
+  //     console.log(numberOfKeys);
+  // }).catch(function(err) {
+  //     // This code runs if there were any errors
+  //     console.log(err);
+  // });
 
-    for (const [key, value] of Object.entries(cookie)) {
-      if (
-        key !== "_ga" &&
-        key !== "_ga_F0MWV1FSS0" &&
-        key !== "next-auth.callback-url"
-      ) {
-        let quantity = value.quantity;
-        count.push({ key, quantity });
-      }
-    }
-    return(count.length);
-  }
-
-//   useEffect(() => {
-
-    // CookieCount()
-  
-    // }, [cookie]);
   return (
     <>
-      {CookieCount < 1 ? (
-        <Badge badgeContent={0}>
-          <ShoppingCartOutlinedIcon />
-        </Badge>
-      ) : (
-        <Badge badgeContent={CookieCount()} color="secondary">
-          <ShoppingCartOutlinedIcon />
-        </Badge>
-      )}
+      <Badge badgeContent={count} color={"secondary"}>
+        <ShoppingCartOutlinedIcon />
+      </Badge>
     </>
   );
 }

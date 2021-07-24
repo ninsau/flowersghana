@@ -8,8 +8,6 @@ import CustomEls from "../utils/shoelace";
 import "../styles/globals.css";
 import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
 import config from "../media/aws-exports.js";
-import { CookiesProvider } from "react-cookie"
-
 
 Amplify.configure({
   ...config,
@@ -28,14 +26,12 @@ function MyApp({ Component, pageProps, URL }) {
   return (
     <>
       {process.browser && <CustomEls URL={URL} />}
-      <CookiesProvider>
-      <Container>
-        <HeadComponent />
-        <HeaderComponent />
-        <Component {...pageProps} />
-        <FooterComponent />
-      </Container>
-      </CookiesProvider>
+        <Container>
+          <HeadComponent />
+          <HeaderComponent />
+          <Component {...pageProps} />
+          <FooterComponent />
+        </Container>
     </>
   );
 }
