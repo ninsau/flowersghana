@@ -8,25 +8,18 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as yup from "yup";
-import { useRouter } from "next/router"; 
+import { useRouter } from "next/router";
 import localforage from "localforage";
+import { stateStore } from "./store";
+import { Typography } from "@material-ui/core";
 
 export default function AddToCartComponent({ itemTitle }) {
+  const setDone = stateStore((state) => state.setDone);
+  const done = stateStore((state) => state.done);
+  const [success, setSuccess] = useState(null);
   const [open, setOpen] = useState(false);
   const router = useRouter();
   let path = router.asPath;
-  const [aa, setA] = useState('')
-
-
-  useEffect(()=>{
-    localforage.getItem(itemTitle, function (err, value) {
-    // if err is non-null, we got an error. otherwise, value is the value
-    setA(value)
-  });
-
-
-  }, [aa])
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -55,17 +48,38 @@ export default function AddToCartComponent({ itemTitle }) {
       .required("Quantity is required"),
   });
 
+  const FetchSuccess = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
+    try {
+      const value = await localforage.getItem(itemTitle).then(function (value) {
+        setSuccess(value);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    FetchSuccess();
+  });
 
   return (
     <>
-      <sl-button
-        class="add"
-        type={path.includes("/bouquet/") ? "success" : null}
-        onClick={handleClickOpen}
-      >
-        Add to cart
-      </sl-button>
+      {success === null ? (
+        <sl-button
+          class="add"
+          type={path.includes("/bouquet/") ? "success" : null}
+          onClick={handleClickOpen}
+        >
+          Add to cart
+        </sl-button>
+      ) : (
+        <Typography variant="body2" color="textSecondary" component="p">
+          Item has been added to cart
+        </Typography>
+      )}
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -82,16 +96,13 @@ export default function AddToCartComponent({ itemTitle }) {
             initialValues={{ quantity: 1, title: itemTitle }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));
-              // alert(JSON.stringify(values, null, 2));
-
-              localforage.setItem(values.title, values.quantity, function (err) {
-                // if err is non-null, we got an error
-              
-              });
-
-              
-
-              //   handleClose();
+              try {
+                localforage.setItem(values.title, values.quantity);
+                setDone(!done);
+                handleClose()
+              } catch (err) {
+                console.log(err);
+              }
             }}
           >
             {({ errors, touched }) => (

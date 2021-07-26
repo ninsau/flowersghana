@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import BackdropComponent from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import LinkIcon from "@material-ui/icons/Link";
 import CardActions from "@material-ui/core/CardActions";
@@ -18,7 +17,6 @@ export default function BouquetDetails() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     fetchPosts();
@@ -87,18 +85,9 @@ export default function BouquetDetails() {
               <Typography paragraph>{item.description}</Typography>
               <br />
 
-              {/* <br /> */}
-              {/* <h4>Quantity: {quantity}</h4> */}
               <Grid item xs={12} md={4} key={Math.random()}>
-                {/* <sl-input
-                  type="number"
-                  min={1}
-                  max={500}
-                  value={quantity}
-                  onKeyUp={(e) => setQuantity(e.target.value)}
-                ></sl-input> */}
                 <br />
-                <AddToCartComponent itemTitle={item.title}/>
+                <AddToCartComponent itemTitle={item.title} />
               </Grid>
               <br />
               <sl-details summary="What do we do if exact item is not available?">
