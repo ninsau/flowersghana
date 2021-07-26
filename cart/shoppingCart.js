@@ -19,6 +19,7 @@ import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import { useRouter } from "next/router";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -39,9 +40,9 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
-  // table: {
-  //   minWidth: 500,
-  // },
+  table: {
+    minWidth: 500,
+  },
 });
 
 export default function ShoppingCartComponent() {
@@ -50,6 +51,7 @@ export default function ShoppingCartComponent() {
   const [count, setCount] = useState(0);
   const done = stateStore((state) => state.done);
   const [data, setData] = useState([]);
+  const [remove, setRemove] = useState(null);
   let router = useRouter();
 
   const FetchCount = async (values) => {
@@ -66,7 +68,7 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchCount();
-  }, [done]);
+  }, [done, remove]);
 
   const ClearCart = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -79,6 +81,22 @@ export default function ShoppingCartComponent() {
       console.log(err);
     }
   };
+
+  const RemoveItem = async (title) => {
+    try {
+      localforage.removeItem(title).then(function () {
+        // Run this code once the key has been removed.
+        console.log("Key is cleared!");
+      });
+    } catch (err) {
+      // This code runs if there were any errors
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    RemoveItem(remove);
+  }, [remove]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -103,7 +121,15 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchData();
-  }, [done]);
+  }, [done, remove]);
+
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  let prices = [0, 0];
+  data?.map((x) => {
+    prices.push(x[1]);
+  });
+
+  let totalPrice = prices?.reduce(reducer);
 
   return (
     <>
@@ -139,6 +165,7 @@ export default function ShoppingCartComponent() {
                       <StyledTableCell>Name</StyledTableCell>
                       <StyledTableCell>Quantity</StyledTableCell>
                       <StyledTableCell>Price&nbsp;(₵)</StyledTableCell>
+                      <StyledTableCell>Remove</StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -149,13 +176,19 @@ export default function ShoppingCartComponent() {
                         </StyledTableCell>
                         <StyledTableCell>{row[0]}</StyledTableCell>
                         <StyledTableCell>{row[1]}</StyledTableCell>
+                        <StyledTableCell>
+                          <HighlightOffIcon
+                            onClick={() => setRemove(row.key)}
+                          />
+                        </StyledTableCell>
                       </StyledTableRow>
                     ))}
-                  
                   </TableBody>
                 </Table>
               </TableContainer>
-              <Typography style={{ margin: 20 }} variant="h6">Total: ₵21</Typography>
+              <Typography style={{ margin: 20 }} variant="h6">
+                Total: ₵{totalPrice}
+              </Typography>
               <DialogActions>
                 <Button onClick={handleClose}>CLose</Button>
                 <Button color="secondary" onClick={ClearCart}>

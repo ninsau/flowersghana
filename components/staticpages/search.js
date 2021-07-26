@@ -26,7 +26,7 @@ export default function SearchComponent() {
     "biggest",
     "love",
     "romance",
-    "most expensive",
+    "grand",
     "roses",
     "chrysanthemums",
   ];
