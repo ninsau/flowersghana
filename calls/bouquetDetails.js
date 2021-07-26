@@ -87,7 +87,7 @@ export default function BouquetDetails() {
 
               <Grid item xs={12} md={4} key={Math.random()}>
                 <br />
-                <AddToCartComponent itemTitle={item.title} />
+                <AddToCartComponent itemTitle={item.title} itemPrice={item.amount} />
               </Grid>
               <br />
               <sl-details summary="What do we do if exact item is not available?">

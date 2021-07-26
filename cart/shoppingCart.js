@@ -3,58 +3,54 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import React, { useEffect, useState } from "react";
 import localforage from "localforage";
 import { stateStore } from "./store";
-import Drawer from "@material-ui/core/Drawer";
-import { DataGrid } from "@material-ui/data-grid";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@material-ui/core/Button";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import { Typography } from "@material-ui/core";
+import { Link } from "@material-ui/core";
+import { useRouter } from "next/router";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "firstName",
-    headerName: "First name",
-    width: 150,
-    editable: true,
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
   },
-  {
-    field: "lastName",
-    headerName: "Last name",
-    width: 150,
-    editable: true,
+  body: {
+    fontSize: 14,
   },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    editable: true,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.getValue(params.id, "firstName") || ""} ${
-        params.getValue(params.id, "lastName") || ""
-      }`,
-  },
-];
+}))(TableCell);
 
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+const useStyles = makeStyles({
+  // table: {
+  //   minWidth: 500,
+  // },
+});
 
 export default function ShoppingCartComponent() {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const [count, setCount] = useState(0);
   const done = stateStore((state) => state.done);
+  const [data, setData] = useState([]);
+  let router = useRouter();
 
   const FetchCount = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -72,54 +68,105 @@ export default function ShoppingCartComponent() {
     FetchCount();
   }, [done]);
 
-  //   localforage.clear().then(function() {
-  //     // Run this code once the database has been entirely deleted.
-  //     console.log('Database is now empty.');
-  // }).catch(function(err) {
-  //     // This code runs if there were any errors
-  //     console.log(err);
-  // });
-
-  const [state, setState] = React.useState({
-    right: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
+  const ClearCart = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      localforage.clear().then(function () {
+        console.log("Database is now empty.");
+        router.reload("/");
+      });
+    } catch (err) {
+      console.log(err);
     }
-
-    setState({ ...state, [anchor]: open });
   };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const FetchData = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      const data = [];
+      await localforage.iterate(function (value, key, iterationNumber) {
+        data.push({ key, ...value });
+      });
+      setData(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, [done]);
 
   return (
     <>
-      <Badge
-        badgeContent={count}
-        onClick={toggleDrawer("right", true)}
-        color={"secondary"}
-      >
+      <Badge badgeContent={count} onClick={handleClickOpen} color={"secondary"}>
         <ShoppingCartOutlinedIcon />
       </Badge>
-      <Drawer
-        anchor={"right"}
-        open={state["right"]}
-        onClose={toggleDrawer("right", false)}
-        style={{ maxWidth: "700px" }}
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
       >
-        <div style={{ height: 400, width: 700 }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            checkboxSelection
-            disableSelectionOnClick
-          />
-        </div>
-      </Drawer>
+        <DialogContent>
+          {data.length < 1 ? (
+            <>
+              <Typography>Shopping cart is empty.</Typography>
+              <DialogActions>
+                <Button color="secondary" onClick={handleClose}>
+                  CLose
+                </Button>
+                <Link href="/category/popular">
+                  <Button color="primary">Start shopping</Button>
+                </Link>
+              </DialogActions>
+            </>
+          ) : (
+            <>
+              <DialogTitle id="form-dialog-title">Shopping Cart</DialogTitle>
+              <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="customized table">
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell>Name</StyledTableCell>
+                      <StyledTableCell>Quantity</StyledTableCell>
+                      <StyledTableCell>Price&nbsp;(₵)</StyledTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {data.map((row, i) => (
+                      <StyledTableRow key={i}>
+                        <StyledTableCell component="th" scope="row">
+                          {row.key}
+                        </StyledTableCell>
+                        <StyledTableCell>{row[0]}</StyledTableCell>
+                        <StyledTableCell>{row[1]}</StyledTableCell>
+                      </StyledTableRow>
+                    ))}
+                  
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <Typography style={{ margin: 20 }} variant="h6">Total: ₵21</Typography>
+              <DialogActions>
+                <Button onClick={handleClose}>CLose</Button>
+                <Button color="secondary" onClick={ClearCart}>
+                  Clear Cart
+                </Button>
+                <Button color="primary">Checkout</Button>
+              </DialogActions>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

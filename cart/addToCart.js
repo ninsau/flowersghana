@@ -13,7 +13,7 @@ import localforage from "localforage";
 import { stateStore } from "./store";
 import { Typography } from "@material-ui/core";
 
-export default function AddToCartComponent({ itemTitle }) {
+export default function AddToCartComponent({ itemTitle, itemPrice }) {
   const setDone = stateStore((state) => state.setDone);
   const done = stateStore((state) => state.done);
   const [success, setSuccess] = useState(null);
@@ -93,13 +93,14 @@ export default function AddToCartComponent({ itemTitle }) {
           </DialogContentText>
           <Formik
             validationSchema={QuantitySchema}
-            initialValues={{ quantity: 1, title: itemTitle }}
+            initialValues={{ quantity: 1, title: itemTitle, price: itemPrice }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));
+              let netPrice = values.price * values.quantity;
               try {
-                localforage.setItem(values.title, values.quantity);
+                localforage.setItem(values.title, [values.quantity, netPrice]);
                 setDone(!done);
-                handleClose()
+                handleClose();
               } catch (err) {
                 console.log(err);
               }
@@ -109,7 +110,6 @@ export default function AddToCartComponent({ itemTitle }) {
               <Form>
                 <Field name="quantity" as={Quantity} />
                 {errors.quantity && touched.quantity ? errors.quantity : null}
-
                 <DialogActions>
                   <Button onClick={handleClose}>Cancel</Button>
                   <Button type="submit" color="secondary">

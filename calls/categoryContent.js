@@ -71,7 +71,7 @@ export default function HomeContent() {
               <Link href={`/bouquet/${item.slug}`}>
                 <img slot="image" src={`${item.img}`} alt={item.title} />
               </Link>
-              <AddToCartComponent itemTitle={item.title}/>
+              <AddToCartComponent itemTitle={item.title} itemPrice={item.amount}/>
             </sl-card>
           </Grid>
         );

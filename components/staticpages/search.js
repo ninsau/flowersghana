@@ -13,7 +13,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import LinkIcon from "@material-ui/icons/Link";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
-
+import AddToCartComponent from "../../cart/addToCart";
 
 export default function SearchComponent() {
   const router = useRouter();
@@ -125,35 +125,36 @@ export default function SearchComponent() {
             )}
           </Grid>
 
-              <Grid container item spacing={3}>
-                {result.map((item, i) => {
-                  return (
-                    <Grid item xs={6} md={4} key={i}>
+          <Grid container item spacing={3}>
+            {result.map((item, i) => {
+              return (
+                <Grid item xs={6} md={4} key={i}>
+                  <Link href={`/bouquet/${item.item.slug}`}>
+                    <CardHeader
+                      title={item.item.title}
+                      avatar={
+                        <sl-badge type="danger" pulse>
+                          ₵{item.item.amount}
+                        </sl-badge>
+                      }
+                      subheader={item.item.availability}
+                    />
+                  </Link>
+                  <sl-card>
                     <Link href={`/bouquet/${item.item.slug}`}>
-                      <CardHeader
-                        title={item.item.title}
-                        avatar={
-                          <sl-badge type="danger" pulse>
-                            ₵{item.item.amount}
-                          </sl-badge>
-                        }
-                        subheader={item.item.availability}
+                      <img
+                        slot="image"
+                        src={`${item.item.img}`}
+                        alt={item.item.title}
                       />
                     </Link>
-                    <sl-card>
-                      <Link href={`/bouquet/${item.item.slug}`}>
-                        <img slot="image" src={`${item.item.img}`} alt={item.item.title} />
-                      </Link>
-                      <sl-button class="add" href={item.item.link}>
-                        Add to cart
-                      </sl-button>
-                    </sl-card>
-                  </Grid>
-                  );
-                })}
-              </Grid>
-            </Grid>
-        
+                    <AddToCartComponent itemTitle={item.item.title} itemPrice={item.item.amount} />
+                  </sl-card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Grid>
       </div>
     </>
   );
