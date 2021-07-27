@@ -90,7 +90,7 @@ export default function FooterComponent() {
           <Hidden smUp>
             <Link href="/">
               <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_70,w_200/v1626707839/flowersghanaLogo.webp"
+                src="http://res.cloudinary.com/deyudesls/image/upload/c_scale,h_70,w_200/v1627410085/flowersghanaLogo.webp"
                 alt="flowersghana logo"
                 width={200}
                 height={70}

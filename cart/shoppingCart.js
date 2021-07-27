@@ -190,11 +190,11 @@ export default function ShoppingCartComponent() {
                 Total: ₵{totalPrice}
               </Typography>
               <DialogActions>
-                <Button onClick={handleClose}>CLose</Button>
-                <Button color="secondary" onClick={()=>setClear(!clear)}>
+                <Button onClick={handleClose}>Close</Button>
+                <Button onClick={()=>setClear(!clear)}>
                   Clear Cart
                 </Button>
-                <Button color="primary">Checkout</Button>
+                <Button color="secondary">Checkout</Button>
               </DialogActions>
             </>
           )}
