@@ -13,7 +13,6 @@ import localforage from "localforage";
 import { stateStore, removeStore } from "./store";
 import { Typography } from "@material-ui/core";
 
-
 export default function AddToCartComponent({ itemTitle, itemPrice }) {
   const setDone = stateStore((state) => state.setDone);
   const done = stateStore((state) => state.done);
@@ -77,9 +76,9 @@ export default function AddToCartComponent({ itemTitle, itemPrice }) {
           Add to cart
         </sl-button>
       ) : (
-        <Typography variant="body2" color="textSecondary" component="p">
+        <sl-button class="add" disabled>
           Item has been added to cart
-        </Typography>
+        </sl-button>
       )}
 
       <Dialog
@@ -87,7 +86,6 @@ export default function AddToCartComponent({ itemTitle, itemPrice }) {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        
         <DialogTitle id="form-dialog-title">{itemTitle}</DialogTitle>
         <DialogContent>
           <DialogContentText>

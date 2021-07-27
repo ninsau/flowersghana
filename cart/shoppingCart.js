@@ -145,7 +145,7 @@ export default function ShoppingCartComponent() {
               <Typography>Shopping cart is empty.</Typography>
               <DialogActions>
                 <Button color="secondary" onClick={handleClose}>
-                  CLose
+                  Close
                 </Button>
                 <Link href="/category/popular">
                   <Button color="primary">Start shopping</Button>
@@ -187,7 +187,7 @@ export default function ShoppingCartComponent() {
                 Total: ₵{totalPrice}
               </Typography>
               <DialogActions>
-                <Button onClick={handleClose}>CLose</Button>
+                <Button onClick={handleClose}>Close</Button>
                 <Button onClick={ClearCart}>
                   Clear Cart
                 </Button>
