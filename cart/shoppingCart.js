@@ -134,7 +134,7 @@ export default function ShoppingCartComponent() {
   return (
     <>
       <Badge badgeContent={count} onClick={handleClickOpen} color={"secondary"}>
-        <ShoppingCartOutlinedIcon />
+        <ShoppingCartOutlinedIcon color='black' />
       </Badge>
 
       <Dialog

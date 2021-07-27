@@ -8,6 +8,9 @@ import CustomEls from "../utils/shoelace";
 import "../styles/globals.css";
 import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
 import config from "../media/aws-exports.js";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 Amplify.configure({
   ...config,
@@ -23,15 +26,30 @@ MyApp.getInitialProps = async (context) => {
 };
 
 function MyApp({ Component, pageProps, URL }) {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          type: prefersDarkMode ? "dark" : "light",
+        },
+      }),
+    [prefersDarkMode]
+  );
   return (
     <>
       {process.browser && <CustomEls URL={URL} />}
+      <ThemeProvider theme={theme}>
+      <CssBaseline/>
         <Container>
           <HeadComponent />
           <HeaderComponent />
           <Component {...pageProps} />
           <FooterComponent />
         </Container>
+      </ThemeProvider>
     </>
   );
 }
