@@ -2,7 +2,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import React, { useEffect, useState } from "react";
 import localforage from "localforage";
-import { stateStore, removeStore, clearStore } from "./store";
+import { stateStore, removeStore} from "./store";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -53,8 +53,6 @@ export default function ShoppingCartComponent() {
   const [data, setData] = useState([]);
   const remove = removeStore((state) => state.done);
   const setRemove = removeStore((state) => state.setDone);
-  const clear = clearStore((state) => state.done);
-  const setClear = clearStore((state) => state.setDone);
   let router = useRouter();
 
   const FetchCount = async (values) => {
@@ -71,20 +69,19 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchCount();
-  }, [done, remove, clear]);
+  }, [done, remove]);
 
   const ClearCart = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     try {
-      localforage.clear();
+      localforage.clear().then(function () {
+        console.log("Database is now empty.");
+        router.reload("/");
+      });
     } catch (err) {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    ClearCart();
-  }, [clear]);
 
   const RemoveItem = async (title) => {
     try {
@@ -121,7 +118,7 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchData();
-  }, [done, remove, clear]);
+  }, [done, remove]);
 
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   let prices = [0, 0];
@@ -134,7 +131,7 @@ export default function ShoppingCartComponent() {
   return (
     <>
       <Badge badgeContent={count} onClick={handleClickOpen} color={"secondary"}>
-        <ShoppingCartOutlinedIcon color='black' />
+        <ShoppingCartOutlinedIcon />
       </Badge>
 
       <Dialog
@@ -190,8 +187,8 @@ export default function ShoppingCartComponent() {
                 Total: ₵{totalPrice}
               </Typography>
               <DialogActions>
-                <Button onClick={handleClose}>Close</Button>
-                <Button onClick={()=>setClear(!clear)}>
+                <Button onClick={handleClose}>CLose</Button>
+                <Button onClick={ClearCart}>
                   Clear Cart
                 </Button>
                 <Button color="secondary">Checkout</Button>

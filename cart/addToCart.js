@@ -10,7 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import localforage from "localforage";
-import { stateStore, removeStore, clearStore } from "./store";
+import { stateStore, removeStore } from "./store";
 import { Typography } from "@material-ui/core";
 
 
@@ -18,7 +18,6 @@ export default function AddToCartComponent({ itemTitle, itemPrice }) {
   const setDone = stateStore((state) => state.setDone);
   const done = stateStore((state) => state.done);
   const remove = removeStore((state) => state.done);
-  const clear = clearStore((state) => state.done);
   const [success, setSuccess] = useState(null);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -65,7 +64,7 @@ export default function AddToCartComponent({ itemTitle, itemPrice }) {
 
   useEffect(() => {
     FetchSuccess();
-  }, [done, remove, clear]);
+  }, [done, remove]);
 
   return (
     <>
