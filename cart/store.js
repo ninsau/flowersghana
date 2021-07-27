@@ -5,4 +5,14 @@ export const stateStore = create((set) => ({
   setDone: (val) => set((state) => ({ done: val })),
 }));
 
+export const removeStore = create((set) => ({
+  done: false,
+  setDone: (val) => set((state) => ({ done: val })),
+}));
+
+export const clearStore = create((set) => ({
+  done: false,
+  setDone: (val) => set((state) => ({ done: val })),
+}));
+
 

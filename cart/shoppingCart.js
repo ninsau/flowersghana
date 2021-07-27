@@ -2,7 +2,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import React, { useEffect, useState } from "react";
 import localforage from "localforage";
-import { stateStore } from "./store";
+import { stateStore, removeStore, clearStore } from "./store";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -51,7 +51,10 @@ export default function ShoppingCartComponent() {
   const [count, setCount] = useState(0);
   const done = stateStore((state) => state.done);
   const [data, setData] = useState([]);
-  const [remove, setRemove] = useState(null);
+  const remove = removeStore((state) => state.done);
+  const setRemove = removeStore((state) => state.setDone);
+  const clear = clearStore((state) => state.done);
+  const setClear = clearStore((state) => state.setDone);
   let router = useRouter();
 
   const FetchCount = async (values) => {
@@ -68,28 +71,25 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchCount();
-  }, [done, remove]);
+  }, [done, remove, clear]);
 
   const ClearCart = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     try {
-      localforage.clear().then(function () {
-        console.log("Database is now empty.");
-        router.reload("/");
-      });
+      localforage.clear();
     } catch (err) {
       console.log(err);
     }
   };
 
+  useEffect(() => {
+    ClearCart();
+  }, [clear]);
+
   const RemoveItem = async (title) => {
     try {
-      localforage.removeItem(title).then(function () {
-        // Run this code once the key has been removed.
-        console.log("Key is cleared!");
-      });
+      localforage.removeItem(title);
     } catch (err) {
-      // This code runs if there were any errors
       console.log(err);
     }
   };
@@ -121,7 +121,7 @@ export default function ShoppingCartComponent() {
 
   useEffect(() => {
     FetchData();
-  }, [done, remove]);
+  }, [done, remove, clear]);
 
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   let prices = [0, 0];
@@ -191,7 +191,7 @@ export default function ShoppingCartComponent() {
               </Typography>
               <DialogActions>
                 <Button onClick={handleClose}>CLose</Button>
-                <Button color="secondary" onClick={ClearCart}>
+                <Button color="secondary" onClick={()=>setClear(!clear)}>
                   Clear Cart
                 </Button>
                 <Button color="primary">Checkout</Button>

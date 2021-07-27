@@ -12,6 +12,7 @@ export default function HomeContent() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
+  const [returned, setReturned] = useState(true);
 
   useEffect(() => {
     fetchPosts();
@@ -37,7 +38,11 @@ export default function HomeContent() {
             limit: 21,
           }
         );
-        setBouquets(bouquetsData);
+        if (bouquetsData.length < 1) {
+          setReturned(false);
+        } else {
+          setBouquets(bouquetsData);
+        }
       }
     }
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
@@ -48,9 +53,15 @@ export default function HomeContent() {
 
   return (
     <>
-      {bouquets.length < 1 && (
+      {bouquets.length < 1 && returned === true && (
         <>
           <Backdrop />
+        </>
+      )}
+
+      {bouquets.length < 1 && returned === false && (
+        <>
+          <h1>Not found</h1>
         </>
       )}
       {bouquets.map((item, i) => {
@@ -71,7 +82,10 @@ export default function HomeContent() {
               <Link href={`/bouquet/${item.slug}`}>
                 <img slot="image" src={`${item.img}`} alt={item.title} />
               </Link>
-              <AddToCartComponent itemTitle={item.title} itemPrice={item.amount}/>
+              <AddToCartComponent
+                itemTitle={item.title}
+                itemPrice={item.amount}
+              />
             </sl-card>
           </Grid>
         );
