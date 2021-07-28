@@ -4,17 +4,21 @@
     justify-content: space-between;
   } 
 
-  /* .amount {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-evenly;
+  .paystack-button {
+    cursor: pointer;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    background-color: #1d4be4;
+    font-weight: bold;
+    color: #e0eafc;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 45px;
+    margin-top: 40px;
   }
-  
-  .title {
-    display: flex; 
-    align-items: center; 
-    justify-content: flex-start;
-  }  */
 
   .search {
     margin: 5px;

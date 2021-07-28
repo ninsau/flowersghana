@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "UntitledModel": {
-            "name": "UntitledModel",
+        "Cart": {
+            "name": "Cart",
             "fields": {
                 "id": {
                     "name": "id",
@@ -14,16 +14,15 @@ export const schema = {
                     "name": "trackOrder",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "cart": {
                     "name": "cart",
-                    "isArray": true,
+                    "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": false
+                    "attributes": []
                 },
                 "fetchOrder": {
                     "name": "fetchOrder",
@@ -35,7 +34,7 @@ export const schema = {
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "untitledModelFetchOrderId"
+                        "targetName": "cartFetchOrderId"
                     }
                 },
                 "createdAt": {
@@ -56,7 +55,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "UntitledModels",
+            "pluralName": "Carts",
             "attributes": [
                 {
                     "type": "model",
@@ -94,56 +93,56 @@ export const schema = {
                     "name": "firstname",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "lastname": {
                     "name": "lastname",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "calender": {
                     "name": "calender",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "city": {
                     "name": "city",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "email": {
                     "name": "email",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "fee": {
                     "name": "fee",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "insturctions": {
                     "name": "insturctions",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "location": {
                     "name": "location",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "location2": {
@@ -164,42 +163,42 @@ export const schema = {
                     "name": "phone",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "region": {
                     "name": "region",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "sfisrtname": {
                     "name": "sfisrtname",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "sphone": {
                     "name": "sphone",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "paymentMade": {
                     "name": "paymentMade",
                     "isArray": false,
                     "type": "Boolean",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "trackOrder": {
                     "name": "trackOrder",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -421,5 +420,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "d9024f3c9e054cbf06120c8b6c9d87fe"
+    "version": "a645fe686bfb80b153ef25da9c320481"
 };

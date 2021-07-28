@@ -14,7 +14,8 @@ import {
 } from "./store";
 import localforage from "localforage";
 import { DataStore } from "aws-amplify";
-import { Checkout } from "../../media/models";
+import { Checkout, Cart } from "../../media/models";
+import { PaystackButton } from "react-paystack";
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -44,6 +45,7 @@ export default function Review() {
   const recipient = recipientStore((state) => state.recipient);
   const sender = senderStore((state) => state.sender);
   const [data, setData] = useState([]);
+  const publicKey = "pk_live_dc752231bfcf577b0e2626cede5bda221f605179";
 
   const FetchData = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -83,17 +85,44 @@ export default function Review() {
 
   const cartDetails = {
     trackOrder: `${recipient.firstname}-${sender.sfirstname}`,
-    cart: data,
+    cart: JSON.stringify(data),
+  };
+
+  const componentProps = {
+    email: sender.email,
+    amount: totalPrice * 100,
+    metadata: {
+      name: sender.sfirstname,
+      phone: sender.sphone,
+    },
+    currency: "Ghs",
+    publicKey,
+    text: "Proceed to payment",
+    onSuccess: () => PlaceOrder(),
+  };
+
+  const ClearCart = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      localforage.clear().then(function () {
+        console.log("Database is now empty.");
+        location.replace("/");
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const PlaceOrder = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
-    await DataStore.save(
-      new Checkout(mergeOrderDetails)
-    );
-    alert('done')
-
-  }
+    try {
+      await DataStore.save(new Checkout(mergeOrderDetails));
+      await DataStore.save(new Cart(cartDetails));
+      ClearCart();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -145,6 +174,7 @@ export default function Review() {
             </Grid>
           </Grid>
         </Grid>
+
         <div className={classes.buttons}>
           {activeStep !== 0 && (
             <Button onClick={handleBack} className={classes.button}>
@@ -152,26 +182,10 @@ export default function Review() {
             </Button>
           )}
           {activeStep === steps.length - 1 ? (
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Proceed to payment
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={()=>PlaceOrder}
-            >
-              Next
-            </Button>
-          )}
+            <PaystackButton className={"paystack-button"} {...componentProps} />
+          ) : null}
         </div>
       </Grid>
     </>
   );
 }
-

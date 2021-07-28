@@ -29,6 +29,7 @@
     "react": "17.0.2",
     "react-cookie": "^4.0.3",
     "react-dom": "17.0.2",
+    "react-paystack": "^3.0.4",
     "styled-components": "^5.2.1",
     "yup": "^0.32.9",
     "yup-phone": "^1.2.19",

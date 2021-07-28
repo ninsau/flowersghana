@@ -26,7 +26,7 @@ MyApp.getInitialProps = async (context) => {
 };
 
 function MyApp({ Component, pageProps, URL }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(
     () =>
