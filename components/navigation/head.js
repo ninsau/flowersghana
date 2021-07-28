@@ -19,6 +19,8 @@ export default function HeadComponent() {
     "/reviews": "Customer Reviews | FlowersGhana",
     "/category/all": "All Bouquets | FlowersGhana",
     "/checkout": "Checkout | FlowersGhana",
+    "/category/sympathy": "Sympathy Bouquets | FlowersGhana",
+    "/category/florist-choice": "Florist's Choice | FlowersGhana",
   };
 
   return (

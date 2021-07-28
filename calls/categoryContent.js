@@ -10,6 +10,7 @@ import AddToCartComponent from "../cart/addToCart";
 import SimpleSnackbar from "../cart/snackbar";
 import { stateStore } from "../cart/store";
 import Pagin from "../components/utils/pagination";
+import Custom404Component from "../components/utils/custom404";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -23,10 +24,20 @@ export default function HomeContent() {
     fetchPosts();
     async function fetchPosts() {
       if (slug === undefined || slug === "all") {
-        const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
-          page: 0,
-          limit: 18,
-        });
+        const bouquetsData = await DataStore.query(
+          Bouquets,
+          (item) =>
+            item.or((item) =>
+              item
+                .category("contains", "featured")
+                .category("contains", "popular")
+            ),
+          Predicates.ALL,
+          {
+            page: 0,
+            limit: 18,
+          }
+        );
         setBouquets(bouquetsData);
       } else {
         const bouquetsData = await DataStore.query(
@@ -56,7 +67,6 @@ export default function HomeContent() {
     return () => subscription.unsubscribe();
   }, [pageIndex]);
 
-
   return (
     <>
       {bouquets.length < 1 && returned === true && (
@@ -67,7 +77,7 @@ export default function HomeContent() {
 
       {bouquets.length < 1 && returned === false && (
         <>
-          <h1>Not found</h1>
+          <Custom404Component />
         </>
       )}
 
@@ -102,7 +112,9 @@ export default function HomeContent() {
       })}
 
       {slug !== undefined &&
-        (slug !== "all" && bouquets.length > 0 && returned === true && (
+        slug !== "all" &&
+        bouquets.length > 0 &&
+        returned === true && (
           <Grid item xs={12} md={12}>
             <Pagin
               pageCount={10}
@@ -110,7 +122,7 @@ export default function HomeContent() {
               setPageIndex={setPageIndex}
             />
           </Grid>
-        ))}
+        )}
     </>
   );
 }

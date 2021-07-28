@@ -10,9 +10,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
-import LinkIcon from "@material-ui/icons/Link";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
 import AddToCartComponent from "../../cart/addToCart";
 
 export default function SearchComponent() {

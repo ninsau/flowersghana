@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
+import AddOnsComponent from "../staticpages/addOns";
 
 function Copyright() {
   return (
@@ -85,6 +86,9 @@ export default function FooterComponent() {
 
   return (
     <>
+      <Grid item xs={12} md={12} style={{ margin: 30 }}>
+        <AddOnsComponent />
+      </Grid>
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
           <Hidden smUp>

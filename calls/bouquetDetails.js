@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import BackdropComponent from "../components/loader/backdrop";
+import Backdrop from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import LinkIcon from "@material-ui/icons/Link";
@@ -12,11 +12,13 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
+import Custom404Component from "../components/utils/custom404";
 
 export default function BouquetDetails() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
+  const [returned, setReturned] = useState(true);
 
   useEffect(() => {
     fetchPosts();
@@ -24,7 +26,11 @@ export default function BouquetDetails() {
       const bouquetsData = await DataStore.query(Bouquets, (item) =>
         item.slug("eq", slug)
       );
-      setBouquets(bouquetsData);
+      if (bouquetsData.length < 1) {
+        setReturned(false);
+      } else {
+        setBouquets(bouquetsData);
+      }
     }
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
@@ -34,9 +40,15 @@ export default function BouquetDetails() {
 
   return (
     <>
-      {bouquets.length < 1 && (
+      {bouquets.length < 1 && returned === true && (
         <>
-          <BackdropComponent />
+          <Backdrop />
+        </>
+      )}
+
+      {bouquets.length < 1 && returned === false && (
+        <>
+          <Custom404Component />
         </>
       )}
       {bouquets.map((item, i) => {
@@ -87,7 +99,10 @@ export default function BouquetDetails() {
 
               <Grid item xs={12} md={4} key={Math.random()}>
                 <br />
-                <AddToCartComponent itemTitle={item.title} itemPrice={item.amount} />
+                <AddToCartComponent
+                  itemTitle={item.title}
+                  itemPrice={item.amount}
+                />
               </Grid>
               <br />
               <sl-details summary="What do we do if exact item is not available?">
