@@ -45,7 +45,10 @@ const footers = [
     title: "Company",
     description: [
       { name: "About", link: "/about" },
-      { name: "Contact Us", link: "/contact-us" },
+      {
+        name: "Contact Us",
+        link: "/contact-us",
+      },
     ],
   },
   {
@@ -78,6 +81,7 @@ const footers = [
     description: [
       { name: "Privacy policy", link: "/privacy" },
       { name: "Terms of use", link: "/terms" },
+      { name: "Cookie policy", link: "/cookies" },
     ],
   },
 ];

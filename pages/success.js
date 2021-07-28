@@ -1,7 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 50,
   },
 }));
-export default function Contact() {
+export default function Success() {
   const classes = useStyles();
 
   return (
@@ -25,26 +24,14 @@ export default function Contact() {
             alignItems="center"
             justify="center"
           >
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              component="p"
-              style={{ margin: 30 }}
-            >
-              We're here to answer your questions and discuss the future of our
-              collaboration!
-              <br />
-              Call <Link href="tel:+233242877574">
-                Kojo (+233 242 877 574)
-              </Link>{" "}
-              or
-              <Link href="tel:+233209859591"> Kwabena (+233 209 859 591)</Link>
+            <Typography variant="h6" color="textSecondary" component="p" style={{ margin: 30 }}>
+              Thank you for shopping with us! Your order has been received successfully.
             </Typography>
           </Grid>
           <Grid>
             <sl-responsive-media>
               <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/v1627506334/contact%20us.webp"
+                src="https://res.cloudinary.com/deyudesls/image/upload/v1627506009/success.webp"
                 alt="A train riding through autumn foliage with mountains in the distance."
               />
             </sl-responsive-media>

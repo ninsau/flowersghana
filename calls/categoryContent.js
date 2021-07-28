@@ -32,7 +32,6 @@ export default function HomeContent() {
                 .category("contains", "featured")
                 .category("contains", "popular")
             ),
-          Predicates.ALL,
           {
             page: 0,
             limit: 18,
@@ -117,7 +116,7 @@ export default function HomeContent() {
         returned === true && (
           <Grid item xs={12} md={12}>
             <Pagin
-              pageCount={10}
+              pageCount={5}
               pageIndex={pageIndex}
               setPageIndex={setPageIndex}
             />

@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { textData } from "../store/textData";
+import Custom404Component from "../components/utils/custom404";
 
 
 function getData(slug, prop) {
@@ -11,7 +12,7 @@ function getData(slug, prop) {
     return textData[slug][prop];
   }
 
-  return <p>Page Not Found</p>;
+  return <Custom404Component/>
 }
 
 export default function Info() {
@@ -34,7 +35,7 @@ export default function Info() {
     <>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ margin: 50 }}>
             {/* Hero unit */}
             <Container>
               <Typography

@@ -35,7 +35,7 @@ const sections = [
   { title: "Roses", url: "/category/roses" },
   { title: "Sympathy", url: "/category/sympathy" },
   { title: "Anniversary", url: "/category/anniversary" },
-  { title: "Add-ons", url: "/category/add-on" },
+  { title: "Add-Ons", url: "/category/add-on" },
 ];
 
 export default function HeaderComponent() {

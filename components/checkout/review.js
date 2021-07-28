@@ -106,7 +106,7 @@ export default function Review() {
     try {
       localforage.clear().then(function () {
         console.log("Database is now empty.");
-        location.replace("/");
+        location.replace("/success");
       });
     } catch (err) {
       console.log(err);
