@@ -18,6 +18,7 @@ export default function HeadComponent() {
     "/category/roses": "Roses | FlowersGhana",
     "/reviews": "Customer Reviews | FlowersGhana",
     "/category/all": "All Bouquets | FlowersGhana",
+    "/checkout": "Checkout | FlowersGhana",
   };
 
   return (
@@ -34,10 +35,6 @@ export default function HeadComponent() {
           type="image/png"
           sizes="16x16"
         />
-        {/* <link
-          href="https://fonts.googleapis.com/css?family=Nunito:100,300,400,600,700,800,900"
-          rel="stylesheet"
-        /> */}
       </Head>
     </>
   );

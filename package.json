@@ -12,6 +12,7 @@
     "@material-ui/core": "^4.12.1",
     "@material-ui/data-grid": "^4.0.0-alpha.34",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/pickers": "^3.3.10",
     "@shoelace-style/react-wrapper": "^1.0.3",
     "@shoelace-style/shoelace": "^2.0.0-beta.46",
     "aws-amplify": "^4.2.0",
@@ -30,6 +31,7 @@
     "react-dom": "17.0.2",
     "styled-components": "^5.2.1",
     "yup": "^0.32.9",
+    "yup-phone": "^1.2.19",
     "zustand": "^3.5.7"
   }
 }

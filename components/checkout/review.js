@@ -1,0 +1,177 @@
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
+import {
+  stepsStore,
+  activeStepStore,
+  recipientStore,
+  senderStore,
+} from "./store";
+import localforage from "localforage";
+import { DataStore } from "aws-amplify";
+import { Checkout } from "../../media/models";
+
+const useStyles = makeStyles((theme) => ({
+  listItem: {
+    padding: theme.spacing(1, 0),
+  },
+  total: {
+    fontWeight: 700,
+  },
+  title: {
+    marginTop: theme.spacing(2),
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+export default function Review() {
+  const classes = useStyles();
+  const activeStep = activeStepStore((state) => state.activeStep);
+  const setActiveStep = activeStepStore((state) => state.setActiveStep);
+  const steps = stepsStore((state) => state.steps);
+  const recipient = recipientStore((state) => state.recipient);
+  const sender = senderStore((state) => state.sender);
+  const [data, setData] = useState([]);
+
+  const FetchData = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      const data = [];
+      await localforage.iterate(function (value, key, iterationNumber) {
+        data.push({ key, ...value });
+      });
+      setData(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  let prices = [0, 0];
+  data?.map((x) => {
+    prices.push(x[1]);
+  });
+
+  let totalPrice = prices?.reduce(reducer);
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
+
+  const extra = {
+    paymentMade: false,
+    trackOrder: `${recipient.firstname}-${sender.sfirstname}`,
+  };
+
+  const mergeOrderDetails = { ...recipient, ...sender, ...extra };
+
+  const cartDetails = {
+    trackOrder: `${recipient.firstname}-${sender.sfirstname}`,
+    cart: data,
+  };
+
+  const PlaceOrder = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await DataStore.save(
+      new Checkout(mergeOrderDetails)
+    );
+    alert('done')
+
+  }
+
+  return (
+    <>
+      <Typography variant="h6" gutterBottom>
+        Order summary
+      </Typography>
+      <List disablePadding>
+        {data.map((product, i) => (
+          <ListItem className={classes.listItem} key={i}>
+            <ListItemText
+              primary={product.key}
+              secondary={`Quantity: ${product[0]}`}
+            />
+            <Typography variant="body2">₵{product[1]}</Typography>
+          </ListItem>
+        ))}
+        <ListItem className={classes.listItem}>
+          <ListItemText primary={"Delivery"} />
+          <Typography variant="body2">₵{recipient.fee}</Typography>
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          <ListItemText primary="Total" />
+          <Typography variant="subtitle1" className={classes.total}>
+            ₵{totalPrice + recipient.fee}
+          </Typography>
+        </ListItem>
+      </List>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" gutterBottom className={classes.title}>
+            Recipient
+          </Typography>
+          <Typography gutterBottom>
+            {recipient.firstname} {recipient.lastname}
+          </Typography>
+          <Typography gutterBottom>{`${recipient.location} - ${
+            recipient.location2 || recipient.city
+          }`}</Typography>
+        </Grid>
+        <Grid item container direction="column" xs={12} sm={6}>
+          <Typography variant="h6" gutterBottom className={classes.title}>
+            Sender
+          </Typography>
+          <Grid container>
+            <Grid item xs={6}>
+              <Typography gutterBottom>
+                {sender.sfirstname} {sender.email} {sender.sphone}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <div className={classes.buttons}>
+          {activeStep !== 0 && (
+            <Button onClick={handleBack} className={classes.button}>
+              Back
+            </Button>
+          )}
+          {activeStep === steps.length - 1 ? (
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Proceed to payment
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              onClick={()=>PlaceOrder}
+            >
+              Next
+            </Button>
+          )}
+        </div>
+      </Grid>
+    </>
+  );
+}
+

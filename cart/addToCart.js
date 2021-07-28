@@ -77,7 +77,7 @@ export default function AddToCartComponent({ itemTitle, itemPrice }) {
         </sl-button>
       ) : (
         <sl-button class="add" disabled>
-          Item has been added to cart
+          Item added
         </sl-button>
       )}
 

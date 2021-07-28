@@ -4,12 +4,55 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type UntitledModelMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type CheckoutMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type ReviewsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
 type BouquetsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class UntitledModel {
+  readonly id: string;
+  readonly trackOrder: string;
+  readonly cart: (string | null)[];
+  readonly fetchOrder?: Checkout;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<UntitledModel, UntitledModelMetaData>);
+  static copyOf(source: UntitledModel, mutator: (draft: MutableModel<UntitledModel, UntitledModelMetaData>) => MutableModel<UntitledModel, UntitledModelMetaData> | void): UntitledModel;
+}
+
+export declare class Checkout {
+  readonly id: string;
+  readonly firstname: string;
+  readonly lastname: string;
+  readonly calender: string;
+  readonly city: string;
+  readonly email: string;
+  readonly fee: number;
+  readonly insturctions: string;
+  readonly location: string;
+  readonly location2?: string;
+  readonly note?: string;
+  readonly phone: string;
+  readonly region: string;
+  readonly sfisrtname: string;
+  readonly sphone: string;
+  readonly paymentMade: boolean;
+  readonly trackOrder: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Checkout, CheckoutMetaData>);
+  static copyOf(source: Checkout, mutator: (draft: MutableModel<Checkout, CheckoutMetaData>) => MutableModel<Checkout, CheckoutMetaData> | void): Checkout;
 }
 
 export declare class Reviews {

@@ -7,12 +7,16 @@ import Link from "next/link";
 import Backdrop from "../components/loader/backdrop";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../cart/addToCart";
+import SimpleSnackbar from "../cart/snackbar";
+import { stateStore } from "../cart/store";
 
 export default function HomeContent() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
   const [returned, setReturned] = useState(true);
+  const done = stateStore((state) => state.done);
+
 
   useEffect(() => {
     fetchPosts();
@@ -64,6 +68,8 @@ export default function HomeContent() {
           <h1>Not found</h1>
         </>
       )}
+
+      {done === true && <SimpleSnackbar message={'Item has been added to cart'}/>}
       {bouquets.map((item, i) => {
         return (
           <Grid item xs={6} md={4} key={i}>

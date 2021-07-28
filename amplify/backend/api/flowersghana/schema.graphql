@@ -1,3 +1,30 @@
+type UntitledModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  trackOrder: String!
+  cart: [String]!
+  fetchOrder: Checkout @connection
+}
+
+type Checkout @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  calender: String!
+  city: String!
+  email: String!
+  fee: Int!
+  insturctions: String!
+  location: String!
+  location2: String
+  note: String
+  phone: String!
+  region: String!
+  sfisrtname: String!
+  sphone: String!
+  paymentMade: Boolean!
+  trackOrder: String!
+}
+
 type Reviews @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String

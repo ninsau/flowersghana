@@ -2,7 +2,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import React, { useEffect, useState } from "react";
 import localforage from "localforage";
-import { stateStore, removeStore} from "./store";
+import { stateStore, removeStore } from "./store";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -20,6 +20,7 @@ import { Typography } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import { useRouter } from "next/router";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import SimpleSnackbar from "./snackbar";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -139,6 +140,7 @@ export default function ShoppingCartComponent() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
+        {remove !== "" && <SimpleSnackbar message={"Item removed from cart"} />}
         <DialogContent>
           {data.length < 1 ? (
             <>
@@ -188,10 +190,10 @@ export default function ShoppingCartComponent() {
               </Typography>
               <DialogActions>
                 <Button onClick={handleClose}>Close</Button>
-                <Button onClick={ClearCart}>
-                  Clear Cart
-                </Button>
-                <Button color="secondary">Checkout</Button>
+                <Button onClick={ClearCart}>Clear Cart</Button>
+                <Link href="/checkout">
+                  <Button color="secondary">Checkout</Button>
+                </Link>
               </DialogActions>
             </>
           )}
