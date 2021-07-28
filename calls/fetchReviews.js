@@ -2,11 +2,15 @@ import { DataStore, Predicates, SortDirection } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Reviews } from "../media/models";
 import { useRouter } from "next/router";
+import Pagin from "../components/utils/pagination";
+import { Grid } from "@material-ui/core";
 
 export default function FetchReviews() {
   const router = useRouter();
   let path = router.asPath;
   const [reviews, setReviews] = useState([]);
+  const [pageIndex, setPageIndex] = useState(0);
+
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
@@ -28,8 +32,8 @@ export default function FetchReviews() {
           Reviews,
           Predicates.ALL,
           {
-            page: 0,
-            limit: 20,
+            page: pageIndex,
+            limit: 10,
           },
           {
             sort: (s) => s.review(SortDirection.ASCENDING),
@@ -42,7 +46,7 @@ export default function FetchReviews() {
       fetchPosts()
     );
     return () => subscription.unsubscribe();
-  }, []);
+  }, [pageIndex]);
 
   return (
     <>
@@ -85,6 +89,16 @@ export default function FetchReviews() {
             );
           })}
         </>
+      )}
+
+      {path !== "/" && (
+        <Grid item xs={12} md={12}>
+          <Pagin
+            pageCount={3}
+            pageIndex={pageIndex}
+            setPageIndex={setPageIndex}
+          />
+        </Grid>
       )}
     </>
   );

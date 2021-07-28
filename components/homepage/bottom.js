@@ -3,7 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
 import FetchReviews from "../../calls/fetchReviews";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -12,8 +14,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundSize: "cover",
-    // backgroundImage:
-    // "url(https://www.flowersghana.com/images/1a511297-4675-478e-820c-54c9b9098dbf.JPG)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     marginTop: theme.spacing(8),
@@ -49,12 +49,17 @@ export default function Bottom() {
               <Typography variant="h5" color="inherit" paragraph>
                 Customers from all over are excited with our services!
               </Typography>
+              <Link href="/reviews">
+                <Button variant="outlined" color="secondary" size="large">
+                  See All Reviews
+                </Button>
+              </Link>
             </div>
           </Grid>
         </Grid>
       </Paper>
       <div>
-      <FetchReviews/>
+        <FetchReviews />
       </div>
     </>
   );

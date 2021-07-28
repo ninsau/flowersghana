@@ -90,7 +90,7 @@ export default function FooterComponent() {
           <Hidden smUp>
             <Link href="/">
               <img
-                src="http://res.cloudinary.com/deyudesls/image/upload/c_scale,h_70,w_200/v1627410085/flowersghanaLogo.webp"
+                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png"
                 alt="flowersghana logo"
                 width={200}
                 height={70}
@@ -117,6 +117,14 @@ export default function FooterComponent() {
               </ul>
             </Grid>
           ))}
+          <Grid item xs={12} md={12}>
+            <img
+              src="https://res.cloudinary.com/deyudesls/image/upload/c_fit,w_200/v1627490116/banks.webp"
+              alt="banks"
+              width={250}
+              height={73}
+            />
+          </Grid>
         </Grid>
         <Box mt={5}>
           <Copyright />

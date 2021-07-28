@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 import "@shoelace-style/shoelace/dist/themes/base.css";
 import CustomEls from "../utils/shoelace";
 import "../styles/globals.css";
-import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import config from "../media/aws-exports.js";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";

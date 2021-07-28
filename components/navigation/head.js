@@ -6,7 +6,7 @@ export default function HeadComponent() {
   let urlPath = router.asPath;
 
   const title = {
-    "/": "Send flowers to Ghana | FlowersGhana",
+    "/": "Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana",
     "/about": "About Us | FlowersGhana",
     "/contact": "Contact Us | FlowersGhana",
     "/terms": "Terms & Conditions | FlowersGhana",

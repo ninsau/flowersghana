@@ -9,6 +9,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../cart/addToCart";
 import SimpleSnackbar from "../cart/snackbar";
 import { stateStore } from "../cart/store";
+import Pagin from "../components/utils/pagination";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function HomeContent() {
   const [bouquets, setBouquets] = useState([]);
   const [returned, setReturned] = useState(true);
   const done = stateStore((state) => state.done);
-
+  const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
     fetchPosts();
@@ -24,7 +25,7 @@ export default function HomeContent() {
       if (slug === undefined || slug === "all") {
         const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
           page: 0,
-          limit: 21,
+          limit: 18,
         });
         setBouquets(bouquetsData);
       } else {
@@ -38,8 +39,8 @@ export default function HomeContent() {
                 .description("contains", slug)
             ),
           {
-            page: 0,
-            limit: 21,
+            page: pageIndex,
+            limit: 18,
           }
         );
         if (bouquetsData.length < 1) {
@@ -53,7 +54,8 @@ export default function HomeContent() {
       fetchPosts()
     );
     return () => subscription.unsubscribe();
-  }, []);
+  }, [pageIndex]);
+
 
   return (
     <>
@@ -69,7 +71,9 @@ export default function HomeContent() {
         </>
       )}
 
-      {done === true && <SimpleSnackbar message={'Item has been added to cart'}/>}
+      {done === true && (
+        <SimpleSnackbar message={"Item has been added to cart"} />
+      )}
       {bouquets.map((item, i) => {
         return (
           <Grid item xs={6} md={4} key={i}>
@@ -96,6 +100,17 @@ export default function HomeContent() {
           </Grid>
         );
       })}
+
+      {slug !== undefined &&
+        (slug !== "all" && bouquets.length > 0 && returned === true && (
+          <Grid item xs={12} md={12}>
+            <Pagin
+              pageCount={10}
+              pageIndex={pageIndex}
+              setPageIndex={setPageIndex}
+            />
+          </Grid>
+        ))}
     </>
   );
 }

@@ -53,15 +53,15 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                Send Flowers
+                Send flowers to loved ones
               </Typography>
               <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
                 directly from the farm.
               </Typography>
-              <Link variant="subtitle1" href="/category/featured">
-                <Button variant="contained" size="large">
-                  Shop Now
+              <Link variant="subtitle1" href="/category/florist-choice">
+                <Button variant="outlined" color="secondary" size="large">
+                  Shop Today's Deals
                 </Button>
               </Link>
             </div>

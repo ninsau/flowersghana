@@ -114,6 +114,7 @@ export default function RecipientForm() {
       InputLabelProps={{
         shrink: true,
       }}
+      fullWidth
       {...props}
     />
   );

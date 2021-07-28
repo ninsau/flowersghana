@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
+  { title: "Reviews", url: "/reviews" },
   { title: "Featured", url: "/category/featured" },
   { title: "Popular", url: "/category/popular" },
   { title: "Birthday", url: "/category/birthday" },
@@ -34,7 +35,7 @@ const sections = [
   { title: "Roses", url: "/category/roses" },
   { title: "Sympathy", url: "/category/sympathy" },
   { title: "Anniversary", url: "/category/anniversary" },
-  { title: "Reviews", url: "/reviews" },
+  { title: "Add-ons", url: "/category/add-ons" },
 ];
 
 export default function HeaderComponent() {
@@ -57,7 +58,7 @@ export default function HeaderComponent() {
           <Hidden smDown>
             <Link href="/">
               <img
-                src="http://res.cloudinary.com/deyudesls/image/upload/c_scale,h_70,w_200/v1627410085/flowersghanaLogo.webp"
+                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png"
                 alt="flowersghana logo"
                 width={200}
                 height={70}
