@@ -8,7 +8,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Typography from "@material-ui/core/Typography";
 import RecipientForm from "./recipientForm";
 import SenderForm from "./senderForm";
-import Review from "./Review";
+import Review from "./review";
 import { stepsStore, activeStepStore } from "./store";
 import localforage from "localforage";
 
