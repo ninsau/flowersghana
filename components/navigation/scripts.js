@@ -20,10 +20,6 @@ export default function ScriptsComponent() {
           }}
         ></script>
         <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-96580657-3"
-        ></script>
-        <script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
