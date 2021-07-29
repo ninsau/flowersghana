@@ -5,9 +5,8 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { DataStore, Predicates } from "@aws-amplify/datastore";
 import { Bouquets } from "../media/models";
-import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
-import { IconButton } from "@material-ui/core";
-import { useRouter } from "next/router";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FetchAddOns() {
   const classes = useStyles();
   const [bouquets, setBouquets] = useState([]);
-  const router = useRouter();
 
   useEffect(() => {
     fetchPosts();
@@ -54,11 +52,15 @@ export default function FetchAddOns() {
       {bouquets.map((item) => (
         <ImageListItem
           key={item.img}
-          onClick={() => router.replace(`/bouquet/${item.slug}`)}
+          onClick={() => location.replace(`/bouquet/${item.slug}`)}
         >
-          <img
+          <LazyLoadImage
+            delayTime={500}
+            placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+            effect="blur"
             src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.img}`}
             alt={item.title}
+            className="bottom-images"
           />
           <ImageListItemBar
             title={item.title}
@@ -66,11 +68,6 @@ export default function FetchAddOns() {
               root: classes.titleBar,
               title: classes.title,
             }}
-            actionIcon={
-              <IconButton aria-label={`view ${item.title}`}>
-                <VisibilityOutlinedIcon />
-              </IconButton>
-            }
           />
         </ImageListItem>
       ))}

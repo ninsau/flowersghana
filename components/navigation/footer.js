@@ -102,7 +102,7 @@ export default function FooterComponent() {
                 src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp"
                 alt="flowersghana logo"
                 width={200}
-                height={70}
+                height={73}
               />
             </Link>
           </Hidden>

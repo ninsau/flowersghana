@@ -11,6 +11,9 @@ import Head from "next/head";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../../cart/addToCart";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { CardContent } from "@material-ui/core";
 
 export default function SearchComponent() {
   const router = useRouter();
@@ -137,16 +140,24 @@ export default function SearchComponent() {
                       subheader={item.item.availability}
                     />
                   </Link>
-                  <sl-card>
+
+                  <CardContent>
                     <Link href={`/bouquet/${item.item.slug}`}>
-                      <img
+                      <LazyLoadImage
                         slot="image"
+                        delayTime={500}
+                        placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                        effect="blur"
                         src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.item.img}`}
                         alt={item.item.title}
+                        className="lazy"
                       />
                     </Link>
-                    <AddToCartComponent itemTitle={item.item.title} itemPrice={item.item.amount} />
-                  </sl-card>
+                    <AddToCartComponent
+                      itemTitle={item.item.title}
+                      itemPrice={item.item.amount}
+                    />
+                  </CardContent>
                 </Grid>
               );
             })}

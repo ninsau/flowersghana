@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import { DataStore, Predicates } from "aws-amplify";
+import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
@@ -11,6 +11,9 @@ import SimpleSnackbar from "../cart/snackbar";
 import { stateStore } from "../cart/store";
 import Pagin from "../components/utils/pagination";
 import Custom404Component from "../components/utils/custom404";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { CardContent } from "@material-ui/core";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -97,19 +100,22 @@ export default function HomeContent() {
                 subheader={item.availability}
               />
             </Link>
-            <sl-card>
+            <CardContent>
               <Link href={`/bouquet/${item.slug}`}>
-                <img
-                  slot="image"
+                <LazyLoadImage
+                  delayTime={500}
+                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                  effect="blur"
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.img}`}
                   alt={item.title}
+                  className="lazy"
                 />
               </Link>
               <AddToCartComponent
                 itemTitle={item.title}
                 itemPrice={item.amount}
               />
-            </sl-card>
+            </CardContent>
           </Grid>
         );
       })}

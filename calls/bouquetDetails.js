@@ -8,12 +8,13 @@ import Backdrop from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import LinkIcon from "@material-ui/icons/Link";
-import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
 import Custom404Component from "../components/utils/custom404";
 import SimpleSnackbar from "../cart/snackbar";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function BouquetDetails() {
   const router = useRouter();
@@ -82,14 +83,16 @@ export default function BouquetDetails() {
                 }
               />
 
-              <sl-card class="card-header">
-                <img
+              <CardContent>
+                <LazyLoadImage
                   slot="image"
+                  delayTime={500}
+                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                  effect="blur"
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.img}`}
                   alt={item.title}
+                  className="lazy"
                 />
-              </sl-card>
-              <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                   <br />
                   Tags:{" "}
@@ -97,13 +100,16 @@ export default function BouquetDetails() {
                     <sl-badge type="info"> {tag} </sl-badge>
                   ))}
                 </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Copy link:
+                  <IconButton aria-label="share">
+                    <LinkIcon onClick={() => setCopy(item.slug)} />
+                  </IconButton>
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {item.availability}
+                </Typography>
               </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="share">
-                  <LinkIcon onClick={() => setCopy(item.slug)} />
-                </IconButton>
-                {item.availability}
-              </CardActions>
             </Grid>
             <Grid item xs={12} md={7} key={Math.random()}>
               <h2>Description</h2>

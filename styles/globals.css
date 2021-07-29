@@ -1,40 +1,53 @@
-.avail, .add {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-  } 
+.avail,
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .paystack-button {
-    cursor: pointer;
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    background-color: #1d4be4;
-    font-weight: bold;
-    color: #e0eafc;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 45px;
-    margin-top: 40px;
-  }
+.paystack-button {
+  cursor: pointer;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background-color: #1d4be4;
+  font-weight: bold;
+  color: #e0eafc;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 45px;
+  margin-top: 40px;
+}
 
-  .search {
-    margin: 5px;
-  }
+.search {
+  margin: 5px;
+}
 
-  .searchbar {
-    padding: 5rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.searchbar {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.lazy {
+  display: block;
+  width: 100%;
+  --border-color: var(--sl-color-gray-200);
+  --border-radius: var(--sl-border-radius-medium);
+  --border-width: 1px;
+  --padding: var(--sl-spacing-large);
+  display: inline-block;
+}
 
-
-  /* .card-header 
-    border-spacing: var(--sl-spacing-xxxx-large);
-  } */
+.bottom-images {
+  /* top: 50%;
+  height: 100%; */
+  width: 100%;
+  position: relative;
+  transform: translateY(-30%);
+}
