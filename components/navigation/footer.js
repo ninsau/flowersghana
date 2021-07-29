@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import AddOnsComponent from "../staticpages/addOns";
+import dynamic from "next/dynamic";
 
 function Copyright() {
   return (
@@ -87,6 +87,7 @@ const footers = [
 ];
 export default function FooterComponent() {
   const classes = useStyles();
+  const AddOnsComponent = dynamic(() => import("../staticpages/addOns"));
 
   return (
     <>
@@ -98,7 +99,7 @@ export default function FooterComponent() {
           <Hidden smUp>
             <Link href="/">
               <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png"
+                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp"
                 alt="flowersghana logo"
                 width={200}
                 height={70}
@@ -107,17 +108,13 @@ export default function FooterComponent() {
           </Hidden>
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
+              <Typography variant="h5" color="textPrimary" gutterBottom>
                 {footer.title}
               </Typography>
               <ul>
                 {footer.description.map((item) => (
                   <li key={item.link}>
-                    <Link
-                      href={item.link}
-                      variant="subtitle1"
-                      color="textSecondary"
-                    >
+                    <Link href={item.link} variant="h6" color="textSecondary">
                       {item.name}
                     </Link>
                   </li>
@@ -129,8 +126,8 @@ export default function FooterComponent() {
             <img
               src="https://res.cloudinary.com/deyudesls/image/upload/c_fit,w_200/v1627490116/banks.webp"
               alt="banks"
-              width={250}
-              height={73}
+              width={200}
+              height={109}
             />
           </Grid>
         </Grid>

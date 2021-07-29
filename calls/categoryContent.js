@@ -99,7 +99,11 @@ export default function HomeContent() {
             </Link>
             <sl-card>
               <Link href={`/bouquet/${item.slug}`}>
-                <img slot="image" src={`${item.img}`} alt={item.title} />
+                <img
+                  slot="image"
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.img}`}
+                  alt={item.title}
+                />
               </Link>
               <AddToCartComponent
                 itemTitle={item.title}

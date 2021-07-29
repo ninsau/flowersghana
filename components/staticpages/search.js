@@ -141,7 +141,7 @@ export default function SearchComponent() {
                     <Link href={`/bouquet/${item.item.slug}`}>
                       <img
                         slot="image"
-                        src={`${item.item.img}`}
+                        src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.item.img}`}
                         alt={item.item.title}
                       />
                     </Link>

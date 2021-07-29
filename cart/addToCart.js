@@ -11,7 +11,6 @@ import * as yup from "yup";
 import { useRouter } from "next/router";
 import localforage from "localforage";
 import { stateStore, removeStore } from "./store";
-import { Typography } from "@material-ui/core";
 
 export default function AddToCartComponent({ itemTitle, itemPrice }) {
   const setDone = stateStore((state) => state.setDone);

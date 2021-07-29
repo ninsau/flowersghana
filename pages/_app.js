@@ -11,6 +11,8 @@ import config from "../media/aws-exports.js";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import dynamic from "next/dynamic";
+
 
 Amplify.configure({
   ...config,
@@ -26,6 +28,8 @@ MyApp.getInitialProps = async (context) => {
 };
 
 function MyApp({ Component, pageProps, URL }) {
+  const ScriptsComponent = dynamic(() => import("../components/navigation/scripts"));
+
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(
@@ -48,6 +52,7 @@ function MyApp({ Component, pageProps, URL }) {
           <Component {...pageProps} />
           <FooterComponent />
         </Container>
+        {/* <ScriptsComponent/> */}
       </ThemeProvider>
     </>
   );

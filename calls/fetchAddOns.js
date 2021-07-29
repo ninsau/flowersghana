@@ -5,9 +5,9 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { DataStore, Predicates } from "@aws-amplify/datastore";
 import { Bouquets } from "../media/models";
-import Link from "@material-ui/core/Link";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
 import { IconButton } from "@material-ui/core";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 export default function FetchAddOns() {
   const classes = useStyles();
   const [bouquets, setBouquets] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     fetchPosts();
@@ -51,22 +52,26 @@ export default function FetchAddOns() {
   return (
     <ImageList className={classes.imageList} cols={3}>
       {bouquets.map((item) => (
-        <ImageListItem key={item.img}>
-          <img src={item.img} alt={item.title} />
-          <Link href={`/bouquet/${item.slug}`}>
-            <ImageListItemBar
-              title={item.title}
-              classes={{
-                root: classes.titleBar,
-                title: classes.title,
-              }}
-              actionIcon={
-                <IconButton aria-label={`view ${item.title}`}>
-                  <VisibilityOutlinedIcon />
-                </IconButton>
-              }
-            />
-          </Link>
+        <ImageListItem
+          key={item.img}
+          onClick={() => router.replace(`/bouquet/${item.slug}`)}
+        >
+          <img
+            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,w_387/${item.img}`}
+            alt={item.title}
+          />
+          <ImageListItemBar
+            title={item.title}
+            classes={{
+              root: classes.titleBar,
+              title: classes.title,
+            }}
+            actionIcon={
+              <IconButton aria-label={`view ${item.title}`}>
+                <VisibilityOutlinedIcon />
+              </IconButton>
+            }
+          />
         </ImageListItem>
       ))}
     </ImageList>

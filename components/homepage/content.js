@@ -1,7 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import HomeContent from '../../calls/categoryContent';
-
+import HomeContent from "../../calls/categoryContent";
+import Bottom from "./bottom";
+import Hero from "./hero";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,14 +18,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Content() {
   const classes = useStyles();
 
-
   return (
-    <div className={classes.root}>
-      <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={3}>
-          <HomeContent />
+    <>
+      <Hero />
+      <div className={classes.root}>
+        <Grid container spacing={1}>
+          <Grid container item xs={12} spacing={3}>
+            <HomeContent />
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+      <Bottom />
+    </>
   );
 }
