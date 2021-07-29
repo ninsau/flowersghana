@@ -4,15 +4,18 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { textData } from "../store/textData";
-import Custom404Component from "../components/utils/custom404";
+import dynamic from "next/dynamic";
 
+const Custom404Component = dynamic(() =>
+  import("../components/utils/custom404")
+);
 
 function getData(slug, prop) {
   if (textData[slug]) {
     return textData[slug][prop];
   }
 
-  return <Custom404Component/>
+  return <Custom404Component />;
 }
 
 export default function Info() {

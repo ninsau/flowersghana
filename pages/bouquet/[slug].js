@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import BouquetDetails from "../../calls/bouquetDetails";
+import dynamic from "next/dynamic";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,13 +15,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CategoryContent() {
   const classes = useStyles();
+  const BouquetDetails = dynamic(() => import("../../calls/bouquetDetails"));
 
   return (
     <>
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid container item xs={12} spacing={3}>
-            <BouquetDetails/>
+            <BouquetDetails />
           </Grid>
         </Grid>
       </div>

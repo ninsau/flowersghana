@@ -1,6 +1,8 @@
-import CheckoutComponent from "../components/checkout/checkout";
+import dynamic from "next/dynamic";
 
 export default function Checkout() {
-
-    return (<CheckoutComponent/>)
+  const CheckoutComponent = dynamic(() =>
+    import("../components/checkout/checkout")
+  );
+  return <CheckoutComponent />;
 }

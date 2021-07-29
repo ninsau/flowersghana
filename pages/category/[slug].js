@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import CategoryContent from "../../calls/categoryContent";
+import dynamic from "next/dynamic";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CategoryContentPage() {
   const classes = useStyles();
+  const CategoryContent = dynamic(() => import("../../calls/categoryContent"));
 
   return (
     <>

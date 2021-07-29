@@ -18,7 +18,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
 import { Link } from "@material-ui/core";
-import { useRouter } from "next/router";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import SimpleSnackbar from "./snackbar";
 
@@ -54,7 +53,6 @@ export default function ShoppingCartComponent() {
   const [data, setData] = useState([]);
   const remove = removeStore((state) => state.done);
   const setRemove = removeStore((state) => state.setDone);
-  let router = useRouter();
 
   const FetchCount = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -77,7 +75,7 @@ export default function ShoppingCartComponent() {
     try {
       localforage.clear().then(function () {
         console.log("Database is now empty.");
-        router.reload("/");
+        location.reload("/");
       });
     } catch (err) {
       console.log(err);
