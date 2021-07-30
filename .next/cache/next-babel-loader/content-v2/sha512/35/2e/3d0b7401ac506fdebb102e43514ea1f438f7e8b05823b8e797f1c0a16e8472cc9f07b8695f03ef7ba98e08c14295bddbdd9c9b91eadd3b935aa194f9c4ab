@@ -1,1 +1,0 @@
-{"ast":null,"code":"// @ts-check\nimport { initSchema } from '@aws-amplify/datastore';\nimport { schema } from './schema';\nconst {\n  Cart,\n  Checkout,\n  Reviews,\n  Bouquets\n} = initSchema(schema);\nexport { Cart, Checkout, Reviews, Bouquets };","map":null,"metadata":{},"sourceType":"module"}
