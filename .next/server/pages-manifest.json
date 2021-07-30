@@ -1,5 +1,16 @@
 {
+  "/404": "pages/404.js",
+  "/500": "pages/500.html",
+  "/[slug]": "pages/[slug].js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/bouquet/[slug]": "pages/bouquet/[slug].js",
+  "/category/[slug]": "pages/category/[slug].js",
+  "/checkout": "pages/checkout.js",
+  "/contact-us": "pages/contact-us.js",
+  "/": "pages/index.js",
+  "/reviews": "pages/reviews.js",
+  "/search/[slug]": "pages/search/[slug].js",
+  "/success": "pages/success.js",
   "/_error": "pages/_error.js"
 }
