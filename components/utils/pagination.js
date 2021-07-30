@@ -29,8 +29,8 @@ export default function Pagin({ pageCount, pageIndex, setPageIndex }) {
     case true:
       switch (pageIndex) {
         case 0:
-
-        if (pageIndex === 0) {
+          //if on first page, show from 1-4 and then last page number
+          if (pageIndex === 0) {
             finalIndexes = pageCountSet.slice(pageIndex, pageIndex + 3);
             finalIndexes.push(pageCount);
             finalIndexes.splice(finalIndexes.length - 1, 0, "...");
