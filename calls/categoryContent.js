@@ -14,6 +14,7 @@ import Custom404Component from "../components/utils/custom404";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { CardContent } from "@material-ui/core";
+import Chip from "@material-ui/core/Chip";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -103,11 +104,7 @@ export default function HomeContent() {
               <CardHeader
                 style={{ minHeight: 100 }}
                 title={item.title}
-                avatar={
-                  <sl-badge type="danger" pulse>
-                    ₵{item.amount}
-                  </sl-badge>
-                }
+                avatar={<Chip label={`₵${item.amount}`} color="secondary" />}
                 subheader={item.availability}
               />
             </Link>

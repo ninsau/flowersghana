@@ -14,6 +14,7 @@ import AddToCartComponent from "../../cart/addToCart";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { CardContent } from "@material-ui/core";
+import { Chip } from "@material-ui/core";
 
 export default function SearchComponent() {
   const router = useRouter();
@@ -132,10 +133,7 @@ export default function SearchComponent() {
                   <Link href={`/bouquet/${item.item.slug}`}>
                     <CardHeader
                       title={item.item.title}
-                      avatar={
-                        <sl-badge type="danger" pulse>
-                          ₵{item.item.amount}
-                        </sl-badge>
+                      avatar={<Chip label={`₵${item.item.amount}`} color="secondary" />
                       }
                       subheader={item.item.availability}
                     />

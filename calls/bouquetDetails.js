@@ -7,14 +7,14 @@ import Head from "next/head";
 import Backdrop from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
-import LinkIcon from "@material-ui/icons/Link";
-import IconButton from "@material-ui/core/IconButton";
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
 import Custom404Component from "../components/utils/custom404";
 import SimpleSnackbar from "../cart/snackbar";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Chip } from "@material-ui/core";
 
 export default function BouquetDetails() {
   const router = useRouter();
@@ -62,7 +62,7 @@ export default function BouquetDetails() {
         </>
       )}
 
-      {copy !== "" && <SimpleSnackbar message={"Url copied!"} />}
+      {copy !== "" && <SimpleSnackbar message={"Copied!"} />}
       {bouquets.map((item, i) => {
         return (
           <>
@@ -73,11 +73,7 @@ export default function BouquetDetails() {
             <Grid m={4} item xs={12} md={5} key={Math.random()}>
               <CardHeader
                 title={item.title}
-                subheader={
-                  <sl-badge type="danger" pulse>
-                    ₵{item.amount}
-                  </sl-badge>
-                }
+                subheader={<Chip label={`₵${item.amount}`} color="secondary" />}
               />
 
               <CardContent>
@@ -100,7 +96,7 @@ export default function BouquetDetails() {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy link:
                   <IconButton aria-label="share">
-                    <LinkIcon onClick={() => Copied(item.slug)} />
+                    <FileCopyOutlinedIcon color={copy !== '' ? 'secondary' : 'inherit'} onClick={() => Copied(item.slug)} />
                   </IconButton>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
