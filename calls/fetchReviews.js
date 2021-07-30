@@ -13,7 +13,6 @@ export default function FetchReviews() {
   const [pageIndex, setPageIndex] = useState(0);
   const [returned, setReturned] = useState(true);
 
-
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
@@ -108,7 +107,6 @@ export default function FetchReviews() {
           })}
         </>
       )}
-
       {path !== "/" && (
         <Grid item xs={12} md={12}>
           <Pagin
