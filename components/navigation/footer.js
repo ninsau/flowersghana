@@ -7,6 +7,8 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import dynamic from "next/dynamic";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function Copyright() {
   return (
@@ -67,11 +69,12 @@ const footers = [
     title: "Social",
     description: [
       { name: "Instagram", link: "https://instagram.com/flowerghana" },
-      { name: "Facebook", link: "https://facebook.com/flowerghana" },
       {
         name: "WhatsApp",
         link: "https://api.whatsapp.com/send?phone=233242877574",
       },
+      { name: "Facebook", link: "https://facebook.com/flowerghana" },
+
       { name: "Twitter", link: "https://twitter.com/flowersghana" },
     ],
   },
@@ -123,11 +126,14 @@ export default function FooterComponent() {
             </Grid>
           ))}
           <Grid item xs={12} md={12}>
-            <img
-              src="https://res.cloudinary.com/deyudesls/image/upload/c_fit,w_200/v1627490116/banks.webp"
+            <LazyLoadImage
+              delayTime={500}
+              placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+              effect="blur"
+              src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.png"
               alt="banks"
-              width={200}
-              height={109}
+              width={298}
+              height={162}
             />
           </Grid>
         </Grid>

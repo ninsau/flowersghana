@@ -8,11 +8,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
 }));
 
 export default function Content() {
@@ -23,7 +18,7 @@ export default function Content() {
       <Hero />
       <div className={classes.root}>
         <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={3}>
+          <Grid container item xs={12}>
             <HomeContent />
           </Grid>
         </Grid>

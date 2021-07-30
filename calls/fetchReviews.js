@@ -4,12 +4,15 @@ import { Reviews } from "../media/models";
 import { useRouter } from "next/router";
 import Pagin from "../components/utils/pagination";
 import { Grid } from "@material-ui/core";
+import Backdrop from "../components/loader/backdrop";
 
 export default function FetchReviews() {
   const router = useRouter();
   let path = router.asPath;
   const [reviews, setReviews] = useState([]);
   const [pageIndex, setPageIndex] = useState(0);
+  const [returned, setReturned] = useState(true);
+
 
   useEffect(() => {
     fetchPosts();
@@ -39,7 +42,11 @@ export default function FetchReviews() {
             sort: (s) => s.review(SortDirection.ASCENDING),
           }
         );
-        setReviews(reviewsData);
+        if (reviewsData.length < 1) {
+          setReturned(false);
+        } else {
+          setReviews(reviewsData);
+        }
       }
     }
     const subscription = DataStore.observe(Reviews).subscribe(() =>
@@ -50,6 +57,17 @@ export default function FetchReviews() {
 
   return (
     <>
+      {reviews.length < 1 && returned === true && (
+        <>
+          <Backdrop />
+        </>
+      )}
+
+      {reviews.length < 1 && returned === false && (
+        <>
+          <Custom404Component />
+        </>
+      )}
       {path === "/" && (
         <>
           {reviews.map((review, i) => {

@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import { DataStore } from "aws-amplify";
+import { DataStore, Predicates } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
@@ -26,7 +26,7 @@ export default function HomeContent() {
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      if (slug === undefined || slug === "all") {
+      if (slug === undefined) {
         const bouquetsData = await DataStore.query(
           Bouquets,
           (item) =>
@@ -41,6 +41,16 @@ export default function HomeContent() {
           }
         );
         setBouquets(bouquetsData);
+      } else if (slug === "all") {
+        const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
+          page: pageIndex,
+          limit: 18,
+        });
+        if (bouquetsData.length < 1) {
+          setReturned(false);
+        } else {
+          setBouquets(bouquetsData);
+        }
       } else {
         const bouquetsData = await DataStore.query(
           Bouquets,
@@ -91,6 +101,7 @@ export default function HomeContent() {
           <Grid item xs={6} md={4} key={i}>
             <Link href={`/bouquet/${item.slug}`}>
               <CardHeader
+                style={{ minHeight: 100 }}
                 title={item.title}
                 avatar={
                   <sl-badge type="danger" pulse>
@@ -120,18 +131,15 @@ export default function HomeContent() {
         );
       })}
 
-      {slug !== undefined &&
-        slug !== "all" &&
-        bouquets.length > 0 &&
-        returned === true && (
-          <Grid item xs={12} md={12}>
-            <Pagin
-              pageCount={5}
-              pageIndex={pageIndex}
-              setPageIndex={setPageIndex}
-            />
-          </Grid>
-        )}
+      {slug !== undefined && bouquets.length > 0 && returned === true && (
+        <Grid item xs={12} md={12}>
+          <Pagin
+            pageCount={3}
+            pageIndex={pageIndex}
+            setPageIndex={setPageIndex}
+          />
+        </Grid>
+      )}
     </>
   );
 }

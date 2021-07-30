@@ -60,7 +60,7 @@ export default function Hero() {
                 directly from the farm.
               </Typography>
               <Link variant="subtitle1" href="/category/florist-choice">
-                <Button variant="outlined" color="secondary" size="large">
+                <Button variant="outlined" size="large">
                   Shop Today's Deals
                 </Button>
               </Link>

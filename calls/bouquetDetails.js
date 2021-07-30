@@ -45,11 +45,8 @@ export default function BouquetDetails() {
     navigator.clipboard.writeText(
       `https://www.flowersghana.com/bouquet/${url}`
     );
+    setCopy("copied");
   };
-
-  useEffect(() => {
-    Copied(copy);
-  }, [copy]);
 
   return (
     <>
@@ -103,7 +100,7 @@ export default function BouquetDetails() {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy link:
                   <IconButton aria-label="share">
-                    <LinkIcon onClick={() => setCopy(item.slug)} />
+                    <LinkIcon onClick={() => Copied(item.slug)} />
                   </IconButton>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

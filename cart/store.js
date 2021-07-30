@@ -10,5 +10,10 @@ export const removeStore = create((set) => ({
   setDone: (val) => set((state) => ({ done: val })),
 }));
 
+export const cartIconStore = create((set) => ({
+  open: false,
+  setOpen: (val) => set((state) => ({ open: val })),
+}));
+
 
 

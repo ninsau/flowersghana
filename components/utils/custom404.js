@@ -17,17 +17,6 @@ export default function Custom404Component() {
     <>
       <div className={classes.root}>
         <Grid>
-          <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justify="center"
-          >
-            <Typography variant="h6" color="textSecondary" component="p" style={{ margin: 30 }}>
-              404: This page or item does not exist. Please check your link and try with a different parameter.
-            </Typography>
-          </Grid>
           <Grid>
             <sl-responsive-media>
               <img
@@ -35,6 +24,23 @@ export default function Custom404Component() {
                 alt="A train riding through autumn foliage with mountains in the distance."
               />
             </sl-responsive-media>
+          </Grid>
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="p"
+              style={{ margin: 30 }}
+            >
+              404: This page or item does not exist. Please check your link and
+              try with a different parameter.
+            </Typography>
           </Grid>
         </Grid>
       </div>

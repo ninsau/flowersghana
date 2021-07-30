@@ -4,23 +4,19 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { textData } from "../store/textData";
-import dynamic from "next/dynamic";
+import Custom404Component from "../components/utils/custom404";
 
-const Custom404Component = dynamic(() =>
-  import("../components/utils/custom404")
-);
 
 function getData(slug, prop) {
   if (textData[slug]) {
     return textData[slug][prop];
   }
 
-  return <Custom404Component />;
+  return <Custom404Component/>
 }
 
 export default function Info() {
   const router = useRouter();
-
   const [slug, setSlug] = React.useState(router.query.slug);
 
   React.useEffect(() => {
@@ -38,7 +34,7 @@ export default function Info() {
     <>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12} style={{ margin: 50 }}>
+          <Grid item xs={12} style={{  }}>
             {/* Hero unit */}
             <Container>
               <Typography

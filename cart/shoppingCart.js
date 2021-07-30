@@ -2,7 +2,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import React, { useEffect, useState } from "react";
 import localforage from "localforage";
-import { stateStore, removeStore } from "./store";
+import { stateStore, removeStore, cartIconStore } from "./store";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -20,6 +20,7 @@ import { Typography } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import SimpleSnackbar from "./snackbar";
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -47,12 +48,13 @@ const useStyles = makeStyles({
 
 export default function ShoppingCartComponent() {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
   const [count, setCount] = useState(0);
   const done = stateStore((state) => state.done);
   const [data, setData] = useState([]);
   const remove = removeStore((state) => state.done);
   const setRemove = removeStore((state) => state.setDone);
+  const open = cartIconStore((state) => state.open);
+  const setOpen = cartIconStore((state) => state.setOpen);
 
   const FetchCount = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -95,7 +97,7 @@ export default function ShoppingCartComponent() {
   }, [remove]);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpen(true); 
   };
 
   const handleClose = () => {

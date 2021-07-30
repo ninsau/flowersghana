@@ -117,9 +117,6 @@ export default function SenderForm() {
     email: yup
       .string()
       .email("Enter a valid email")
-      .required("Email is required")
-      .min(10, "Instructions should be of minimum 10 characters length")
-      .max(280, "Instructions should be of maximum 280 characters length"),
   });
 
   return (

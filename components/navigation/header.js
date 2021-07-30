@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import ShoppingCartComponent from "../../cart/shoppingCart";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -40,6 +41,7 @@ const sections = [
 
 export default function HeaderComponent() {
   const classes = useStyles();
+  const router = useRouter();
 
   return (
     <>
@@ -68,8 +70,8 @@ export default function HeaderComponent() {
         </Typography>
 
         <IconButton>
-          <Link href="/search/random">
-            <SearchIcon />
+          <Link color="inherit" href="/search/random">
+            <SearchIcon  />
           </Link>
         </IconButton>
         <IconButton>
@@ -83,7 +85,7 @@ export default function HeaderComponent() {
       >
         {sections.map((section) => (
           <Link
-            color="inherit"
+            color={`${router.asPath === section.url ? "secondary" : "inherit"}`}
             noWrap
             key={section.title}
             variant="body2"
