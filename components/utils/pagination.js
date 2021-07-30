@@ -85,7 +85,7 @@ export default function Pagin({ pageCount, pageIndex, setPageIndex }) {
       break;
 
     default:
-      for (let i = 0; i <= pageCount; i++) {
+      for (let i = 1; i <= pageCount; i++) {
         pagination.push(
           <>
             <div key={i} className={classes.root}>
