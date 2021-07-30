@@ -40,9 +40,7 @@ export default function Hero() {
 
   return (
     <>
-      <Paper
-        className={classes.mainFeaturedPost}
-      >
+      <Paper className={classes.mainFeaturedPost}>
         <div className={classes.overlay} />
         <Grid container>
           <Grid item md={6}>
