@@ -21,7 +21,7 @@ export default function CategoryContentPage() {
     <>
       <div className={classes.root}>
         <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={3}>
+          <Grid container item xs={12}>
             <CategoryContent />
           </Grid>
         </Grid>
