@@ -7,21 +7,20 @@ import Head from "next/head";
 import Backdrop from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
 import Custom404Component from "../components/utils/custom404";
-import SimpleSnackbar from "../cart/snackbar";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Chip } from "@material-ui/core";
+import CopyText from "../components/utils/copyText";
 
 export default function BouquetDetails() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
   const [returned, setReturned] = useState(true);
-  const [copy, setCopy] = useState("");
 
   useEffect(() => {
     fetchPosts();
@@ -41,12 +40,7 @@ export default function BouquetDetails() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const Copied = (url) => {
-    navigator.clipboard.writeText(
-      `https://www.flowersghana.com/bouquet/${url}`
-    );
-    setCopy("copied");
-  };
+
 
   return (
     <>
@@ -62,7 +56,6 @@ export default function BouquetDetails() {
         </>
       )}
 
-      {copy !== "" && <SimpleSnackbar message={"Copied!"} />}
       {bouquets.map((item, i) => {
         return (
           <>
@@ -96,7 +89,7 @@ export default function BouquetDetails() {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy link:
                   <IconButton aria-label="share">
-                    <FileCopyOutlinedIcon color={copy !== '' ? 'secondary' : 'inherit'} onClick={() => Copied(item.slug)} />
+                    <CopyText textToCopy={item.slug}/>
                   </IconButton>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

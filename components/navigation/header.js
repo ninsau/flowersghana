@@ -9,6 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import ShoppingCartComponent from "../../cart/shoppingCart";
 import { useRouter } from "next/router";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -42,6 +45,15 @@ const sections = [
 export default function HeaderComponent() {
   const classes = useStyles();
   const router = useRouter();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -70,8 +82,27 @@ export default function HeaderComponent() {
         </Typography>
 
         <IconButton>
+          <Link color="inherit" onClick={handleClick}>
+            <CallOutlinedIcon />
+          </Link>
+        </IconButton>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <Link href="tel:+233242877574">
+            <MenuItem>Call Kojo (MTN)</MenuItem>
+          </Link>
+          <Link href="tel:+233209859591">
+            <MenuItem>Call Kwabena (Vodafone)</MenuItem>
+          </Link>
+        </Menu>
+        <IconButton>
           <Link color="inherit" href="/search/random">
-            <SearchIcon  />
+            <SearchIcon />
           </Link>
         </IconButton>
         <IconButton>
