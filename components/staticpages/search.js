@@ -15,12 +15,15 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { CardContent } from "@material-ui/core";
 import { Chip } from "@material-ui/core";
+import Backdrop from "../loader/backdrop";
+
 
 export default function SearchComponent() {
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
   const [searchParam, setSearchParam] = useState("");
+  const [returned, setReturned] = useState(true);
 
   const options = [
     "cheapest",
@@ -36,7 +39,12 @@ export default function SearchComponent() {
     fetchPosts();
     async function fetchPosts() {
       const bouquetsData = await DataStore.query(Bouquets);
-      setBouquets(bouquetsData);
+     
+      if (bouquetsData.length < 1) {
+        setReturned(false);
+      } else {
+        setBouquets(bouquetsData);
+      }
     }
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
@@ -74,6 +82,12 @@ export default function SearchComponent() {
           <title>{`Search '${searchParam}'`} | FlowersGhana</title>
         )}
       </Head>
+
+      {bouquets.length < 1 && returned === true && (
+        <>
+          <Backdrop />
+        </>
+      )}
       <div style={{ margin: 20 }}>
         <Grid
           container
@@ -133,7 +147,11 @@ export default function SearchComponent() {
                   <Link href={`/bouquet/${item.item.slug}`}>
                     <CardHeader
                       title={item.item.title}
-                      avatar={<Chip label={`₵${item.item.amount}`} color="secondary" />
+                      avatar={
+                        <Chip
+                          label={`₵${item.item.amount}`}
+                          color="secondary"
+                        />
                       }
                       subheader={item.item.availability}
                     />

@@ -173,8 +173,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "sfisrtname": {
-                    "name": "sfisrtname",
+                "sfirstname": {
+                    "name": "sfirstname",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -420,5 +420,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "a645fe686bfb80b153ef25da9c320481"
+    "version": "1259103ad87c9a068f67b9fd7f2a2d96"
 };

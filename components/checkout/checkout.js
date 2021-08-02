@@ -11,6 +11,7 @@ import SenderForm from "./senderForm";
 import Review from "./review";
 import { stepsStore, activeStepStore } from "./store";
 import localforage from "localforage";
+import BackdropComponent from "../loader/backdrop";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -83,7 +84,7 @@ export default function CheckoutCompoent() {
 
   return (
     <>
-      {count !== 0 && (
+      {count !== 0 ? (
         <>
           <CssBaseline />
           <main className={classes.layout}>
@@ -106,6 +107,8 @@ export default function CheckoutCompoent() {
             </Paper>
           </main>
         </>
+      ) : (
+        <BackdropComponent />
       )}
     </>
   );

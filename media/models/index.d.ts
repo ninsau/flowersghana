@@ -45,7 +45,7 @@ export declare class Checkout {
   readonly note?: string;
   readonly phone?: string;
   readonly region?: string;
-  readonly sfisrtname?: string;
+  readonly sfirstname?: string;
   readonly sphone?: string;
   readonly paymentMade?: boolean;
   readonly trackOrder?: string;

@@ -19,7 +19,7 @@ type Checkout @model @auth(rules: [{allow: public}]) {
   note: String
   phone: String
   region: String
-  sfisrtname: String
+  sfirstname: String
   sphone: String
   paymentMade: Boolean
   trackOrder: String

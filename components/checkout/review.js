@@ -105,7 +105,6 @@ export default function Review() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     try {
       localforage.clear().then(function () {
-        console.log("Database is now empty.");
         location.replace("/success");
       });
     } catch (err) {
@@ -118,7 +117,7 @@ export default function Review() {
     try {
       await DataStore.save(new Checkout(mergeOrderDetails));
       await DataStore.save(new Cart(cartDetails));
-      ClearCart();
+      await ClearCart();
     } catch (err) {
       console.log(err);
     }
