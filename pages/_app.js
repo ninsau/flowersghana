@@ -15,15 +15,8 @@ Amplify.configure({
   ssr: true,
 });
 
-MyApp.getInitialProps = async (context) => {
-  const URL = process.env.BASE_URL;
 
-  return {
-    URL,
-  };
-};
-
-function MyApp({ Component, pageProps, URL }) {
+function MyApp({ Component, pageProps }) {
   const ScriptsComponent = dynamic(() =>
     import("../components/navigation/scripts")
   );

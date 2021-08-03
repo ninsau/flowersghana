@@ -32,7 +32,7 @@ export default function HeadComponent() {
     <>
       <Head>
         <title>
-          {title[urlPath] != undefined
+          {title[urlPath] !== undefined
             ? `${title[urlPath]}`
             : "Page Not Found | FlowersGhana"}
         </title>

@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import HomeContent from "../../calls/categoryContent";
-import Bottom from "./bottom";
-import Hero from "./hero";
+import dynamic from "next/dynamic";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Content() {
   const classes = useStyles();
+  const HomeContent = dynamic(() => import("../../calls/categoryContent"));
+  const Bottom = dynamic(() => import("./bottom"));
+  const Hero = dynamic(() => import("./hero"));
 
   return (
     <>

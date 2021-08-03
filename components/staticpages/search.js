@@ -17,7 +17,6 @@ import { CardContent } from "@material-ui/core";
 import { Chip } from "@material-ui/core";
 import Backdrop from "../loader/backdrop";
 
-
 export default function SearchComponent() {
   const router = useRouter();
   let slug = router.query.slug;
@@ -39,7 +38,7 @@ export default function SearchComponent() {
     fetchPosts();
     async function fetchPosts() {
       const bouquetsData = await DataStore.query(Bouquets);
-     
+
       if (bouquetsData.length < 1) {
         setReturned(false);
       } else {
@@ -63,12 +62,8 @@ export default function SearchComponent() {
   const fuse = new Fuse(toJson, option);
 
   let result;
-  if (slug !== "random" || slug != undefined) {
-    if (searchParam === "") {
-      result = fuse.search(slug);
-    } else {
-      result = fuse.search(searchParam);
-    }
+  if (slug !== undefined && searchParam === "") {
+    result = fuse.search(slug);
   } else {
     result = fuse.search(searchParam);
   }
@@ -140,12 +135,13 @@ export default function SearchComponent() {
             )}
           </Grid>
 
-          <Grid container item spacing={3}>
+          <Grid container item>
             {result.map((item, i) => {
               return (
                 <Grid item xs={6} md={4} key={i}>
                   <Link href={`/bouquet/${item.item.slug}`}>
                     <CardHeader
+                      style={{ minHeight: 100 }}
                       title={item.item.title}
                       avatar={
                         <Chip
