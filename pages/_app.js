@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps, URL }) {
           <Component {...pageProps} />
           <FooterComponent />
         </Container>
-        <ScriptsComponent />
+        {/* <ScriptsComponent /> */}
       </ThemeProvider>
     </>
   );
