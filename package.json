@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "rm -rf dist && next build",
+    "build": "rm -rf _next/static/chunks && next build",
     "start": "next start"
   },
   "dependencies": {
