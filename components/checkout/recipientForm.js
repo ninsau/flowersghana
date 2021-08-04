@@ -8,6 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { stepsStore, activeStepStore, recipientStore } from "./store";
 import * as yup from "yup";
 import "yup-phone";
+import { Select } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -27,6 +29,38 @@ export default function RecipientForm() {
   const steps = stepsStore((state) => state.steps);
   const recipient = recipientStore((state) => state.recipient);
   const setRecipient = recipientStore((state) => state.setRecipient);
+  const regionList = [
+    "Greater Accra",
+    "Ashanti",
+    "Ahafo",
+    "Bono",
+    "Bono East",
+    "Central",
+    "Eastern",
+    "North East",
+    "Northern",
+    "Oti",
+    "Savannah",
+    "Upper East",
+    "Upper West",
+    "Volta",
+    "Western",
+    "Western North",
+  ];
+  const farList = [
+    "Oyarifa",
+    "oyarifa",
+    "lakeside",
+    "Lakeside",
+    "Mallam",
+    "mallam",
+    "kasoa",
+    "Kasoa",
+    "Pokuase",
+    "Achimota",
+    "West Hills",
+    "Adenta",
+  ];
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -91,7 +125,13 @@ export default function RecipientForm() {
   );
 
   const CustomRegion = (props) => (
-    <TextField required id="state" label="Region" fullWidth {...props} />
+    // <TextField required id="state" label="Region" fullWidth {...props} />
+    <Select id="state" required label="region" fullWidth {...props}>
+      <MenuItem value={""}>Please select region</MenuItem>
+      {regionList.map((region) => (
+        <MenuItem value={region}>{region}</MenuItem>
+      ))}
+    </Select>
   );
 
   const CustomPhone = (props) => (
@@ -173,7 +213,24 @@ export default function RecipientForm() {
         validationSchema={RecipientSchema}
         onSubmit={async (values) => {
           await new Promise((resolve) => setTimeout(resolve, 500));
-          setRecipient(values);
+          if (
+            values.region !== "Greater Accra" &&
+            values.region !== "Ashanti"
+          ) {
+            values.fee = 150;
+            setRecipient(values);
+          } else {
+            if (
+              farList.includes(values.city) ||
+              farList.includes(values.location)
+            ) {
+              values.fee = 65;
+              setRecipient(values);
+            } else {
+              values.fee = 0;
+              setRecipient(values);
+            }
+          }
           handleNext();
         }}
       >

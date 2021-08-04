@@ -9,6 +9,7 @@ import Hidden from "@material-ui/core/Hidden";
 import dynamic from "next/dynamic";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useRouter } from "next/router";
 
 function Copyright() {
   return (
@@ -91,6 +92,7 @@ const footers = [
 export default function FooterComponent() {
   const classes = useStyles();
   const AddOnsComponent = dynamic(() => import("../staticpages/addOns"));
+  const router = useRouter();
 
   return (
     <>
@@ -117,7 +119,14 @@ export default function FooterComponent() {
               <ul>
                 {footer.description.map((item) => (
                   <li key={item.link}>
-                    <Link href={item.link} variant="h6" color="textSecondary">
+                    <Link
+                      onClick={() => {
+                        router.push(item.link);
+                      }}
+                      variant="h6"
+                      color="textSecondary"
+                      style={{ cursor: "pointer" }}
+                    >
                       {item.name}
                     </Link>
                   </li>

@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
+    cursor: "pointer",
   },
 }));
 
@@ -58,7 +59,7 @@ export default function HeaderComponent() {
   return (
     <>
       <Toolbar className={classes.toolbar}>
-        <Button size="small" href="/">
+        <Button size="small" onClick={() => router.push("/")}>
           FlowersGhana
         </Button>
         <Typography
@@ -120,7 +121,7 @@ export default function HeaderComponent() {
             noWrap
             key={section.title}
             variant="body2"
-            href={section.url}
+            onClick={() => router.push(section.url)}
             className={classes.toolbarLink}
           >
             {section.title}

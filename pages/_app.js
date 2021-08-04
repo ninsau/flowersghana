@@ -8,22 +8,19 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import dynamic from "next/dynamic";
-import HeadComponent from '../components/navigation/head'
+import HeadComponent from "../components/navigation/head";
+import HeaderComponent from "../components/navigation/header";
 
 Amplify.configure({
   ...config,
   ssr: true,
 });
 
-
 function MyApp({ Component, pageProps }) {
   const ScriptsComponent = dynamic(() =>
     import("../components/navigation/scripts")
   );
   const CustomEls = dynamic(() => import("../utils/shoelace"));
-  const HeaderComponent = dynamic(() =>
-    import("../components/navigation/header")
-  );
   const FooterComponent = dynamic(() =>
     import("../components/navigation/footer")
   );
@@ -41,8 +38,8 @@ function MyApp({ Component, pageProps }) {
   );
   return (
     <>
-      {process.browser && <CustomEls URL={URL} />}
       <ThemeProvider theme={theme}>
+        <CustomEls />
         <CssBaseline />
         <Container>
           <HeadComponent />
@@ -50,7 +47,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
           <FooterComponent />
         </Container>
-        {/* <ScriptsComponent /> */}
+        <ScriptsComponent />
       </ThemeProvider>
     </>
   );

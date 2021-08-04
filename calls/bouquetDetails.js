@@ -10,13 +10,16 @@ import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
-import Custom404Component from "../components/utils/custom404";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Chip } from "@material-ui/core";
-import CopyText from "../components/utils/copyText";
+import dynamic from "next/dynamic";
 
 export default function BouquetDetails() {
+  const Custom404Component = dynamic(() =>
+    import("../components/utils/custom404")
+  );
+  const CopyText = dynamic(() => import("../components/utils/copyText"));
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
@@ -39,8 +42,6 @@ export default function BouquetDetails() {
     );
     return () => subscription.unsubscribe();
   }, []);
-
-
 
   return (
     <>
@@ -89,7 +90,7 @@ export default function BouquetDetails() {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy link:
                   <IconButton aria-label="share">
-                    <CopyText textToCopy={item.slug}/>
+                    <CopyText textToCopy={item.slug} />
                   </IconButton>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

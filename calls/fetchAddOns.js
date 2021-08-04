@@ -7,6 +7,7 @@ import { DataStore, Predicates } from "@aws-amplify/datastore";
 import { Bouquets } from "../media/models";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
@@ -26,13 +27,14 @@ const useStyles = makeStyles((theme) => ({
 export default function FetchAddOns() {
   const classes = useStyles();
   const [bouquets, setBouquets] = useState([]);
+  const router = useRouter()
 
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
       const bouquetsData = await DataStore.query(
         Bouquets,
-        (item) => item.or((item) => item.category("contains", "add-on")),
+        (item) => item.or((item) => item.category("eq", "add-on")),
         Predicates.ALL,
         {
           page: 0,
@@ -52,7 +54,7 @@ export default function FetchAddOns() {
       {bouquets.map((item) => (
         <ImageListItem
           key={item.img}
-          onClick={() => location.replace(`/bouquet/${item.slug}`)}
+          onClick={() => router.push(`/bouquet/${item.slug}`)}
         >
           <LazyLoadImage
             delayTime={500}

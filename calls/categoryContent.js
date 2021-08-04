@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Backdrop from "../components/loader/backdrop";
 import CardHeader from "@material-ui/core/CardHeader";
+import AddToCartComponent from "../cart/addToCart";
 import { stateStore } from "../cart/store";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -23,7 +24,6 @@ export default function HomeContent() {
   const Custom404Component = dynamic(() => import("../components/utils/custom404"));
   const Pagin = dynamic(() => import("../components/utils/pagination"));
   const SimpleSnackbar = dynamic(() => import("../cart/snackbar"));
-  const AddToCartComponent = dynamic(() => import("../cart/addToCart"));
 
   useEffect(() => {
     fetchPosts();

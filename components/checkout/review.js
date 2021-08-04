@@ -77,7 +77,7 @@ export default function Review() {
   };
 
   const extra = {
-    paymentMade: false,
+    paymentMade: true,
     trackOrder: `${recipient.firstname}-${sender.sfirstname}`,
   };
 
@@ -90,7 +90,7 @@ export default function Review() {
 
   const componentProps = {
     email: sender.email,
-    amount: totalPrice * 100,
+    amount: (totalPrice + recipient.fee) * 100,
     metadata: {
       name: sender.sfirstname,
       phone: sender.sphone,
