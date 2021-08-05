@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
-import HeaderComponent from "../components/navigation/header";
+import BackdropComponent from "../components/loader/backdrop";
 
 Amplify.configure({
   ...config,
@@ -23,6 +23,13 @@ function MyApp({ Component, pageProps }) {
   const CustomEls = dynamic(() => import("../utils/shoelace"));
   const FooterComponent = dynamic(() =>
     import("../components/navigation/footer")
+  );
+
+  const HeaderComponent = dynamic(
+    () => import("../components/navigation/header"),
+    {
+      loading: () => <BackdropComponent />,
+    }
   );
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
