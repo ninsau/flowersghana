@@ -36,5 +36,5 @@ module.exports = {
   },
 }
 module.exports = {
-  distDir: 'build',
+  productionBrowserSourceMaps: true,
 }

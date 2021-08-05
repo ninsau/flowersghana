@@ -43,6 +43,8 @@ function MyApp({ Component, pageProps }) {
       }),
     [prefersDarkMode]
   );
+
+ 
   return (
     <>
       <ThemeProvider theme={theme}>

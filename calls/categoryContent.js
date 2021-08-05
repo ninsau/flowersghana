@@ -80,6 +80,7 @@ export default function HomeContent() {
     );
     return () => subscription.unsubscribe();
   }, [pageIndex]);
+  
 
   return (
     <>
