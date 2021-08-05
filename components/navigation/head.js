@@ -42,6 +42,10 @@ export default function HeadComponent() {
           type="image/png"
           sizes="16x16"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/themes/base.css"
+        />
 
         <meta charSet="utf-8" />
         <meta
@@ -84,8 +88,6 @@ export default function HeadComponent() {
         />
 
         <meta name="copyright" content="Copyright (c)2021 flowersghana.com" />
-
-  
       </Head>
     </>
   );

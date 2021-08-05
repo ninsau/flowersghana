@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
-import "@shoelace-style/shoelace/dist/themes/base.css";
 import "../styles/globals.css";
 import { Amplify } from "aws-amplify";
 import config from "../media/aws-exports.js";
