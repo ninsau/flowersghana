@@ -106,7 +106,7 @@ export default function HomeContent() {
               <CardHeader
                 style={{ minHeight: 100 }}
                 title={item.title}
-                avatar={<Chip label={`₵${item.amount}`} color="secondary" />}
+                avatar={<Chip label={`₵${item.amount}`} variant="outlined" color="secondary" />}
                 subheader={item.availability}
               />
             </Link>

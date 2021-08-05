@@ -67,7 +67,7 @@ export default function BouquetDetails() {
             <Grid m={4} item xs={12} md={5} key={Math.random()}>
               <CardHeader
                 title={item.title}
-                subheader={<Chip label={`₵${item.amount}`} color="secondary" />}
+                subheader={<Chip label={`₵${item.amount}`} variant="outlined" color="secondary" />}
               />
 
               <CardContent>

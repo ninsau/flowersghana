@@ -146,6 +146,7 @@ export default function SearchComponent() {
                       avatar={
                         <Chip
                           label={`₵${item.item.amount}`}
+                          variant="outlined"
                           color="secondary"
                         />
                       }
