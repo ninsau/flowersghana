@@ -4,6 +4,10 @@ export default function ScriptsComponent() {
   return (
     <>
       <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/themes/base.css"
+        />
         <script
           type="module"
           src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
