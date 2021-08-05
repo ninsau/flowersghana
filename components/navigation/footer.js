@@ -113,7 +113,7 @@ export default function FooterComponent() {
           </Hidden>
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h5" color="textPrimary" gutterBottom>
+              <Typography variant="h6" color="textPrimary" gutterBottom>
                 {footer.title}
               </Typography>
               <ul>

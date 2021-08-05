@@ -101,10 +101,8 @@ export default function HeaderComponent() {
             <MenuItem>Call Kwabena (Vodafone)</MenuItem>
           </Link>
         </Menu>
-        <IconButton>
-          <Link color="inherit" href="/search/random">
-            <SearchIcon />
-          </Link>
+        <IconButton onClick={() => router.push("/search/random")}>
+          <SearchIcon />
         </IconButton>
         <IconButton>
           <ShoppingCartComponent />
