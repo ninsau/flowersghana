@@ -35,3 +35,6 @@ module.exports = {
     ]
   },
 }
+module.exports = {
+  distDir: 'build',
+}
