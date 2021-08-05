@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundImage:
-      "url(https://res.cloudinary.com/deyudesls/image/upload/v1616906400/1a511297-4675-478e-820c-54c9b9098dbf_usqfex.webp)",
+      "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/v1616906400/1a511297-4675-478e-820c-54c9b9098dbf_usqfex.webp)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
