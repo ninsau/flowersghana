@@ -84,7 +84,7 @@ export default function HeaderComponent() {
 
         <IconButton>
           <Link color="inherit" onClick={handleClick}>
-            <CallOutlinedIcon />
+            <CallOutlinedIcon aria-label="call" />
           </Link>
         </IconButton>
         <Menu
@@ -102,7 +102,7 @@ export default function HeaderComponent() {
           </Link>
         </Menu>
         <IconButton onClick={() => router.push("/search/random")}>
-          <SearchIcon />
+          <SearchIcon aria-label="search" />
         </IconButton>
         <IconButton>
           <ShoppingCartComponent />
