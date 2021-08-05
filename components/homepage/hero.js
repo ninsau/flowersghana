@@ -2,8 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Hero() {
   const classes = useStyles();
+  const router = useRouter();
 
   return (
     <>
@@ -57,11 +58,14 @@ export default function Hero() {
                 All our flowers and plants are freshly cut, and are delivered
                 directly from the farm.
               </Typography>
-              <Link variant="subtitle1" href="/category/florist-choice">
-                <Button variant="outlined" size="large">
-                  Shop Today's Deals
-                </Button>
-              </Link>
+
+              <Button
+                onClick={() => router.push("/category/florist-choice")}
+                variant="outlined"
+                size="large"
+              >
+                Shop Today's Deals
+              </Button>
             </div>
           </Grid>
         </Grid>

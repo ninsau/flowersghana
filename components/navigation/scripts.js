@@ -5,6 +5,10 @@ export default function ScriptsComponent() {
     <>
       <Head>
         <script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
+        ></script>
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
