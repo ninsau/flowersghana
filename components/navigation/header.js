@@ -41,6 +41,7 @@ const sections = [
   { title: "Sympathy", url: "/category/sympathy" },
   { title: "Anniversary", url: "/category/anniversary" },
   { title: "Add-Ons", url: "/category/add-on" },
+  { title: "All", url: "/category/all" },
 ];
 
 export default function HeaderComponent() {
