@@ -8,7 +8,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
-import BackdropComponent from "../components/loader/backdrop";
+import HeaderComponent from "../components/navigation/header";
 
 Amplify.configure({
   ...config,
@@ -23,13 +23,6 @@ function MyApp({ Component, pageProps }) {
     import("../components/navigation/footer")
   );
 
-  const HeaderComponent = dynamic(
-    () => import("../components/navigation/header"),
-    {
-      loading: () => <BackdropComponent />,
-    }
-  );
-
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(
@@ -42,7 +35,6 @@ function MyApp({ Component, pageProps }) {
     [prefersDarkMode]
   );
 
- 
   return (
     <>
       <ThemeProvider theme={theme}>

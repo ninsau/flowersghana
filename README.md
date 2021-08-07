@@ -8,8 +8,6 @@ Source code for online floral shop [FlowersGhana](https://flowersghana.com)
 - Material-ui
 - Shoelace
 - Styled Components
-- Babel
-- Webpack
 - Fusejs
 - LocalForage
 - Formik
