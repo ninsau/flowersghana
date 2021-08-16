@@ -24,6 +24,12 @@ const securityHeaders = [
     value: "origin-when-cross-origin",
   },
   { key: "Cache-Control", value: "max-age=31536000" },
+  { key: "Strict-Transport-Security", value: "max-age=31536000" },
+  {
+    key: "Content-Security-Policy",
+    value:
+      "default-src 'self' amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
+  },
 ];
 
 module.exports = {

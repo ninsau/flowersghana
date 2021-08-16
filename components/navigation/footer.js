@@ -100,7 +100,7 @@ export default function FooterComponent() {
         <AddOnsComponent />
       </Grid>
       <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
+        <Grid container spacing={4} justifyContent="space-evenly">
           <Hidden smUp>
             <Link href="/">
               <img

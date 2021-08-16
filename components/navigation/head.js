@@ -31,11 +31,7 @@ export default function HeadComponent() {
   return (
     <>
       <Head>
-        <title>
-          {title[urlPath] !== undefined
-            ? `${title[urlPath]}`
-            : "Page Not Found | FlowersGhana"}
-        </title>
+        <title>{title[urlPath] !== undefined && `${title[urlPath]}`}</title>
         <link
           rel="icon"
           href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"

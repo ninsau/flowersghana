@@ -16,6 +16,7 @@
     "fuse.js": "^6.4.6",
     "localforage": "^1.9.0",
     "next": "^11.0.1",
+    "next-pwa": "^5.2.24",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lazy-load-image-component": "^1.5.1",

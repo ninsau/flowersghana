@@ -56,18 +56,23 @@ export default function BouquetDetails() {
           <Custom404Component />
         </>
       )}
+      <Head>
+        <title>{slug || "Bouquet Details"} | FlowersGhana</title>
+      </Head>
 
       {bouquets.map((item, i) => {
         return (
           <>
-            <Head>
-              <title>{item.title} | FlowersGhana</title>
-            </Head>
-
-            <Grid m={4} item xs={12} md={5} key={Math.random()}>
+            <Grid m={4} item xs={12} md={5} key={i}>
               <CardHeader
                 title={item.title}
-                subheader={<Chip label={`₵${item.amount}`} variant="outlined" color="secondary" />}
+                subheader={
+                  <Chip
+                    label={`₵${item.amount}`}
+                    variant="outlined"
+                    color="secondary"
+                  />
+                }
               />
 
               <CardContent>

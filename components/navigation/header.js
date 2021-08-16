@@ -83,8 +83,8 @@ export default function HeaderComponent() {
           </Hidden>
         </Typography>
 
-        <IconButton>
-          <Link color="inherit" onClick={handleClick}>
+        <IconButton onClick={handleClick}>
+          <Link color="inherit">
             <CallOutlinedIcon aria-label="call" />
           </Link>
         </IconButton>
