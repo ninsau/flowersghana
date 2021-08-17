@@ -56,10 +56,11 @@ export default function BouquetDetails() {
           <Custom404Component />
         </>
       )}
-      <Head>
-        <title>{slug || "Bouquet Details"} | FlowersGhana</title>
-      </Head>
-
+      {slug !== undefined && (
+        <Head>
+          <title>{slug || "Bouquet Details"} | FlowersGhana</title>
+        </Head>
+      )}
       {bouquets.map((item, i) => {
         return (
           <>
