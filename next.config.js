@@ -27,8 +27,7 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=31536000" },
   {
     key: "Content-Security-Policy",
-    value:
-      "amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
+    value: "amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
   },
 ];
 

@@ -80,7 +80,7 @@ export default function BouquetDetails() {
                 <LazyLoadImage
                   slot="image"
                   delayTime={500}
-                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_thumb,h_516,q_10,w_387/${item.img}`}
                   effect="blur"
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
                   alt={item.title}
