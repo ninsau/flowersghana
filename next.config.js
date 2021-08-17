@@ -28,7 +28,7 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      "default-src 'self' amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
+      "amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
   },
 ];
 
