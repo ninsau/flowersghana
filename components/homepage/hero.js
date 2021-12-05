@@ -52,7 +52,7 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                Send flowers to loved ones
+                Send a bouquet of flowers to your loved ones this xmas
               </Typography>
               <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
@@ -60,11 +60,11 @@ export default function Hero() {
               </Typography>
 
               <Button
-                onClick={() => router.push("/category/florist-choice")}
+                onClick={() => router.push("/category/christmas")}
                 variant="outlined"
                 size="large"
               >
-                Shop Today's Deals
+                Shop christmas flowers
               </Button>
             </div>
           </Grid>

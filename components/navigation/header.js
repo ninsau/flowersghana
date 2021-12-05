@@ -96,10 +96,10 @@ export default function HeaderComponent() {
           onClose={handleClose}
         >
           <Link href="tel:+233242877574">
-            <MenuItem>Call Kojo (MTN)</MenuItem>
+            <MenuItem style={{ color: "white" }}>Call Kojo (MTN)</MenuItem>
           </Link>
           <Link href="tel:+233209859591">
-            <MenuItem>Call Kwabena (Vodafone)</MenuItem>
+            <MenuItem style={{ color: "white" }}>Call Kwabena (Vodafone)</MenuItem>
           </Link>
         </Menu>
         <IconButton onClick={() => router.push("/search/random")}>

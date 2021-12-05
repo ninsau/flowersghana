@@ -92,7 +92,7 @@ const footers = [
 export default function FooterComponent() {
   const classes = useStyles();
   const AddOnsComponent = dynamic(() => import("../staticpages/addOns"));
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <>
@@ -120,9 +120,10 @@ export default function FooterComponent() {
                 {footer.description.map((item) => (
                   <li key={item.link}>
                     <Link
-                      onClick={() => {
-                        router.push(item.link);
-                      }}
+                      href={item.link}
+                      // onClick={() => {
+                      //   router.push(item.link);
+                      // }}
                       variant="h6"
                       color="textSecondary"
                       style={{ cursor: "pointer" }}
@@ -139,7 +140,7 @@ export default function FooterComponent() {
               delayTime={500}
               placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
               effect="blur"
-              src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.png"
+              src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp"
               alt="banks"
               width={298}
               height={162}

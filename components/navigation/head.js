@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function HeadComponent() {
+export default function HeadComponent(text) {
   const router = useRouter();
   let urlPath = router.asPath;
 
@@ -31,7 +31,11 @@ export default function HeadComponent() {
   return (
     <>
       <Head>
-        <title>{title[urlPath] !== undefined && `${title[urlPath]}`}</title>
+        <title>
+          {title[urlPath] !== undefined
+            ? `${title[urlPath]}`
+            : " || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana"}
+        </title>
         <link
           rel="icon"
           href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
@@ -47,12 +51,15 @@ export default function HeadComponent() {
         />
         <meta
           name="description"
-          content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online."
+          content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online. Flowers flower"
         />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.flowersghana.com/" />
-        <meta property="og:title" content={`${title[urlPath]}`} />
+        <meta
+          property="og:title"
+          content={`${title[urlPath]} || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana`}
+        />
         <meta
           property="og:description"
           content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online."
@@ -61,10 +68,17 @@ export default function HeadComponent() {
           property="og:image"
           content="https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
         />
+        <meta
+          name="google-site-verification"
+          content="sSptwoLmfmCDsOmhdYVomW_kcMKEZu4ckCfUEROyemk"
+        />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.flowersghana.com/" />
-        <meta property="twitter:title" content={`${title[urlPath]}`} />
+        <meta
+          property="twitter:title"
+          content={`${title[urlPath]} || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana`}
+        />
         <meta
           property="twitter:description"
           content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online."

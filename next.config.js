@@ -32,6 +32,11 @@ const securityHeaders = [
 ];
 
 module.exports = {
+  productionBrowserSourceMaps: true,
+  swcMinify: true,
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   async headers() {
     return [
       {
@@ -40,8 +45,4 @@ module.exports = {
       },
     ];
   },
-};
-module.exports = {
-  productionBrowserSourceMaps: true,
-  swcMinify: true,
 };

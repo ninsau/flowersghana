@@ -41,16 +41,19 @@ export default function Bottom() {
 
   return (
     <>
-      <Paper className={classes.mainFeaturedPost}>
+      <Paper className={classes.mainFeaturedPost}
+      style={{ backgroundImage:
+        "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/v1629207885/picnic%20fever.webp)"}}>
         <div className={classes.overlay} />
         <Grid container>
           <Grid item md={6}>
             <div className={classes.mainFeaturedPostContent}>
               <Typography variant="h5" color="inherit" paragraph>
-                Customers from all over are excited with our services!
+                Customers from all over are excited with our flowers! Send
+                freshly cut flowers with free delivery and greeting card
               </Typography>
               <Link href="/reviews">
-                <Button variant="outlined" color="secondary" size="large">
+                <Button variant="outlined" color="outlined" size="large">
                   See All Reviews
                 </Button>
               </Link>

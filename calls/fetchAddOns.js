@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   imageList: {
     flexWrap: "nowrap",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)",
+    transform: "translate(0)",
   },
   title: {
     color: theme.palette.primary.white,
@@ -50,7 +50,7 @@ export default function FetchAddOns() {
   }, []);
 
   return (
-    <ImageList className={classes.imageList} cols={3}>
+    <ImageList className={classes.imageList} cols={6}>
       {bouquets.map((item) => (
         <ImageListItem
           key={item.img}
