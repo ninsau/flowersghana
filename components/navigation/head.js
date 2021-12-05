@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function HeadComponent(text) {
+export default function HeadComponent() {
   const router = useRouter();
   let urlPath = router.asPath;
 
   const title = {
-    "/": "Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana",
+    "/": "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana",
     "/about": "About Us | FlowersGhana",
     "/contact": "Contact Us | FlowersGhana",
     "/terms": "Terms & Conditions | FlowersGhana",
@@ -34,7 +34,7 @@ export default function HeadComponent(text) {
         <title>
           {title[urlPath] !== undefined
             ? `${title[urlPath]}`
-            : " || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana"}
+            : "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"}
         </title>
         <link
           rel="icon"
@@ -51,18 +51,21 @@ export default function HeadComponent(text) {
         />
         <meta
           name="description"
-          content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online. Flowers flower"
+          content="Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
         />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.flowersghana.com/" />
         <meta
           property="og:title"
-          content={`${title[urlPath]} || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana`}
+          content={
+            // `${title[urlPath]}` ||
+            `Send flowers to Ghana - Flowers in Ghana | Flowers Ghana`
+          }
         />
         <meta
           property="og:description"
-          content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online."
+          content="Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
         />
         <meta
           property="og:image"
@@ -77,11 +80,14 @@ export default function HeadComponent(text) {
         <meta property="twitter:url" content="https://www.flowersghana.com/" />
         <meta
           property="twitter:title"
-          content={`${title[urlPath]} || Send flowers to Ghana - Florist, Free Delivery | Flowers Ghana`}
+          content={
+            // `${title[urlPath]}` ||
+            `Send flowers to Ghana - Flowers in Ghana | Flowers Ghana`
+          }
         />
         <meta
           property="twitter:description"
-          content="Florist in Ghana, FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY hand-delivery. Quality. Order online. Pay online."
+          content="Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
         />
         <meta
           property="twitter:image"

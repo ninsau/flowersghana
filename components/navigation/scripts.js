@@ -25,10 +25,11 @@ export default function ScriptsComponent() {
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
       />
       <Script
-        async
+        strategy="lazyOnload"
         src="https://www.googletagmanager.com/gtag/js?id=UA-96580657-3"
       />
       <Script
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

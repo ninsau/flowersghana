@@ -135,20 +135,20 @@ export default function FooterComponent() {
               </ul>
             </Grid>
           ))}
-          <Grid item xs={12} md={12}>
-            <LazyLoadImage
-              delayTime={500}
-              placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-              effect="blur"
-              src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp"
-              alt="banks"
-              width={298}
-              height={162}
-            />
-          </Grid>
         </Grid>
         <Box mt={5}>
           <Copyright />
+        </Box>
+        <Box mt={5}>
+          <LazyLoadImage
+            delayTime={500}
+            placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+            effect="blur"
+            src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp"
+            alt="banks"
+            width={298}
+            height={162}
+          />
         </Box>
       </Container>
     </>
