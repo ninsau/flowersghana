@@ -1,20 +1,13 @@
 import Head from "next/head";
+import Script from "next/script";
 
 export default function ScriptsComponent() {
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/themes/base.css"
-        />
-        <script
-          type="module"
-          src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      <Script
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -25,23 +18,31 @@ export default function ScriptsComponent() {
             s0.parentNode.insertBefore(s1,s0);
             })();
                    `,
-          }}
-        ></script>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-96580657-3"
-        ></script>
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        }}
+      />
+      <Script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
+      />
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-96580657-3"
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-96580657-3');
                    `,
-          }}
-        ></script>
+        }}
+      />
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/themes/base.css"
+        />
       </Head>
     </>
   );
