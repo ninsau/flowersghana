@@ -52,7 +52,7 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                Send a bouquet of flowers to your loved ones this xmas
+                Send a bouquet of flowers to your loved ones this Christmas
               </Typography>
               <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
