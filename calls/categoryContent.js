@@ -21,66 +21,73 @@ export default function HomeContent() {
   const [returned, setReturned] = useState(true);
   const done = stateStore((state) => state.done);
   const [pageIndex, setPageIndex] = useState(0);
-  const Custom404Component = dynamic(() => import("../components/utils/custom404"));
+  const Custom404Component = dynamic(() =>
+    import("../components/utils/custom404")
+  );
   const Pagin = dynamic(() => import("../components/utils/pagination"));
   const SimpleSnackbar = dynamic(() => import("../cart/snackbar"));
 
-  useEffect(() => {
-    fetchPosts();
-    async function fetchPosts() {
-      if (slug === undefined) {
-        const bouquetsData = await DataStore.query(
-          Bouquets,
-          (item) =>
-            item.or((item) =>
-              item
-                .category("contains", "featured")
-                .category("contains", "popular")
-            ),
-          {
-            page: 0,
-            limit: 18,
-          }
-        );
+  async function fetchPosts() {
+    if (slug === undefined) {
+      const bouquetsData = await DataStore.query(
+        Bouquets,
+        (item) =>
+          item.or((item) =>
+            item
+              .category("contains", "christmas")
+              .category("contains", "featured")
+              .category("contains", "popular")
+          ),
+        {
+          page: 0,
+          limit: 18,
+        }
+      );
+      setBouquets(bouquetsData);
+    } else if (slug === "all") {
+      const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
+        page: pageIndex,
+        limit: 18,
+      });
+      if (bouquetsData.length < 1) {
+        setReturned(false);
+      } else {
         setBouquets(bouquetsData);
-      } else if (slug === "all") {
-        const bouquetsData = await DataStore.query(Bouquets, Predicates.ALL, {
+      }
+    } else {
+      const bouquetsData = await DataStore.query(
+        Bouquets,
+        (item) =>
+          item.or((item) =>
+            item
+              .category("contains", slug)
+              .tags("contains", slug)
+              .description("contains", slug)
+          ),
+        {
           page: pageIndex,
           limit: 18,
-        });
-        if (bouquetsData.length < 1) {
-          setReturned(false);
-        } else {
-          setBouquets(bouquetsData);
         }
+      );
+      if (bouquetsData.length < 1) {
+        setReturned(false);
       } else {
-        const bouquetsData = await DataStore.query(
-          Bouquets,
-          (item) =>
-            item.or((item) =>
-              item
-                .category("contains", slug)
-                .tags("contains", slug)
-                .description("contains", slug)
-            ),
-          {
-            page: pageIndex,
-            limit: 18,
-          }
-        );
-        if (bouquetsData.length < 1) {
-          setReturned(false);
-        } else {
-          setBouquets(bouquetsData);
-        }
+        setBouquets(bouquetsData);
       }
     }
+  }
+
+  const getSubscription = () => {
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
     );
     return () => subscription.unsubscribe();
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    // getSubscription();
   }, [pageIndex]);
-  
 
   return (
     <>
@@ -106,7 +113,13 @@ export default function HomeContent() {
               <CardHeader
                 style={{ minHeight: 100 }}
                 title={item.title}
-                avatar={<Chip label={`₵${item.amount}`} variant="outlined" color="secondary" />}
+                avatar={
+                  <Chip
+                    label={`₵${item.amount}`}
+                    variant="outlined"
+                    color="secondary"
+                  />
+                }
                 subheader={item.availability}
               />
             </Link>
@@ -133,7 +146,7 @@ export default function HomeContent() {
       {slug !== undefined && bouquets.length > 0 && returned === true && (
         <Grid item xs={12} md={12}>
           <Pagin
-            pageCount={3}
+            pageCount={6}
             pageIndex={pageIndex}
             setPageIndex={setPageIndex}
           />

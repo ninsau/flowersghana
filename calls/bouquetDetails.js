@@ -25,22 +25,27 @@ export default function BouquetDetails() {
   const [bouquets, setBouquets] = useState([]);
   const [returned, setReturned] = useState(true);
 
-  useEffect(() => {
-    fetchPosts();
-    async function fetchPosts() {
-      const bouquetsData = await DataStore.query(Bouquets, (item) =>
-        item.slug("eq", slug)
-      );
-      if (bouquetsData.length < 1) {
-        setReturned(false);
-      } else {
-        setBouquets(bouquetsData);
-      }
+  async function fetchPosts() {
+    const bouquetsData = await DataStore.query(Bouquets, (item) =>
+      item.slug("eq", slug)
+    );
+    if (bouquetsData.length < 1) {
+      setReturned(false);
+    } else {
+      setBouquets(bouquetsData);
     }
+  }
+
+  const getSubscription = () => {
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
     );
     return () => subscription.unsubscribe();
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    // getSubscription();
   }, []);
 
   return (

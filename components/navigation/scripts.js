@@ -4,7 +4,7 @@ import Script from "next/script";
 export default function ScriptsComponent() {
   return (
     <>
-      <Script
+      {/* <Script
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
@@ -19,14 +19,15 @@ export default function ScriptsComponent() {
             })();
                    `,
         }}
-      />
+      /> */}
       <Script
-       strategy="lazyOnload"
+        strategy="lazyOnload"
         type="module"
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
       />
       <Script
         strategy="lazyOnload"
+        async
         src="https://www.googletagmanager.com/gtag/js?id=UA-96580657-3"
       />
       <Script

@@ -27,26 +27,31 @@ const useStyles = makeStyles((theme) => ({
 export default function FetchAddOns() {
   const classes = useStyles();
   const [bouquets, setBouquets] = useState([]);
-  const router = useRouter()
+  const router = useRouter();
 
-  useEffect(() => {
-    fetchPosts();
-    async function fetchPosts() {
-      const bouquetsData = await DataStore.query(
-        Bouquets,
-        (item) => item.or((item) => item.category("eq", "add-on")),
-        Predicates.ALL,
-        {
-          page: 0,
-          limit: 18,
-        }
-      );
-      setBouquets(bouquetsData);
-    }
+  async function fetchPosts() {
+    const bouquetsData = await DataStore.query(
+      Bouquets,
+      (item) => item.or((item) => item.category("eq", "add-on")),
+      Predicates.ALL,
+      {
+        page: 0,
+        limit: 18,
+      }
+    );
+    setBouquets(bouquetsData);
+  }
+
+  const getSubscription = () => {
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
     );
     return () => subscription.unsubscribe();
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    // getSubscription();
   }, []);
 
   return (

@@ -53,7 +53,7 @@ export default function Bottom() {
                 freshly cut flowers with free delivery and greeting card
               </Typography>
               <Link href="/reviews">
-                <Button variant="outlined" color="outlined" size="large">
+                <Button variant="outlined" size="large">
                   See All Reviews
                 </Button>
               </Link>
