@@ -1,5 +1,5 @@
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Reviews } from "../media/models";
 import { useRouter } from "next/router";
 import Pagin from "../components/utils/pagination";
@@ -72,10 +72,10 @@ export default function FetchReviews() {
         <>
           {reviews.map((review, i) => {
             return (
-              <>
+              <React.Fragment key={i}>
                 {i === 0 || i === 1 ? (
                   <>
-                    <sl-details summary={`${review.name}`} key={i} open>
+                    <sl-details summary={`${review.name}`} open>
                       <p>{review.review}</p>
                     </sl-details>
                     <br />
@@ -88,7 +88,7 @@ export default function FetchReviews() {
                     <br />
                   </>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </>
@@ -98,12 +98,12 @@ export default function FetchReviews() {
         <>
           {reviews.map((review, i) => {
             return (
-              <>
+              <React.Fragment key={i}>
                 <sl-details summary={`${review.name}`} key={i} open>
                   <p>{review.review}</p>
                 </sl-details>
                 <br />
-              </>
+              </React.Fragment>
             );
           })}
         </>

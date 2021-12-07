@@ -22,7 +22,7 @@ export default function Success() {
             spacing={0}
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
           >
             <Typography variant="h6" color="textSecondary" component="p" style={{ margin: 30 }}>
               Thank you for shopping with us! Your order has been received successfully.

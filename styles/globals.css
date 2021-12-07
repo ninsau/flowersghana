@@ -2,7 +2,7 @@
 .add {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justifyContent-content: space-between;
 }
 
 .paystack-button {
@@ -30,7 +30,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justifyContent-content: center;
   align-items: center;
 }
 

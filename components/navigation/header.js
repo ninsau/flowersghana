@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -63,7 +64,7 @@ export default function HeaderComponent() {
         <Button size="small" onClick={() => router.push("/")}>
           FlowersGhana
         </Button>
-        <Typography
+        <Typography 
           component="h2"
           variant="h5"
           color="inherit"
@@ -73,12 +74,15 @@ export default function HeaderComponent() {
         >
           <Hidden smDown>
             <Link href="/">
-              <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png"
-                alt="flowersghana logo"
-                width={200}
-                height={73}
-              />
+              <LazyLoadImage
+                  delayTime={500}
+                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_thumb,h_516,q_10,w_387/flowersghana%20logo.png`}
+                  effect="blur"
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png`}
+                  alt={"logo"}
+                  width={200}
+                  height={73}
+                />
             </Link>
           </Hidden>
         </Typography>

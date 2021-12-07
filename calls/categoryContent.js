@@ -35,7 +35,7 @@ export default function HomeContent() {
           item.or((item) =>
             item
               .category("contains", "christmas")
-              .category("contains", "featured")
+              .tags("contains", "cheap")
               .category("contains", "popular")
           ),
         {

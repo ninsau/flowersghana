@@ -88,7 +88,7 @@ export default function Pagin({ pageCount, pageIndex, setPageIndex }) {
       for (let i = 0; i <= pageCount; i++) {
         pagination.push(
           <>
-            <div key={i} className={classes.root}>
+            <div className={classes.root}>
               <ButtonGroup aria-label="outlined primary button group">
                 <Button
                   color={`${pageIndex === i ? "secondary" : ""}`}
@@ -104,12 +104,12 @@ export default function Pagin({ pageCount, pageIndex, setPageIndex }) {
       break;
   }
 
-  finalIndexes.map((index) => {
+  finalIndexes.map((index, i) => {
     pagination.push(
-      <>
+      <React.Fragment key={i}>
         {index !== "..." && (
           <>
-            <div key={index} className={classes.root}>
+            <div className={classes.root}>
               <ButtonGroup aria-label="outlined primary button group">
                 <Button
                   color={`${pageIndex === index ? "secondary" : ""}`}
@@ -122,11 +122,11 @@ export default function Pagin({ pageCount, pageIndex, setPageIndex }) {
           </>
         )}
         {index === "..." && (
-          <>
+          <React.Fragment>
             <Button>...</Button>
-          </>
+          </React.Fragment>
         )}
-      </>
+      </React.Fragment>
     );
   });
 

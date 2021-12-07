@@ -56,9 +56,9 @@ export default function FetchAddOns() {
 
   return (
     <ImageList className={classes.imageList} cols={6}>
-      {bouquets.map((item) => (
+      {bouquets.map((item, i) => (
         <ImageListItem
-          key={item.img}
+          key={i}
           onClick={() => router.push(`/bouquet/${item.slug}`)}
         >
           <LazyLoadImage

@@ -89,7 +89,7 @@ export default function SearchComponent() {
           spacing={0}
           direction="column"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
         >
           <Grid>
             <TextField

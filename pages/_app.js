@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import "../styles/globals.css";
-import Amplify  from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import config from "../media/aws-exports.js";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";

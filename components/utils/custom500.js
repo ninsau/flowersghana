@@ -30,7 +30,7 @@ export default function Custom500Component() {
             spacing={0}
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
           >
             <Typography
               variant="h6"
