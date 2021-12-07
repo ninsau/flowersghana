@@ -51,7 +51,7 @@ export default function FetchAddOns() {
 
   useEffect(() => {
     fetchPosts();
-    // getSubscription();
+    getSubscription();
   }, []);
 
   return (

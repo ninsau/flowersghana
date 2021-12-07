@@ -49,10 +49,10 @@ export default function FetchReviews() {
         }
       }
     }
-    // const subscription = DataStore.observe(Reviews).subscribe(() =>
-    //   fetchPosts()
-    // );
-    // return () => subscription.unsubscribe();
+    const subscription = DataStore.observe(Reviews).subscribe(() =>
+      fetchPosts()
+    );
+    return () => subscription.unsubscribe();
   }, [pageIndex]);
 
   return (

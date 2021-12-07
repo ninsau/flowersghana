@@ -45,7 +45,7 @@ export default function BouquetDetails() {
 
   useEffect(() => {
     fetchPosts();
-    // getSubscription();
+    getSubscription();
   }, []);
 
   return (
@@ -56,11 +56,11 @@ export default function BouquetDetails() {
         </>
       )}
 
-      {bouquets.length < 1 && returned === false && (
+      {/* {bouquets.length < 1 && returned === false && (
         <>
           <Custom404Component />
         </>
-      )}
+      )} */}
       {slug !== undefined && (
         <Head>
           <title>{slug || "Bouquet Details"} | FlowersGhana</title>

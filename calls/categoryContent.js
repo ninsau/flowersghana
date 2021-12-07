@@ -86,7 +86,7 @@ export default function HomeContent() {
 
   useEffect(() => {
     fetchPosts();
-    // getSubscription();
+    getSubscription();
   }, [pageIndex]);
 
   return (
