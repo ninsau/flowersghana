@@ -4,7 +4,7 @@ import Script from "next/script";
 export default function ScriptsComponent() {
   return (
     <>
-      {/* <Script
+      <Script
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
@@ -19,7 +19,7 @@ export default function ScriptsComponent() {
             })();
                    `,
         }}
-      /> */}
+      />
       <Script
         strategy="lazyOnload"
         type="module"
