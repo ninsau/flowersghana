@@ -9,7 +9,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
-import "react-lazy-load-image-component/src/effects/blur.css";
+
 import { Chip } from "@material-ui/core";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
@@ -67,7 +67,7 @@ export default function BouquetDetails() {
             <Grid m={4} item xs={12} md={5} key={i}>
               <HeadComponent
                 title={`${item.title} | FlowersGhana`}
-                image={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                image={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
                 description={item.description}
               />
               <CardHeader
@@ -83,14 +83,14 @@ export default function BouquetDetails() {
 
               <CardContent>
                 <Image
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
                   alt={item.title}
                   width={387}
                   height={516}
                   quality={100}
                   sizes="80vw"
                   priority
-                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
                   placeholder="blur"
                 />
                 <Typography variant="body2" color="textSecondary" component="p">

@@ -8,14 +8,11 @@ import Backdrop from "../components/loader/backdrop";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../cart/addToCart";
 import { stateStore } from "../cart/store";
-// import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { CardContent } from "@material-ui/core";
 import Chip from "@material-ui/core/Chip";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
 import Image from "next/image";
-import Script from "next/script";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -133,7 +130,7 @@ export default function HomeContent() {
               <CardContent>
                 <Link href={`/bouquet/${item.slug}`}>
                   <Image
-                    src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
+                    src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
                     width={380}
                     height={516}
                     alt={item.title}

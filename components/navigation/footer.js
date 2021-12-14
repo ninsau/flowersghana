@@ -7,7 +7,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import dynamic from "next/dynamic";
-import "react-lazy-load-image-component/src/effects/blur.css";
+
 import Image from "next/image";
 
 export function Copyright() {

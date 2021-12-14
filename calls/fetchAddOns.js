@@ -5,7 +5,7 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { DataStore, Predicates } from "@aws-amplify/datastore";
 import { Bouquets } from "../media/models";
-import "react-lazy-load-image-component/src/effects/blur.css";
+
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -62,7 +62,7 @@ export default function FetchAddOns() {
           onClick={() => router.push(`/bouquet/${item.slug}`)}
         >
           <Image
-            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
+            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
             width={380}
             height={516}
             alt={item.title}

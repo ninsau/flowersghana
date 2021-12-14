@@ -43,7 +43,7 @@ export default function Bottom() {
     <>
       <Paper className={classes.mainFeaturedPost}
       style={{ backgroundImage:
-        "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/v1629207885/picnic%20fever.webp)"}}>
+        "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/v1629207885/picnic%20fever.webp)"}}>
         <div className={classes.overlay} />
         <Grid container>
           <Grid item md={6}>

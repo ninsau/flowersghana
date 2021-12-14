@@ -11,7 +11,7 @@ import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../../cart/addToCart";
 import Image from "next/image";
-import "react-lazy-load-image-component/src/effects/blur.css";
+
 import { CardContent } from "@material-ui/core";
 import { Chip } from "@material-ui/core";
 import Backdrop from "../loader/backdrop";
@@ -158,7 +158,7 @@ export default function SearchComponent() {
                   <CardContent>
                     <Link href={`/bouquet/${item.item.slug}`}>
                       <Image
-                        src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.item.img}`}
+                        src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.item.img}`}
                         width={380}
                         height={516}
                         alt={item.item.title}
