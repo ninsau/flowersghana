@@ -139,7 +139,6 @@ export default function HomeContent() {
                     alt={item.title}
                     blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
                     placeholder="blur"
-                    layout="responsive"
                   />
                 </Link>
                 <AddToCartComponent

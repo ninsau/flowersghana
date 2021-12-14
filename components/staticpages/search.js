@@ -164,7 +164,6 @@ export default function SearchComponent() {
                         alt={item.item.title}
                         blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.item.img}`}
                         placeholder="blur"
-                        layout="responsive"
                       />
                     </Link>
                     <AddToCartComponent
