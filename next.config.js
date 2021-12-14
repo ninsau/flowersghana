@@ -5,7 +5,7 @@ const securityHeaders = [
   },
   {
     key: "Strict-Transport-Security",
-    value: "max-age=31536000; includeSubDomains; preload",
+    value: "max-age=315360000; includeSubDomains; preload",
   },
   {
     key: "X-XSS-Protection",
@@ -23,12 +23,12 @@ const securityHeaders = [
     key: "Referrer-Policy",
     value: "origin-when-cross-origin",
   },
-  { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+  { key: "Cache-Control", value: "public, max-age=315360000, immutable" },
   { key: "Strict-Transport-Security", value: "max-age=315360000" },
-  // {
-  //   key: "Content-Security-Policy",
-  //   value: "amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
-  // },
+  {
+    key: "Content-Security-Policy",
+    value: "amazonaws.com *.amazonaws.com cloudinary.com *.cloudinary.com",
+  },
 ];
 
 module.exports = {
@@ -36,6 +36,7 @@ module.exports = {
   swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "cloudinary.com"],
+    minimumCacheTTL: 7884000
   },
   async headers() {
     return [

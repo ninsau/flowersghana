@@ -115,29 +115,6 @@ export default function HomeContent() {
       {bouquets.map((item, i) => {
         return (
           <React.Fragment key={i}>
-            <Script
-              type="application/ld+json"
-              strategy="lazyOnload"
-              dangerouslySetInnerHTML={{
-                __html: `
-          {
-            "@context": "https://schema.org/", 
-            "@type": "Product", 
-            "name": ${item.title},
-            "image": ${`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`},
-            "description": ${item.description},
-            "brand": "FlowersGhana",
-            "offers": {
-              "@type": "Offer",
-              "url": ${`https://www.flowersghana.com/bouquet/${item.slug}`},
-              "priceCurrency": "₵",
-              "price": ${item.amount},
-              "priceValidUntil": "2023-01-31",
-              "availability": "https://schema.org/InStock",
-              "itemCondition": "https://schema.org/NewCondition"
-            }`,
-              }}
-            />
             <Grid item xs={6} md={4}>
               <Link href={`/bouquet/${item.slug}`}>
                 <CardHeader
@@ -162,6 +139,7 @@ export default function HomeContent() {
                     alt={item.title}
                     blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
                     placeholder="blur"
+                    layout="responsive"
                   />
                 </Link>
                 <AddToCartComponent

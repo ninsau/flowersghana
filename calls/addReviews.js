@@ -10,18 +10,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import * as yup from "yup";
 import { DataStore } from "aws-amplify";
 import { Reviews } from "../media/models";
-
 export default function ReviewsComponent() {
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const CustomName = (props) => (
     <TextField
       autoFocus
@@ -34,7 +30,6 @@ export default function ReviewsComponent() {
       {...props}
     />
   );
-
   const CustomReview = (props) => (
     <TextField
       margin="dense"
@@ -47,14 +42,12 @@ export default function ReviewsComponent() {
       {...props}
     />
   );
-
   const ReviewSchema = yup.object().shape({
     name: yup
       .string()
       .min(2, "Name should be of minimum 2 characters length")
       .max(40, "Name should be of maximum 40 characters length")
       .required("Name is required"),
-
     review: yup
       .string()
       .min(2, "Review should be of minimum 20 characters length")
@@ -99,7 +92,6 @@ export default function ReviewsComponent() {
                   {errors.name && touched.name ? errors.name : null}
                   <Field name="review" as={CustomReview} />
                   {errors.review && touched.review ? errors.review : null}
-
                   <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button type="submit" color="secondary">
