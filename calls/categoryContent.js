@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import { DataStore, Predicates } from "aws-amplify";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -15,6 +15,7 @@ import Chip from "@material-ui/core/Chip";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
 import Image from "next/image";
+import Script from "next/script";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -113,47 +114,63 @@ export default function HomeContent() {
       )}
       {bouquets.map((item, i) => {
         return (
-          <Grid item xs={6} md={4} key={i}>
-            <Link href={`/bouquet/${item.slug}`}>
-              <CardHeader
-                style={{ minHeight: 100 }}
-                title={item.title}
-                avatar={
-                  <Chip
-                    label={`₵${item.amount}`}
-                    variant="outlined"
-                    color="secondary"
-                  />
-                }
-                subheader={item.availability}
-              />
-            </Link>
-            <CardContent>
+          <React.Fragment key={i}>
+            <Script
+              type="application/ld+json"
+              strategy="lazyOnload"
+              dangerouslySetInnerHTML={{
+                __html: `
+          {
+            "@context": "https://schema.org/", 
+            "@type": "Product", 
+            "name": ${item.title},
+            "image": ${`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`},
+            "description": ${item.description},
+            "brand": "FlowersGhana",
+            "offers": {
+              "@type": "Offer",
+              "url": ${`https://www.flowersghana.com/bouquet/${item.slug}`},
+              "priceCurrency": "₵",
+              "price": ${item.amount},
+              "priceValidUntil": "2023-01-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }`,
+              }}
+            />
+            <Grid item xs={6} md={4}>
               <Link href={`/bouquet/${item.slug}`}>
-                {/* <LazyLoadImage
-                  delayTime={500}
-                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_thumb,h_516,q_10,w_387/${item.img}`}
-                  effect="blur"
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
-                  alt={item.title}
-                  className="lazy"
-                /> */}
-
-                <Image
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
-                  width={380}
-                  height={516}
-                  alt={item.title}
-                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
-                  placeholder="blur"
+                <CardHeader
+                  style={{ minHeight: 100 }}
+                  title={item.title}
+                  avatar={
+                    <Chip
+                      label={`₵${item.amount}`}
+                      variant="outlined"
+                      color="secondary"
+                    />
+                  }
+                  subheader={item.availability}
                 />
               </Link>
-              <AddToCartComponent
-                itemTitle={item.title}
-                itemPrice={item.amount}
-              />
-            </CardContent>
-          </Grid>
+              <CardContent>
+                <Link href={`/bouquet/${item.slug}`}>
+                  <Image
+                    src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
+                    width={380}
+                    height={516}
+                    alt={item.title}
+                    blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
+                    placeholder="blur"
+                  />
+                </Link>
+                <AddToCartComponent
+                  itemTitle={item.title}
+                  itemPrice={item.amount}
+                />
+              </CardContent>
+            </Grid>
+          </React.Fragment>
         );
       })}
 
