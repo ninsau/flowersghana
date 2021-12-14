@@ -21,7 +21,6 @@
     "react-dom": "^17.0.2",
     "react-lazy-load-image-component": "^1.5.1",
     "react-paystack": "^3.0.4",
-    "sharp": "^0.29.3",
     "styled-components": "^5.2.1",
     "yup": "^0.32.9",
     "yup-phone": "^1.2.19",

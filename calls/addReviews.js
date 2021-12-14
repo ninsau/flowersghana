@@ -42,7 +42,7 @@ export default function ReviewsComponent() {
       id="review"
       label="Your review"
       type="text"
-      variant="outlined"
+      variant="filled"
       fullWidth
       {...props}
     />
