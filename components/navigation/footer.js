@@ -7,11 +7,10 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import dynamic from "next/dynamic";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { useRouter } from "next/router";
+import Image from "next/image";
 
-function Copyright() {
+export function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
       {"Copyright © "}
@@ -103,11 +102,13 @@ export default function FooterComponent() {
         <Grid container spacing={4} justifyContent="space-evenly">
           <Hidden smUp>
             <Link href="/">
-              <img
-                src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp"
+              <Image
+                src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
                 alt="flowersghana logo"
                 width={200}
                 height={73}
+                blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                placeholder="blur"
               />
             </Link>
           </Hidden>
@@ -140,14 +141,13 @@ export default function FooterComponent() {
           <Copyright />
         </Box>
         <Box mt={5}>
-          <LazyLoadImage
-            delayTime={500}
-            placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-            effect="blur"
-            src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp"
+          <Image
+            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp`}
             alt="banks"
             width={298}
             height={162}
+            blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_298/v1627490116/banks.webp`}
+            placeholder="blur"
           />
         </Box>
       </Container>

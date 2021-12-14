@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import HeadComponent from "../navigation/head";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,12 @@ export default function Custom500Component() {
 
   return (
     <>
+      <HeadComponent
+        title={`Internal Server Error`}
+        description={`500: An internal server error has occured. We are working to fix
+              that now. Please check your url and try again.`}
+        image={`https://res.cloudinary.com/deyudesls/image/upload/v1627584603/server%20down.webp`}
+      />
       <div className={classes.root}>
         <Grid>
           <Grid>

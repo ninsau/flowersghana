@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -64,7 +64,7 @@ export default function HeaderComponent() {
         <Button size="small" onClick={() => router.push("/")}>
           FlowersGhana
         </Button>
-        <Typography 
+        <Typography
           component="h2"
           variant="h5"
           color="inherit"
@@ -74,15 +74,14 @@ export default function HeaderComponent() {
         >
           <Hidden smDown>
             <Link href="/">
-              <LazyLoadImage
-                  delayTime={500}
-                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_thumb,h_516,q_10,w_387/flowersghana%20logo.png`}
-                  effect="blur"
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.png`}
-                  alt={"logo"}
-                  width={200}
-                  height={73}
-                />
+              <Image
+                src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                alt="flowersghana logo"
+                width={200}
+                height={73}
+                blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+                placeholder="blur"
+              />
             </Link>
           </Hidden>
         </Typography>
@@ -103,7 +102,9 @@ export default function HeaderComponent() {
             <MenuItem style={{ color: "white" }}>Call Kojo (MTN)</MenuItem>
           </Link>
           <Link href="tel:+233209859591">
-            <MenuItem style={{ color: "white" }}>Call Kwabena (Vodafone)</MenuItem>
+            <MenuItem style={{ color: "white" }}>
+              Call Kwabena (Vodafone)
+            </MenuItem>
           </Link>
         </Menu>
         <IconButton onClick={() => router.push("/search/random")}>

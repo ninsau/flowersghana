@@ -5,9 +5,9 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { DataStore, Predicates } from "@aws-amplify/datastore";
 import { Bouquets } from "../media/models";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   imageList: {
@@ -61,13 +61,13 @@ export default function FetchAddOns() {
           key={i}
           onClick={() => router.push(`/bouquet/${item.slug}`)}
         >
-          <LazyLoadImage
-            delayTime={500}
-            placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-            effect="blur"
-            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+          <Image
+            src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.img}`}
+            width={380}
+            height={516}
             alt={item.title}
-            className="bottom-images"
+            blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
+            placeholder="blur"
           />
           <ImageListItemBar
             title={item.title}

@@ -7,15 +7,15 @@ import { Bouquets } from "../../media/models";
 import Link from "next/link";
 import Fuse from "fuse.js";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../../cart/addToCart";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from "next/image";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { CardContent } from "@material-ui/core";
 import { Chip } from "@material-ui/core";
 import Backdrop from "../loader/backdrop";
+import HeadComponent from "../navigation/head";
 
 export default function SearchComponent() {
   const router = useRouter();
@@ -26,10 +26,10 @@ export default function SearchComponent() {
 
   const options = [
     "cheapest",
-    "biggest",
+    "christmas",
     "love",
     "romance",
-    "grand",
+    "big",
     "roses",
     "chrysanthemums",
   ];
@@ -70,13 +70,14 @@ export default function SearchComponent() {
 
   return (
     <>
-      <Head>
-        {slug !== undefined && searchParam === "" ? (
-          <title> {`Search '${slug}'`}| FlowersGhana</title>
-        ) : (
-          <title>{`Search '${searchParam}'`} | FlowersGhana</title>
-        )}
-      </Head>
+      {slug && searchParam === "" ? (
+        <HeadComponent
+          title={`Search '${slug}' | FlowersGhana`}
+          description={`Find samples of ${slug} and we will deliver to your loved ones in Ghana.`}
+        />
+      ) : (
+        <title>{`Search '${searchParam}'`} | FlowersGhana</title>
+      )}
 
       {bouquets.length < 1 && returned === true && (
         <>
@@ -156,14 +157,13 @@ export default function SearchComponent() {
 
                   <CardContent>
                     <Link href={`/bouquet/${item.item.slug}`}>
-                      <LazyLoadImage
-                        slot="image"
-                        delayTime={500}
-                        placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-                        effect="blur"
-                        src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.item.img}`}
+                      <Image
+                        src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_387/${item.item.img}`}
+                        width={380}
+                        height={516}
                         alt={item.item.title}
-                        className="lazy"
+                        blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.item.img}`}
+                        placeholder="blur"
                       />
                     </Link>
                     <AddToCartComponent

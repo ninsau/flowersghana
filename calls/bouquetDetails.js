@@ -3,17 +3,17 @@ import { DataStore } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Backdrop from "../components/loader/backdrop";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Chip } from "@material-ui/core";
 import dynamic from "next/dynamic";
+import HeadComponent from "../components/navigation/head";
+import Image from "next/image";
 
 export default function BouquetDetails() {
   const Custom404Component = dynamic(() =>
@@ -61,15 +61,15 @@ export default function BouquetDetails() {
           <Custom404Component />
         </>
       )} */}
-      {slug !== undefined && (
-        <Head>
-          <title>{slug || "Bouquet Details"} | FlowersGhana</title>
-        </Head>
-      )}
       {bouquets.map((item, i) => {
         return (
           <>
             <Grid m={4} item xs={12} md={5} key={i}>
+              <HeadComponent
+                title={`${item.title} | FlowersGhana`}
+                image={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                description={item.description}
+              />
               <CardHeader
                 title={item.title}
                 subheader={
@@ -82,14 +82,17 @@ export default function BouquetDetails() {
               />
 
               <CardContent>
-                <LazyLoadImage
-                  slot="image"
-                  delayTime={500}
-                  placeholderSrc={`https://res.cloudinary.com/deyudesls/image/upload/c_thumb,h_516,q_10,w_387/${item.img}`}
-                  effect="blur"
+                <Image
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
                   alt={item.title}
-                  className="lazy"
+                  width={387}
+                  height={516}
+                  quality={100}
+                  layout="responsive"
+                  sizes="80vw"
+                  priority
+                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                  placeholder="blur"
                 />
                 <Typography variant="body2" color="textSecondary" component="p">
                   <br />

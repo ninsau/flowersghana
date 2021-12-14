@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import HeadComponent from "../navigation/head";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,12 @@ export default function Custom404Component() {
 
   return (
     <>
+      <HeadComponent
+        title={`Page Not Found`}
+        description={`404: This page or item does not exist. Please check your link and
+              try with a different parameter.`}
+        image={`https://res.cloudinary.com/deyudesls/image/upload/v1627493038/404%20image.webp`}
+      />
       <div className={classes.root}>
         <Grid>
           <Grid>
