@@ -91,9 +91,11 @@ export default function HomeContent() {
 
   return (
     <>
-      <HeadComponent
-        description={`Ghana Flowers - Send ${slug} bouquet in Ghana. Same day and free delivery throughout Accra and Kumasi. `}
-      />
+      {slug && (
+        <HeadComponent
+          description={`Ghana Flowers - Send ${slug} bouquet in Ghana. Same day and free delivery throughout Accra and Kumasi. `}
+        />
+      )}
       {bouquets.length < 1 && returned === true && (
         <>
           <Backdrop />
