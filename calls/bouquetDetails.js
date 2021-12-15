@@ -83,13 +83,11 @@ export default function BouquetDetails() {
 
               <CardContent>
                 <Image
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
                   alt={item.title}
                   width={387}
                   height={516}
                   quality={100}
-                  sizes="80vw"
-                  priority
                   blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
                   placeholder="blur"
                 />
