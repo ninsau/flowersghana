@@ -52,7 +52,7 @@
 }
 
 .footer-style {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
   line-height: 1.6;
@@ -63,4 +63,7 @@ a:-webkit-any-link {
   color: white;
   cursor: pointer;
   text-decoration: none;
+  margin: 1.5%;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
 }

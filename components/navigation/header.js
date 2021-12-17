@@ -125,9 +125,8 @@ export default function HeaderComponent() {
             key={section.title}
             variant="body2"
             href={section.url}
-            className={classes.toolbarLink}
           >
-            {section.title}
+              {section.title}
           </Link>
         ))}
       </Toolbar>
