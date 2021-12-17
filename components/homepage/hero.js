@@ -54,10 +54,12 @@ export default function Hero() {
               >
                 Send a beautiful bouquet of flowers this Christmas
               </Typography>
-              <Typography variant="h5" color="inherit" paragraph>
+              {/* <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
                 directly from the farm.
-              </Typography>
+              </Typography> */}
+
+              <h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-colorInherit MuiTypography-paragraph">All our flowers and plants are freshly cut, and are delivered directly from the farm.</h2>
 
               <Button
                 onClick={() => router.push("/category/christmas")}

@@ -41,17 +41,25 @@ export default function Bottom() {
 
   return (
     <>
-      <Paper className={classes.mainFeaturedPost}
-      style={{ backgroundImage:
-        "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/v1629207885/picnic%20fever.webp)"}}>
+      <Paper
+        className={classes.mainFeaturedPost}
+        style={{
+          backgroundImage:
+            "url(https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/v1629207885/picnic%20fever.webp)",
+        }}
+      >
         <div className={classes.overlay} />
         <Grid container>
           <Grid item md={6}>
             <div className={classes.mainFeaturedPostContent}>
-              <Typography variant="h5" color="inherit" paragraph>
+              {/* <Typography variant="h5" color="inherit" paragraph>
                 Customers from all over are excited with our flowers! Send
                 freshly cut flowers with free delivery and greeting card
-              </Typography>
+              </Typography> */}
+              <h3 class="MuiTypography-root MuiTypography-h5 MuiTypography-colorInherit MuiTypography-paragraph">
+                Customers from all over are excited with our flowers! Send
+                freshly cut flowers with free delivery and greeting card
+              </h3>
               <Link href="/reviews">
                 <Button variant="outlined" size="large">
                   See All Reviews

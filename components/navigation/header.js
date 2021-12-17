@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "@material-ui/core/Link";
+import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -73,23 +73,20 @@ export default function HeaderComponent() {
           className={classes.toolbarTitle}
         >
           <Hidden smDown>
-            <Link href="/">
-              <Image
-                src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-                alt="flowersghana logo"
-                width={200}
-                height={73}
-                blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-                placeholder="blur"
-              />
-            </Link>
+            <Image
+              onClick={() => router.push("/")}
+              src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+              alt="flowersghana logo"
+              width={200}
+              height={73}
+              blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+              placeholder="blur"
+            />
           </Hidden>
         </Typography>
 
-        <IconButton onClick={handleClick}>
-          <Link color="inherit">
-            <CallOutlinedIcon aria-label="call" />
-          </Link>
+        <IconButton onClick={handleClick} aria-label="call">
+          <CallOutlinedIcon aria-label="call" />
         </IconButton>
         <Menu
           id="simple-menu"
@@ -107,9 +104,11 @@ export default function HeaderComponent() {
             </MenuItem>
           </Link>
         </Menu>
-        <IconButton onClick={() => router.push("/search/random")}>
-          <SearchIcon aria-label="search" />
-        </IconButton>
+        <Link href="/search/random">
+          <IconButton aria-label="search">
+            <SearchIcon aria-label="search" />
+          </IconButton>
+        </Link>
         <IconButton>
           <ShoppingCartComponent />
         </IconButton>
@@ -125,7 +124,7 @@ export default function HeaderComponent() {
             noWrap
             key={section.title}
             variant="body2"
-            onClick={() => router.push(section.url)}
+            href={section.url}
             className={classes.toolbarLink}
           >
             {section.title}

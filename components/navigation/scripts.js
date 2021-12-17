@@ -15,7 +15,6 @@ export default function ScriptsComponent() {
         }}
       />
       <Script
-        strategy="lazyOnload"
         type="module"
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
       />

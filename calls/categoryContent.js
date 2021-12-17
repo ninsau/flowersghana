@@ -130,16 +130,15 @@ export default function HomeContent() {
                 />
               </Link>
               <CardContent>
-                <Link href={`/bouquet/${item.slug}`}>
-                  <Image
-                    src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
-                    width={380}
-                    height={516}
-                    alt={item.title}
-                    blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
-                    placeholder="blur"
-                  />
-                </Link>
+                <Image
+                  onClick={()=>router.push(`/bouquet/${item.slug}`)}
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
+                  width={380}
+                  height={516}
+                  alt={item.title}
+                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.img}`}
+                  placeholder="blur"
+                />
                 <AddToCartComponent
                   itemTitle={item.title}
                   itemPrice={item.amount}

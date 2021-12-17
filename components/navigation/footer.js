@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
@@ -101,34 +101,31 @@ export default function FooterComponent() {
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justifyContent="space-evenly">
           <Hidden smUp>
-            <Link href="/">
-              <Image
-                src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-                alt="flowersghana logo"
-                width={200}
-                height={73}
-                blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
-                placeholder="blur"
-              />
-            </Link>
+            <Image
+              onClick={() => router.push("/")}
+              src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+              alt="flowersghana logo"
+              width={200}
+              height={73}
+              blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,q_100,w_200/v1627491504/flowersghana%20logo.webp`}
+              placeholder="blur"
+            />
           </Hidden>
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
+              {/* <Typography variant="h6" color="textPrimary" gutterBottom>
                 {footer.title}
-              </Typography>
+              </Typography> */}
+              <h4 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom">
+                {footer.title}
+              </h4>
               <ul>
                 {footer.description.map((item) => (
-                  <li key={item.link}>
-                    <Link
-                      href={item.link}
-                      // onClick={() => {
-                      //   router.push(item.link);
-                      // }}
-                      variant="h6"
-                      color="textSecondary"
-                      style={{ cursor: "pointer" }}
-                    >
+                  <li
+                    key={item.link}
+                    className="MuiTypography-root MuiLink-root MuiLink-underlineHover footer-style MuiTypography-colorTextSecondary"
+                  >
+                    <Link href={item.link} variant="h6" color="textSecondary">
                       {item.name}
                     </Link>
                   </li>

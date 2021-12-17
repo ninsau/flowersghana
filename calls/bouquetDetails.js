@@ -1,6 +1,6 @@
+import { React, useState, useEffect, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
-import { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Backdrop from "../components/loader/backdrop";
@@ -9,7 +9,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import { CardContent } from "@material-ui/core";
 import AddToCartComponent from "../cart/addToCart";
-
 import { Chip } from "@material-ui/core";
 import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
@@ -56,15 +55,15 @@ export default function BouquetDetails() {
         </>
       )}
 
-      {/* {bouquets.length < 1 && returned === false && (
+      {returned === false && (
         <>
           <Custom404Component />
         </>
-      )} */}
+      )}
       {bouquets.map((item, i) => {
         return (
-          <>
-            <Grid m={4} item xs={12} md={5} key={i}>
+          <Fragment key={i}>
+            <Grid m={4} item xs={12} md={5}>
               <HeadComponent
                 title={`${item.title} | FlowersGhana`}
                 image={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
@@ -95,7 +94,10 @@ export default function BouquetDetails() {
                   <br />
                   Tags:{" "}
                   {item.tags.split(",").map((tag) => (
-                    <sl-badge type="info"> {tag} </sl-badge>
+                    <sl-badge type="info" key={tag}>
+                      {" "}
+                      {tag}{" "}
+                    </sl-badge>
                   ))}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -109,7 +111,7 @@ export default function BouquetDetails() {
                 </Typography>
               </CardContent>
             </Grid>
-            <Grid item xs={12} md={7} key={Math.random()}>
+            <Grid item xs={12} md={7}>
               <h2>Description</h2>
               <Typography paragraph>{item.description}</Typography>
               <br />
@@ -131,7 +133,7 @@ export default function BouquetDetails() {
                 </p>
               </sl-details>
             </Grid>
-          </>
+          </Fragment>
         );
       })}
     </>

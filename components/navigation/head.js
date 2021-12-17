@@ -36,12 +36,31 @@ export default function HeadComponent({
   return (
     <>
       <Head>
+        {/* <!-- Primary Meta Tags --> */}
         <title>
           {title[urlPath]
             ? title[urlPath]
             : pageTitle ||
               "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"}
         </title>
+        <meta
+          name="title"
+          content={
+            title[urlPath]
+              ? title[urlPath]
+              : pageTitle ||
+                "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
+          }
+        />
+        <meta
+          name="description"
+          content={
+            pageDescription
+              ? pageDescription
+              : "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
+          }
+        />
+
         <link
           rel="icon"
           href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
@@ -55,21 +74,21 @@ export default function HeadComponent({
           content="width=device-width, initial-scale=1"
           id="viewport"
         />
+
         <meta
-          name="description"
-          content={
-            pageDescription
-              ? pageDescription
-              : "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
-          }
+          name="keywords"
+          content="flowers, send flowers to Ghana, send flowers in Ghana, flower delivery, buy fresh flowers, rose flowers in Ghana, bouquet, flowers for sale, florist, bouquet of flowers, flowersghaha, flowers ghana, flower ghana, ghana flower, ghana flowers, gift flowers"
         />
 
+        <meta name="copyright" content={<Copyright />} />
+
+        {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.flowersghana.com/" />
         <meta
           property="og:title"
           content={
-            title[urlPath] !== undefined
+            title[urlPath]
               ? title[urlPath]
               : pageTitle ||
                 "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
@@ -91,17 +110,14 @@ export default function HeadComponent({
               : "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
           }
         />
-        <meta
-          name="google-site-verification"
-          content="sSptwoLmfmCDsOmhdYVomW_kcMKEZu4ckCfUEROyemk"
-        />
 
+        {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.flowersghana.com/" />
         <meta
           property="twitter:title"
           content={
-            title[urlPath] !== undefined
+            title[urlPath]
               ? title[urlPath]
               : pageTitle ||
                 "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
@@ -123,13 +139,6 @@ export default function HeadComponent({
               : "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
           }
         />
-
-        <meta
-          name="keywords"
-          content="flowers, send flowers to Ghana, send flowers in Ghana, flower delivery, buy fresh flowers, rose flowers in Ghana, bouquet, flowers for sale, florist, bouquet of flowers, flowersghaha, flowers ghana, flower ghana, ghana flower, ghana flowers, gift flowers"
-        />
-
-        <meta name="copyright" content={<Copyright />} />
 
         <script
           type="application/ld+json"

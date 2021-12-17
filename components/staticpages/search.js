@@ -11,7 +11,6 @@ import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../../cart/addToCart";
 import Image from "next/image";
-
 import { CardContent } from "@material-ui/core";
 import { Chip } from "@material-ui/core";
 import Backdrop from "../loader/backdrop";
@@ -22,7 +21,6 @@ export default function SearchComponent() {
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
   const [searchParam, setSearchParam] = useState("");
-  const [returned, setReturned] = useState(true);
 
   const options = [
     "cheapest",
@@ -39,11 +37,7 @@ export default function SearchComponent() {
     async function fetchPosts() {
       const bouquetsData = await DataStore.query(Bouquets);
 
-      if (bouquetsData.length < 1) {
-        setReturned(false);
-      } else {
-        setBouquets(bouquetsData);
-      }
+      setBouquets(bouquetsData);
     }
     const subscription = DataStore.observe(Bouquets).subscribe(() =>
       fetchPosts()
@@ -62,7 +56,7 @@ export default function SearchComponent() {
   const fuse = new Fuse(toJson, option);
 
   let result;
-  if (slug !== undefined && searchParam === "") {
+  if (slug && searchParam === "") {
     result = fuse.search(slug);
   } else {
     result = fuse.search(searchParam);
@@ -79,11 +73,6 @@ export default function SearchComponent() {
         <title>{`Search '${searchParam}'`} | FlowersGhana</title>
       )}
 
-      {bouquets.length < 1 && returned === true && (
-        <>
-          <Backdrop />
-        </>
-      )}
       <div style={{ margin: 20 }}>
         <Grid
           container
@@ -114,7 +103,7 @@ export default function SearchComponent() {
               return (
                 <sl-badge
                   class="search"
-                  onClick={() => setSearchParam(option)}
+                  onClick={() => router.push(option)}
                   type="info"
                   key={i}
                 >

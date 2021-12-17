@@ -9,14 +9,13 @@ import Custom404Component from "../components/utils/custom404";
 export default function Info() {
   const router = useRouter();
   const slug = router.query.slug;
-
   return (
     <>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} style={{ margin: 30 }}>
-            {textData[slug] === undefined && <Custom404Component />}
-            {textData[slug] !== undefined && (
+            {!textData[slug] && slug && <Custom404Component />}
+            {slug && textData[slug] && (
               <Container>
                 <Typography
                   component="h4"
