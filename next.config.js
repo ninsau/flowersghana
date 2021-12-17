@@ -33,7 +33,7 @@ const securityHeaders = [
 
 module.exports = {
   productionBrowserSourceMaps: true,
-  swcMinify: true,
+  // swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "cloudinary.com"],
     minimumCacheTTL: 7884000
