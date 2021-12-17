@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Field, Form } from "formik";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -42,7 +42,7 @@ export default function ReviewsComponent() {
       id="review"
       label="Your review"
       type="text"
-      variant="outlined"
+      variant="filled"
       fullWidth
       {...props}
     />
@@ -62,9 +62,7 @@ export default function ReviewsComponent() {
   });
   return (
     <>
-      <div>
-        <br />
-        <br />
+<div>
         <Button variant="outlined" onClick={handleClickOpen}>
           Add a review
         </Button>
@@ -112,6 +110,7 @@ export default function ReviewsComponent() {
           </DialogContent>
         </Dialog>
       </div>
-    </>
+
+</>
   );
 }
