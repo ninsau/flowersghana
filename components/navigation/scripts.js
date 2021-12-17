@@ -4,7 +4,8 @@ import Script from "next/script";
 export default function ScriptsComponent() {
   return (
     <>
-      <Script
+      {/* <Script
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -12,8 +13,9 @@ export default function ScriptsComponent() {
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-WCPZGN7');`,
         }}
-      />
+      /> */}
       <Script
+        strategy="lazyOnload"
         type="module"
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
       />
@@ -24,14 +26,14 @@ export default function ScriptsComponent() {
           href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/themes/base.css"
         />
       </Head>
-      <noscript>
+      {/* <noscript>
         <iframe
           src="https://www.googletagmanager.com/ns.html?id=GTM-WCPZGN7"
           height="0"
           width="0"
           style="display:none;visibility:hidden"
         ></iframe>
-      </noscript>
+      </noscript> */}
     </>
   );
 }
