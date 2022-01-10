@@ -11,7 +11,7 @@ export default function HeadComponent({
   let urlPath = router.asPath;
 
   const title = {
-    "/": "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana",
+    "/": "Send flowers to Ghana - Florist in Accra | Flowers Ghana",
     "/about": "About Us | FlowersGhana",
     "/contact": "Contact Us | FlowersGhana",
     "/terms": "Terms & Conditions | FlowersGhana",
@@ -41,7 +41,7 @@ export default function HeadComponent({
           {title[urlPath]
             ? title[urlPath]
             : pageTitle ||
-              "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"}
+              "Send flowers to Ghana - Florist in Accra | Flowers Ghana"}
         </title>
         <meta
           name="title"
@@ -49,7 +49,7 @@ export default function HeadComponent({
             title[urlPath]
               ? title[urlPath]
               : pageTitle ||
-                "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
+                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
           }
         />
         <meta
@@ -91,7 +91,7 @@ export default function HeadComponent({
             title[urlPath]
               ? title[urlPath]
               : pageTitle ||
-                "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
+                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
           }
         />
         <meta
@@ -120,7 +120,7 @@ export default function HeadComponent({
             title[urlPath]
               ? title[urlPath]
               : pageTitle ||
-                "Send flowers to Ghana - Flowers in Ghana | Flowers Ghana"
+                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
           }
         />
         <meta

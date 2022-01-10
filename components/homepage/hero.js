@@ -52,14 +52,17 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                Send a beautiful bouquet of flowers this Christmas
+                Send someone a bouquet of beautiful flowers.
               </Typography>
               {/* <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
                 directly from the farm.
               </Typography> */}
 
-              <h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-colorInherit MuiTypography-paragraph">All our flowers and plants are freshly cut, and are delivered directly from the farm.</h2>
+              <h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-colorInherit MuiTypography-paragraph">
+                All our flowers and plants are freshly cut,
+                and are delivered directly from the farm.
+              </h2>
 
               <Button
                 onClick={() => router.push("/category/christmas")}

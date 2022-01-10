@@ -14,11 +14,15 @@ export default function ScriptsComponent() {
         })(window,document,'script','dataLayer','GTM-WCPZGN7');`,
         }}
       />
+
+      {/* <Script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65f7088c-22ca-4f35-b1d7-d90dcf52abeb" data-blockingmode="auto" type="text/javascript"></Script> */}
       <Script
         strategy="lazyOnload"
         type="module"
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.47/dist/shoelace.js"
       />
+
+      {/* <script id="CookieDeclaration" src="https://consent.cookiebot.com/65f7088c-22ca-4f35-b1d7-d90dcf52abeb/cd.js" type="text/javascript" async></script> */}
 
       <Head>
         <link

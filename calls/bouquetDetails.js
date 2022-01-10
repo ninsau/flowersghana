@@ -55,11 +55,11 @@ export default function BouquetDetails() {
         </>
       )}
 
-      {returned === false && (
+      {/* {returned === false && (
         <>
           <Custom404Component />
         </>
-      )}
+      )} */}
       {bouquets.map((item, i) => {
         return (
           <Fragment key={i}>
