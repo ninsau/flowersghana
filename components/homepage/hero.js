@@ -69,7 +69,7 @@ export default function Hero() {
                 variant="outlined"
                 size="large"
               >
-                Shop christmas flowers
+                Shop beautiful flowers
               </Button>
             </div>
           </Grid>
