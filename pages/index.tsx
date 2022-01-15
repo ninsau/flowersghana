@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <>
           {!session ||
           (session?.user?.email !== "cassidyblay@gmail.com" &&
-            session?.user?.email !== "Kmickey50@gmail.com") ? (
+            session?.user?.email !== "kmickey50@gmail.com") ? (
             <LandingPage />
           ) : (
             <Dashboard />
