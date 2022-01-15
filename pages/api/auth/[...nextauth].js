@@ -13,4 +13,7 @@ export default NextAuth({
   session: {
     jwt: true,
   },
+  pages: {
+    signIn: "/",
+  },
 });

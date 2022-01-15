@@ -1,19 +1,27 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Dashboard from '../components/dashboard'
+import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
+import Dashboard from "../components/dashboard";
+import LandingPage from "../components/landing";
 
 const Home: NextPage = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
+
   return (
     <>
-      <Head>
-        <title>Admin - FlowersGhana</title>
-        <meta name="description" content="Order management page for flowersGhana" />
-        <link rel="icon" href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp" />
-      </Head>
-
-      <Dashboard/>
+      {status !== "loading" && (
+        <>
+          {!session ||
+          (session?.user?.email !== "cassidyblay@gmail.com" &&
+            session?.user?.email !== "Kmickey50@gmail.com") ? (
+            <LandingPage />
+          ) : (
+            <Dashboard />
+          )}
+        </>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
