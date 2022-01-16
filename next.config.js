@@ -35,7 +35,7 @@ const securityHeaders = [
 module.exports = {
   productionBrowserSourceMaps: true,
   nextConfig,
-  swcMinify: true,
+  // swcMinify: true,
   async headers() {
     return [
       {
