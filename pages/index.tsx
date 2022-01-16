@@ -5,7 +5,6 @@ import LandingPage from "../components/landing";
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
-  console.log(session);
 
   return (
     <>

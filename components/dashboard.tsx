@@ -29,20 +29,21 @@ const Dashboard: NextPage = () => {
   }, []);
 
   const tracking = async (item: any) => {
+    let newArr: any = [];
     const track: Cart[] = await DataStore.query(Cart, (c) =>
       c.trackOrder("eq", item)
     );
     const open: any = track.map((a) => JSON.parse(a.cart || ""));
 
-    const getItem: any = open.map((b: any) => b[0]["key"]);
-
-    window.open(
-      `https://www.flowersghana.com/bouquet/${getItem[0]
-        .split(" ")
-        .join("-")
-        .toLowerCase()}`,
-      "_blank"
+    const getItem: any = open.map((b: any) =>
+      b.map((m: any, i: number) =>
+        newArr.push(m["key"].split(" ").join("-").toLowerCase())
+      )
     );
+
+    for (let index = 0; index < newArr.length; index++) {
+      window.open(`https://www.flowersghana.com/bouquet/${newArr[index]}`);
+    }
   };
 
   return (
