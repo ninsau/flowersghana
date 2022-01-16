@@ -29,12 +29,13 @@ const securityHeaders = [
   },
   { key: "Cache-Control", value: "max-age=315360000" },
   { key: "Strict-Transport-Security", value: "max-age=315360000" },
-  { key: "Content-Security-Policy", value: "script-src self" },
+  // { key: "Content-Security-Policy", value: "script-src self" },
 ];
 
 module.exports = {
   productionBrowserSourceMaps: true,
   nextConfig,
+  swcMinify: true,
   async headers() {
     return [
       {
