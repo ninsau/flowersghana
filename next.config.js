@@ -3,10 +3,10 @@ const nextConfig = {
 };
 
 const securityHeaders = [
-  {
-    key: "X-DNS-Prefetch-Control",
-    value: "on",
-  },
+  // {
+  //   key: "X-DNS-Prefetch-Control",
+  //   value: "on",
+  // },
   {
     key: "Strict-Transport-Security",
     value: "max-age=31536000; includeSubDomains; preload",
@@ -35,7 +35,7 @@ const securityHeaders = [
 module.exports = {
   productionBrowserSourceMaps: true,
   nextConfig,
-  // swcMinify: true,
+  swcMinify: true,
   async headers() {
     return [
       {
