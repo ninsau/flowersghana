@@ -27,7 +27,7 @@ const securityHeaders = [
     key: "Referrer-Policy",
     value: "origin-when-cross-origin",
   },
-  // { key: "Cache-Control", value: "max-age=315360000" },
+  { key: "Cache-Control", value: "max-age=315360000" },
   { key: "Strict-Transport-Security", value: "max-age=315360000" },
   // { key: "Content-Security-Policy", value: "script-src self" },
 ];
