@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
-import Backdrop from "../components/loader/backdrop";
+import Backdrop from "../components/loader/bouquet";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";

@@ -116,7 +116,7 @@ export default function FooterComponent() {
               {/* <Typography variant="h6" color="textPrimary" gutterBottom>
                 {footer.title}
               </Typography> */}
-              <h4 class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom">
+              <h4 className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom">
                 {footer.title}
               </h4>
               <ul>

@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import BackdropComponent from "../components/loader/backdrop";
+import BackdropComponent from "../components/loader/reviews";
 
 export default function ReviewsPage() {
   const AddReviews = dynamic(() => import("../calls/addReviews"));

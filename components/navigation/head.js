@@ -2,15 +2,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Copyright } from "./footer";
 
-export default function HeadComponent({
-  title: pageTitle,
-  image: pageImage,
-  description: pageDescription,
-}) {
+export default function HeadComponent({ title, image, description }) {
   const router = useRouter();
   let urlPath = router.asPath;
 
-  const title = {
+  const titles = {
     "/": "Send flowers to Ghana - Florist in Accra | Flowers Ghana",
     "/about": "About Us | FlowersGhana",
     "/contact": "Contact Us | FlowersGhana",
@@ -36,109 +32,52 @@ export default function HeadComponent({
   return (
     <>
       <Head>
-        {/* <!-- Primary Meta Tags --> */}
-        <title>
-          {title[urlPath]
-            ? title[urlPath]
-            : pageTitle ||
-              "Send flowers to Ghana - Florist in Accra | Flowers Ghana"}
-        </title>
-        <meta
-          name="title"
-          content={
-            title[urlPath]
-              ? title[urlPath]
-              : pageTitle ||
-                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
-          }
-        />
+        <title>{titles[urlPath] ?? title}</title>
+
+        <meta name="title" content={titles[urlPath] ?? title} />
         <meta
           name="description"
           content={
-            pageDescription
-              ? pageDescription
-              : "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
+            description ??
+            "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
           }
         />
 
-        <link
-          rel="icon"
-          href="https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
-          type="image/png"
-          sizes="16x16"
-        />
-
-        <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-          id="viewport"
-        />
-
-        <meta
-          name="keywords"
-          content="flowers, send flowers to Ghana, send flowers in Ghana, flower delivery, buy fresh flowers, rose flowers in Ghana, bouquet, flowers for sale, florist, bouquet of flowers, flowersghaha, flowers ghana, flower ghana, ghana flower, ghana flowers, gift flowers"
-        />
-
-        <meta name="copyright" content={<Copyright />} />
-
-        {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.flowersghana.com/" />
-        <meta
-          property="og:title"
-          content={
-            title[urlPath]
-              ? title[urlPath]
-              : pageTitle ||
-                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
-          }
-        />
+        <meta property="og:url" content="https://www.flowersghana.com" />
+        <meta property="og:title" content={titles[urlPath] ?? title} />
         <meta
           property="og:description"
           content={
-            pageDescription
-              ? pageDescription
-              : "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
+            description ??
+            "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
           }
         />
         <meta
           property="og:image"
           content={
-            pageImage
-              ? pageImage
-              : "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
+            image ??
+            "https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
           }
         />
 
-        {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.flowersghana.com/" />
-        <meta
-          property="twitter:title"
-          content={
-            title[urlPath]
-              ? title[urlPath]
-              : pageTitle ||
-                "Send flowers to Ghana - Florist in Accra | Flowers Ghana"
-          }
-        />
+        <meta property="twitter:url" content="https://www.flowersghana.com" />
+        <meta property="twitter:title" content={titles[urlPath] ?? title} />
         <meta
           property="twitter:description"
           content={
-            pageDescription
-              ? pageDescription
-              : "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
+            description ??
+            "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
           }
         />
         <meta
           property="twitter:image"
           content={
-            pageImage
-              ? pageImage
-              : "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
+            image ??
+            "https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
           }
-        />
+        ></meta>
 
         <script
           type="application/ld+json"

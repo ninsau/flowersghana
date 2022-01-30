@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Bouquets } from "../media/models";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Backdrop from "../components/loader/backdrop";
+import Backdrop from "../components/loader/fullpage";
 import CardHeader from "@material-ui/core/CardHeader";
 import AddToCartComponent from "../cart/addToCart";
 import { stateStore } from "../cart/store";

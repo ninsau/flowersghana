@@ -4,7 +4,7 @@ import { Reviews } from "../media/models";
 import { useRouter } from "next/router";
 import Pagin from "../components/utils/pagination";
 import { Grid } from "@material-ui/core";
-import Backdrop from "../components/loader/backdrop";
+import Backdrop from "../components/loader/reviews";
 import Custom404Component from "../components/utils/custom404";
 
 export default function FetchReviews() {

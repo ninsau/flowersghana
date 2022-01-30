@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import dynamic from "next/dynamic";
-import BackdropComponent from "../../components/loader/backdrop";
+import BackdropComponent from "../../components/loader/fullpage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
