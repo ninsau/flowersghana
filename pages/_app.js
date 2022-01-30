@@ -26,7 +26,6 @@ function MyApp({ Component, pageProps }) {
   import("../components/navigation/header")
 );
 
-
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(
@@ -44,10 +43,9 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container>
-          
+          <HeadComponent />
           <HeaderComponent />
           <Component {...pageProps} />
-          <HeadComponent />
           <FooterComponent />
         </Container>
         <ScriptsComponent />

@@ -32,9 +32,18 @@ export default function HeadComponent({ title, image, description }) {
   return (
     <>
       <Head>
-        <title>{titles[urlPath] ?? title}</title>
+        <title>
+          {(titles[urlPath] ?? title) ||
+            "Send flowers to Ghana - Florist in Accra "}
+        </title>
 
-        <meta name="title" content={titles[urlPath] ?? title} />
+        <meta
+          name="title"
+          content={
+            (titles[urlPath] ?? title) ||
+            "Send flowers to Ghana - Florist in Accra "
+          }
+        />
         <meta
           name="description"
           content={
@@ -45,36 +54,48 @@ export default function HeadComponent({ title, image, description }) {
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.flowersghana.com" />
-        <meta property="og:title" content={titles[urlPath] ?? title} />
+        <meta
+          property="og:title"
+          content={
+            (titles[urlPath] ?? title) ||
+            "Send flowers to Ghana - Florist in Accra "
+          }
+        />
         <meta
           property="og:description"
           content={
-            description ??
+            description ||
             "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
           }
         />
         <meta
           property="og:image"
           content={
-            image ??
+            image ||
             "https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
           }
         />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.flowersghana.com" />
-        <meta property="twitter:title" content={titles[urlPath] ?? title} />
+        <meta
+          property="twitter:title"
+          content={
+            (titles[urlPath] ?? title) ||
+            "Send flowers to Ghana - Florist in Accra "
+          }
+        />
         <meta
           property="twitter:description"
           content={
-            description ??
+            description ||
             "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online."
           }
         />
         <meta
           property="twitter:image"
           content={
-            image ??
+            image ||
             "https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
           }
         ></meta>

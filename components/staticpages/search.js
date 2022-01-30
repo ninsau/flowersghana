@@ -70,7 +70,10 @@ export default function SearchComponent() {
           description={`Find samples of ${slug} and we will deliver to your loved ones in Ghana.`}
         />
       ) : (
-        <title>{`Search '${searchParam}'`} | FlowersGhana</title>
+        <HeadComponent
+          title={`Find Item  | FlowersGhana`}
+          description={`Find samples and we will deliver to your loved ones in Ghana.`}
+        />
       )}
 
       <div style={{ margin: 20 }}>
