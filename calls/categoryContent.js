@@ -91,11 +91,13 @@ export default function HomeContent() {
 
   return (
     <>
-      {slug && (
-        <HeadComponent
-          description={`Ghana Flowers - Send ${slug} bouquet in Ghana. Same day and free delivery throughout Accra and Kumasi. `}
-        />
-      )}
+      {/* {slug && ( */}
+      <HeadComponent
+        description={`Ghana Flowers - Send ${
+          slug ?? "this lovely item"
+        } bouquet in Ghana. Same day and free delivery throughout Accra and Kumasi. `}
+      />
+      {/* )} */}
       {bouquets.length < 1 && returned === true && (
         <>
           <Backdrop />
@@ -131,7 +133,7 @@ export default function HomeContent() {
               </Link>
               <CardContent>
                 <Image
-                  onClick={()=>router.push(`/bouquet/${item.slug}`)}
+                  onClick={() => router.push(`/bouquet/${item.slug}`)}
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
                   width={380}
                   height={516}

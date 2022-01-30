@@ -65,7 +65,7 @@ export default function BouquetDetails() {
           <Fragment key={i}>
             <Grid m={4} item xs={12} md={5}>
               <HeadComponent
-                title={`${item.title} | FlowersGhana`}
+                title={`${item.title} | FlowersGhana` || "Not Found"}
                 image={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
                 description={item.description}
               />

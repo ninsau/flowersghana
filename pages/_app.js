@@ -7,7 +7,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import dynamic from "next/dynamic";
-import HeadComponent from "../components/navigation/head";
+// import HeadComponent from "../components/navigation/head";
 
 Amplify.configure({
   ...config,
@@ -25,6 +25,8 @@ function MyApp({ Component, pageProps }) {
   const HeaderComponent = dynamic(() =>
     import("../components/navigation/header")
   );
+
+  const HeadComponent = dynamic(() => import("../components/navigation/head"));
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
