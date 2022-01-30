@@ -23,8 +23,8 @@ function MyApp({ Component, pageProps }) {
   );
 
   const HeaderComponent = dynamic(() =>
-  import("../components/navigation/header")
-);
+    import("../components/navigation/header")
+  );
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -43,9 +43,9 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container>
-          <HeadComponent />
           <HeaderComponent />
           <Component {...pageProps} />
+          <HeadComponent />
           <FooterComponent />
         </Container>
         <ScriptsComponent />
