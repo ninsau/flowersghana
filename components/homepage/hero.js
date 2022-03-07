@@ -52,7 +52,7 @@ export default function Hero() {
                 color="inherit"
                 gutterBottom
               >
-                Send beautiful Valentine's Day flowers
+                Send someone a bouquet of beautiful flowers
               </Typography>
               {/* <Typography variant="h5" color="inherit" paragraph>
                 All our flowers and plants are freshly cut, and are delivered
