@@ -1,3 +1,5 @@
+const withPWA = require("next-pwa");
+
 const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
@@ -31,12 +33,12 @@ const securityHeaders = [
   // },
 ];
 
-module.exports = {
+module.exports = withPWA({
   productionBrowserSourceMaps: true,
   // swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "cloudinary.com"],
-    minimumCacheTTL: 7884000
+    minimumCacheTTL: 7884000,
   },
   async headers() {
     return [
@@ -46,4 +48,8 @@ module.exports = {
       },
     ];
   },
-};
+
+  pwa: {
+    dest: "public",
+  },
+});

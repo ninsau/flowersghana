@@ -38,6 +38,11 @@ export default function HeadComponent({ title, image, description }) {
         </title>
 
         <meta
+          name="google-site-verification"
+          content="sSptwoLmfmCDsOmhdYVomW_kcMKEZu4ckCfUEROyemk"
+        />
+
+        <meta
           name="title"
           content={
             (titles[urlPath] ?? title) ||
@@ -72,7 +77,7 @@ export default function HeadComponent({ title, image, description }) {
           property="og:image"
           content={
             image ||
-            "https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_50,w_50/v1626707839/flowersghanaLogo.webp"
+            "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp"
           }
         />
 

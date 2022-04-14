@@ -46,7 +46,6 @@ export default function Review() {
   const sender = senderStore((state) => state.sender);
   const [data, setData] = useState([]);
   const publicKey = "pk_live_dc752231bfcf577b0e2626cede5bda221f605179";
-  // const publicKey = "pk_live_288f6707cfb0e801f74cf3fe6f666262ec1570d1";
 
   const FetchData = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -91,9 +90,10 @@ export default function Review() {
 
   const componentProps = {
     email: sender.email,
-    amount: (totalPrice + recipient.fee) * 100,
+    amount:
+      (totalPrice + recipient.fee + (totalPrice + recipient.fee) * 0.01) * 100,
     metadata: {
-      name: sender.sfirstname,
+      name: sender.sfirstname ?? "No name",
       phone: sender.sphone,
     },
     currency: "Ghs",
@@ -136,17 +136,30 @@ export default function Review() {
               primary={product.key}
               secondary={`Quantity: ${product[0]}`}
             />
-            <Typography variant="body2">₵{product[1]}</Typography>
+            <Typography variant="body2">
+              ₵{Number.parseFloat(product[1]).toFixed(2)}
+            </Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary={"Delivery"} />
-          <Typography variant="body2">₵{recipient.fee}</Typography>
+          <Typography variant="body2">
+            ₵{Number.parseFloat(recipient.fee).toFixed(2)}
+          </Typography>
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          <ListItemText primary="Payment Proccessor Fee" />
+          <Typography variant="body2" className={classes.total}>
+            ₵{Number.parseFloat((totalPrice + recipient.fee) * 0.01).toFixed(2)}
+          </Typography>
         </ListItem>
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            ₵{totalPrice + recipient.fee}
+            ₵
+            {Number.parseFloat(
+              totalPrice + recipient.fee + (totalPrice + recipient.fee) * 0.01
+            ).toFixed(2)}
           </Typography>
         </ListItem>
       </List>
