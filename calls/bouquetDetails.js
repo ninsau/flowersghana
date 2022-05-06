@@ -19,6 +19,7 @@ export default function BouquetDetails() {
     import("../components/utils/custom404")
   );
   const CopyText = dynamic(() => import("../components/utils/copyText"));
+  const Share = dynamic(() => import("../components/utils/share"));
   const router = useRouter();
   let slug = router.query.slug;
   const [bouquets, setBouquets] = useState([]);
@@ -82,12 +83,12 @@ export default function BouquetDetails() {
 
               <CardContent>
                 <Image
-                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_387/${item.img}`}
+                  src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_516,q_100,w_387/${item.img}`}
                   alt={item.title}
                   width={387}
                   height={516}
                   quality={100}
-                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_100,w_380/${item.img}`}
+                  blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_516,q_100,w_380/${item.img}`}
                   placeholder="blur"
                 />
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -101,9 +102,16 @@ export default function BouquetDetails() {
                   ))}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Copy link:
+                  Copy/Share link:
                   <IconButton aria-label="share">
                     <CopyText textToCopy={item.slug} />
+                    <Share
+                      shareData={{
+                        title: `${item.title}`,
+                        text: `${item.description}`,
+                        url: `https://www.flowersghana.com/bouquet/${item.slug}`,
+                      }}
+                    />
                   </IconButton>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
