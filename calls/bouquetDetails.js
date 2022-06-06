@@ -70,12 +70,12 @@ export default function BouquetDetails(data) {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy/Share link:
                   <IconButton aria-label="share">
-                    <CopyText textToCopy={'item.slug'} />
+                    <CopyText textToCopy={item.slug} />
                     <Share
                       shareData={{
                         title: `${item.title}`,
                         text: `${item.description}`,
-                        url: `https://www.flowersghana.com/bouquet/`,
+                        url: `https://www.flowersghana.com/bouquet/${item.slug}`,
                       }}
                     />
                   </IconButton>
