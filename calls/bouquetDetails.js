@@ -17,14 +17,13 @@ export default function BouquetDetails(data) {
   );
   const CopyText = dynamic(() => import("../components/utils/copyText"));
   const Share = dynamic(() => import("../components/utils/share"));
-  const router = useRouter();
-  const { slug } = router.query;
+
 
   return (
     <>
-      {data.slug.length < 1 && (
+      {data.slug.length < 1&& (
         <>
-          <Custom404Component />
+         <Custom404Component />
         </>
       )}
 
@@ -71,12 +70,12 @@ export default function BouquetDetails(data) {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Copy/Share link:
                   <IconButton aria-label="share">
-                    <CopyText textToCopy={item.slug} />
+                    <CopyText textToCopy={'item.slug'} />
                     <Share
                       shareData={{
                         title: `${item.title}`,
                         text: `${item.description}`,
-                        url: `https://www.flowersghana.com/bouquet/${item.slug}`,
+                        url: `https://www.flowersghana.com/bouquet/`,
                       }}
                     />
                   </IconButton>

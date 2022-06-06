@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Copyright } from "./footer";
 
 export default function HeadComponent({ title, image, description }) {
   const router = useRouter();
@@ -28,6 +27,8 @@ export default function HeadComponent({ title, image, description }) {
     "/success": "Thank You! | FlowersGhana",
     "/contact-us": "Contact Us | FlowersGhana",
   };
+
+  // console.log(title)
 
   return (
     <>
