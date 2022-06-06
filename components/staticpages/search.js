@@ -147,8 +147,8 @@ export default function SearchComponent() {
                     />
                   </a>
 
-                  <CardContent>
-                    <a href={`/bouquet/${item.item.slug}`}>
+                  <CardContent onClick={()=> location.replace(`/bouquet/${item.item.slug}`)}>
+                    {/* <Link href={`/bouquet/${item.item.slug}`}> */}
                       <Image
                         src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.item.img}`}
                         width={380}
@@ -157,7 +157,7 @@ export default function SearchComponent() {
                         blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.item.img}`}
                         placeholder="blur"
                       />
-                    </a>
+                    {/* </Link> */}
                     <AddToCartComponent
                       itemTitle={item.item.title}
                       itemPrice={item.item.amount}

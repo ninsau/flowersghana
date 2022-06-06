@@ -28,7 +28,6 @@ export default function HeadComponent({ title, image, description }) {
     "/contact-us": "Contact Us | FlowersGhana",
   };
 
-  console.log(title)
 
   return (
     <>

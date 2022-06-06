@@ -120,7 +120,7 @@ export default function HomeContent() {
         return (
           <React.Fragment key={i}>
             <Grid item xs={6} md={4}>
-              <a href={`/bouquet/${item.slug}`}>
+              <Link href={`/bouquet/${item.slug}`}>
                 <CardHeader
                   style={{ minHeight: 100 }}
                   title={item.title}
@@ -133,10 +133,10 @@ export default function HomeContent() {
                   }
                   subheader={item.availability}
                 />
-              </a>
+              </Link>
               <CardContent>
                 <Image
-                  onClick={() => router.push(`/bouquet/${item.slug}`)}
+                  onClick={() => location.replace(`/bouquet/${item.slug}`)}
                   src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
                   width={380}
                   height={516}

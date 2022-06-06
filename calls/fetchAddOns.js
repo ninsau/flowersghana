@@ -59,7 +59,7 @@ export default function FetchAddOns() {
       {bouquets.map((item, i) => (
         <ImageListItem
           key={i}
-          onClick={() => router.push(`/bouquet/${item.slug}`)}
+          onClick={() => location.replace(`/bouquet/${item.slug}`)}
         >
           <Image
             src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.img}`}
