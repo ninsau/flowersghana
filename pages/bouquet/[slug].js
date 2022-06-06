@@ -2,6 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import dynamic from "next/dynamic";
 import BackdropComponent from "../../components/loader/bouquet";
+import { DataStore } from "aws-amplify";
+import { Bouquets } from "../../media/models";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryContent(slug) {
+export default function CategoryContent(data) {
   const classes = useStyles();
   const BouquetDetails = dynamic(() => import("../../calls/bouquetDetails"), {
     loading: () => <BackdropComponent />,
@@ -25,7 +27,7 @@ export default function CategoryContent(slug) {
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid container item xs={12}>
-            <BouquetDetails slug={slug.slug} />
+            <BouquetDetails slug={data.data} />
           </Grid>
         </Grid>
       </div>
@@ -34,7 +36,10 @@ export default function CategoryContent(slug) {
 }
 
 export async function getServerSideProps({ params }) {
+  const bouquetsData = await DataStore.query(Bouquets, (item) =>
+  item.slug("eq", params.slug)
+);
   return {
-    props: { slug: params.slug },
+    props: { data: JSON.parse(JSON.stringify(bouquetsData)) },
   };
 }

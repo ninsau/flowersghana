@@ -1,8 +1,6 @@
-import { React, useState, useEffect, Fragment } from "react";
+import { React, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
-import { DataStore } from "aws-amplify";
-import { Bouquets } from "../media/models";
-import Backdrop from "../components/loader/bouquet";
+import { useRouter } from "next/router";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,53 +11,24 @@ import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
 import Image from "next/image";
 
-export default function BouquetDetails(slug) {
+export default function BouquetDetails(data) {
   const Custom404Component = dynamic(() =>
     import("../components/utils/custom404")
   );
   const CopyText = dynamic(() => import("../components/utils/copyText"));
   const Share = dynamic(() => import("../components/utils/share"));
-
-  const [bouquets, setBouquets] = useState([]);
-  const [returned, setReturned] = useState(true);
-
-  async function fetchPosts() {
-    const bouquetsData = await DataStore.query(Bouquets, (item) =>
-      item.slug("eq", slug.slug)
-    );
-    if (bouquetsData.length < 1) {
-      setReturned(false);
-    } else {
-      setBouquets(bouquetsData);
-    }
-  }
-
-  const getSubscription = () => {
-    const subscription = DataStore.observe(Bouquets).subscribe(() =>
-      fetchPosts()
-    );
-    return () => subscription.unsubscribe();
-  };
-
-  useEffect(() => {
-    fetchPosts();
-    getSubscription();
-  }, []);
+  const router = useRouter();
+  const { slug } = router.query;
 
   return (
     <>
-      {bouquets.length < 1 && returned === true && (
-        <>
-          <Backdrop />
-        </>
-      )}
-
-      {/* {returned === false && (
+      {data.slug.length < 1 && (
         <>
           <Custom404Component />
         </>
-      )} */}
-      {bouquets.map((item, i) => {
+      )}
+
+      {data.slug.map((item, i) => {
         return (
           <Fragment key={i}>
             <Grid m={4} item xs={12} md={5}>
