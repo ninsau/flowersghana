@@ -120,7 +120,7 @@ export default function HomeContent() {
         return (
           <React.Fragment key={i}>
             <Grid item xs={6} md={4}>
-              <Link href={`/bouquet/${item.slug}`}>
+              <a href={`/bouquet/${item.slug}`}>
                 <CardHeader
                   style={{ minHeight: 100 }}
                   title={item.title}
@@ -133,7 +133,7 @@ export default function HomeContent() {
                   }
                   subheader={item.availability}
                 />
-              </Link>
+              </a>
               <CardContent>
                 <Image
                   onClick={() => router.push(`/bouquet/${item.slug}`)}

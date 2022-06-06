@@ -132,7 +132,7 @@ export default function SearchComponent() {
             {result.map((item, i) => {
               return (
                 <Grid item xs={6} md={4} key={i}>
-                  <Link href={`/bouquet/${item.item.slug}`}>
+                  <a href={`/bouquet/${item.item.slug}`}>
                     <CardHeader
                       style={{ minHeight: 100 }}
                       title={item.item.title}
@@ -145,10 +145,10 @@ export default function SearchComponent() {
                       }
                       subheader={item.item.availability}
                     />
-                  </Link>
+                  </a>
 
                   <CardContent>
-                    <Link href={`/bouquet/${item.item.slug}`}>
+                    <a href={`/bouquet/${item.item.slug}`}>
                       <Image
                         src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_516,q_auto,w_380/${item.item.img}`}
                         width={380}
@@ -157,7 +157,7 @@ export default function SearchComponent() {
                         blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,h_10,q_40,w_6/${item.item.img}`}
                         placeholder="blur"
                       />
-                    </Link>
+                    </a>
                     <AddToCartComponent
                       itemTitle={item.item.title}
                       itemPrice={item.item.amount}
