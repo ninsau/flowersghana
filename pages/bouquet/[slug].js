@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryContent() {
+export default function CategoryContent(slug) {
   const classes = useStyles();
   const BouquetDetails = dynamic(() => import("../../calls/bouquetDetails"), {
     loading: () => <BackdropComponent />,
@@ -25,10 +25,16 @@ export default function CategoryContent() {
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid container item xs={12}>
-            <BouquetDetails />
+            <BouquetDetails slug={slug.slug} />
           </Grid>
         </Grid>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  return {
+    props: { slug: params.slug },
+  };
 }

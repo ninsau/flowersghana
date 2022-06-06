@@ -2,7 +2,6 @@ import { React, useState, useEffect, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import { DataStore } from "aws-amplify";
 import { Bouquets } from "../media/models";
-import { useRouter } from "next/router";
 import Backdrop from "../components/loader/bouquet";
 import { Typography } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -14,20 +13,19 @@ import dynamic from "next/dynamic";
 import HeadComponent from "../components/navigation/head";
 import Image from "next/image";
 
-export default function BouquetDetails() {
+export default function BouquetDetails(slug) {
   const Custom404Component = dynamic(() =>
     import("../components/utils/custom404")
   );
   const CopyText = dynamic(() => import("../components/utils/copyText"));
   const Share = dynamic(() => import("../components/utils/share"));
-  const router = useRouter();
-  let slug = router.query.slug;
+
   const [bouquets, setBouquets] = useState([]);
   const [returned, setReturned] = useState(true);
 
   async function fetchPosts() {
     const bouquetsData = await DataStore.query(Bouquets, (item) =>
-      item.slug("eq", slug)
+      item.slug("eq", slug.slug)
     );
     if (bouquetsData.length < 1) {
       setReturned(false);
