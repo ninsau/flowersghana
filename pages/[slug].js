@@ -11,6 +11,7 @@ export default function Info() {
   const slug = router.query.slug;
   return (
     <>
+      <HeadComponent />
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} style={{ margin: 30 }}>

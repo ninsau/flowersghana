@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import BackdropComponent from "../components/loader/backdrop";
 import React from "react";
+import HeadComponent from "../components/navigation/head";
 // import { useRouter } from "next/router";
 // import Typography from "@material-ui/core/Typography";
 // import Container from "@material-ui/core/Container";
@@ -10,12 +11,18 @@ import React from "react";
 // import Link from "next/link";
 
 export default function Checkout() {
-  const CheckoutComponent = dynamic(() =>
-    import("../components/checkout/checkout"),  {
-      loading: () => <BackdropComponent/>
+  const CheckoutComponent = dynamic(
+    () => import("../components/checkout/checkout"),
+    {
+      loading: () => <BackdropComponent />,
     }
   );
-  return <CheckoutComponent />;
+  return (
+    <>
+      <HeadComponent />
+      <CheckoutComponent />
+    </>
+  );
 
   // return (
   //   <Container>

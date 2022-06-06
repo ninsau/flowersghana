@@ -150,7 +150,7 @@ export default function Review() {
         <ListItem className={classes.listItem}>
           <ListItemText primary="Payment Proccessor Fee" />
           <Typography variant="body2" className={classes.total}>
-            ₵{Number.parseFloat((totalPrice + recipient.fee) * 0.01).toFixed(2)}
+            ₵{Number.parseFloat((totalPrice + recipient.fee) * 0.0195).toFixed(2)}
           </Typography>
         </ListItem>
         <ListItem className={classes.listItem}>
@@ -158,7 +158,7 @@ export default function Review() {
           <Typography variant="subtitle1" className={classes.total}>
             ₵
             {Number.parseFloat(
-              totalPrice + recipient.fee + (totalPrice + recipient.fee) * 0.01
+              totalPrice + recipient.fee + (totalPrice + recipient.fee) * 0.0195
             ).toFixed(2)}
           </Typography>
         </ListItem>

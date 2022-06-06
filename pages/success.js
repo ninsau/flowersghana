@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import HeadComponent from "../components/navigation/head";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,8 @@ export default function Success() {
 
   return (
     <>
+    <HeadComponent/>
+
       <div className={classes.root}>
         <Grid>
           <Grid

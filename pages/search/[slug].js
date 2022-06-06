@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import BackdropComponent from "../../components/loader/fullpage";
+import HeadComponent from "../../components/navigation/head";
 
 export default function Search() {
   const SearchComponent = dynamic(
@@ -11,6 +12,7 @@ export default function Search() {
 
   return (
     <>
+      <HeadComponent />
       <SearchComponent />
     </>
   );

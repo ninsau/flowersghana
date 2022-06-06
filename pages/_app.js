@@ -7,7 +7,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import dynamic from "next/dynamic";
-import HeadComponent from "../components/navigation/head";
 
 Amplify.configure({
   ...config,
@@ -43,7 +42,6 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container>
-          <HeadComponent />
           <HeaderComponent />
           <Component {...pageProps} />
           <FooterComponent />

@@ -2,6 +2,7 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Link from "@material-ui/core/Link";
+import HeadComponent from "../components/navigation/head";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +17,7 @@ export default function Contact() {
 
   return (
     <>
+      <HeadComponent />
       <div className={classes.root}>
         <Grid>
           <Grid
