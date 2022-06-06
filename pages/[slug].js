@@ -5,13 +5,14 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { textData } from "../store/textData";
 import Custom404Component from "../components/utils/custom404";
+import HeadComponent from "../components/navigation/head";
 
 export default function Info() {
   const router = useRouter();
   const slug = router.query.slug;
   return (
     <>
-      <HeadComponent />
+      <HeadComponent/>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} style={{ margin: 30 }}>
