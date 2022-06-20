@@ -19,6 +19,7 @@ const Product = (data: ProductsType) => {
               key={i}
               title={`${product.title} | ${BRAND_NAME}`}
               image={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
+              description={product.description}
             />
           ))}
           <ProductComponent {...data} />
