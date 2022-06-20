@@ -25,10 +25,9 @@ const CartIconComponent = () => {
   return (
     <>
       <div className="flow-root">
-        <a
-          style={{ cursor: "pointer" }}
+        <span
           onClick={() => setOpen(!open)}
-          className="group -m-2 p-2 flex items-center"
+          className="group -m-2 p-2 flex items-center cursor"
         >
           <ShoppingCartIcon
             className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
@@ -44,7 +43,7 @@ const CartIconComponent = () => {
             {count}
           </span>
           <span className="sr-only">items in cart, view bag</span>
-        </a>
+        </span>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import { withSSRContext } from "aws-amplify";
 import { Bouquets } from "../../src/models";
 import { ProductsType } from "../../lib/types";
 import MetaComponent from "../../components/Meta";
-import { BRAND_NAME, BRAND_URL } from "../../lib";
+import { BRAND_NAME } from "../../lib";
 import PageNotFound from "../404";
 import AdditionsComponent from "../../components/Additions";
 
@@ -18,7 +18,7 @@ const Product = (data: ProductsType) => {
             <MetaComponent
               key={i}
               title={`${product.title} | ${BRAND_NAME}`}
-              url={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
+              image={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
             />
           ))}
           <ProductComponent {...data} />
