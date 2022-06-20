@@ -154,3 +154,13 @@ export const regionList = [
   "Western",
   "Western North",
 ];
+
+export const copyText = (url: string) => {
+  navigator.clipboard.writeText(
+    `https://www.flowersghana.com/product/${url}`
+  );
+};
+
+export  const share = (data:any) => {
+  navigator.share(data)
+};
