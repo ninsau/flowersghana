@@ -26,7 +26,7 @@ const ProductComponent = (data: ProductsType) => {
 
                   <div className="flex items-center">
                     <p className="text-lg text-gray-900 sm:text-xl">
-                    ${product.price}
+                    ₵{product.amount}
                     </p>
                   </div>
 
@@ -52,7 +52,7 @@ const ProductComponent = (data: ProductsType) => {
               <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
                 <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
                   <ProductImageComponent
-                    src={product.image}
+                    src={product.img}
                     alt={`${product.title} image`}
                   />
                 </div>

@@ -1,0 +1,90 @@
+type CheckoutNew @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  email: String
+  firstName: String
+  lastName: String
+  address: String
+  apartment: String
+  city: String
+  region: String
+  phone: String
+  note: String
+  instructions: String
+  amount: String
+  cart: String
+  status: String
+  tracking: String
+  trackingID: String
+  deliveryDate: String
+  senderPhone: String
+}
+
+type InfoPages @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  page: String
+  header: String
+}
+
+type Sale @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  buttonText: String
+}
+
+type Banner @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  content: String
+}
+
+type Users @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  email: String
+}
+
+type Cart @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  trackOrder: String
+  cart: String
+}
+
+type Checkout @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstname: String
+  lastname: String
+  calender: String
+  city: String
+  email: String
+  fee: Int
+  insturctions: String
+  location: String
+  location2: String
+  note: String
+  phone: String
+  region: String
+  sfirstname: String
+  sphone: String
+  paymentMade: Boolean
+  trackOrder: String
+}
+
+type Reviews @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  review: String
+}
+
+type Bouquets @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  img: String
+  title: String
+  description: String
+  availability: String
+  amount: Int
+  slug: String
+  tags: String
+  category: String
+}
+ 

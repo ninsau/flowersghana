@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, Fragment } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import localforage from "localforage";
-import { CartContentType } from "../lib/types";
-import { BRAND_NAME, classNames, deliveryMethods } from "../lib";
+import { CartContentType, CurrencyType } from "../lib/types";
+import { classNames, deliveryMethods, regionList } from "../lib";
 import { Formik, Field, Form } from "formik";
 import NotificationComponent from "./Notification";
 import { useSession } from "next-auth/react";
 import * as yup from "yup";
 import "yup-phone";
-import { stripeCheckout } from "../lib/api-helper";
 import { DataStore } from "aws-amplify";
-import { Checkout } from "../src/models";
+import { CheckoutNew } from "../src/models";
+import { PaystackButton } from "react-paystack";
+import { Dialog, Transition } from "@headlessui/react";
+import { CheckIcon } from "@heroicons/react/outline";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -21,12 +23,36 @@ const CheckoutComponent = () => {
   );
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = React.useState<any>(null);
-  const [deliveryPrice, setDeliveryPrice] = React.useState(5);
-  const tax: number = 0.15;
+  const [deliveryPrice, setDeliveryPrice] = React.useState(0);
   const { data: session } = useSession();
   const userEmail = session && session?.user?.email ? session?.user?.email : "";
+  // const userPhone = session && session?.user?.phone_number ? session?.user?.phone_number : "";
+  const userPhone = "";
   const phoneRegExp =
     /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
+  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_KEY as unknown as string;
+
+  const [open, setOpen] = useState(false);
+  const [values, setValues] = useState<any>({
+    email: userEmail,
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment: "",
+    city: "",
+    region: "Greater Accra",
+    phone: "",
+    senderPhone: userPhone,
+    note: "",
+    instructions: "",
+    amount: "",
+    cart: JSON.stringify(products),
+    status: "Not paid",
+    tracking: "Order placed",
+    trackingID: "",
+    calendar: "",
+  });
 
   const ValidationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email"),
@@ -60,33 +86,33 @@ const CheckoutComponent = () => {
       .max(25, "City should be of maximum 20 characters length")
       .required("City is required"),
 
-    country: yup
-      .string()
-      .min(2, "Country should be of minimum 2 characters length")
-      .max(25, "Country should be of maximum 20 characters length")
-      .required("Country is required"),
-
     region: yup
       .string()
       .min(2, "Region should be of minimum 2 characters length")
       .max(40, "Region should be of maximum 40 characters length")
       .required("Region is required"),
 
-    zip: yup
-      .string()
-      .min(2, "zip should be of minimum 2 characters length")
-      .max(40, "zip should be of maximum 40 characters length")
-      .required("zip is required"),
-
     instructions: yup
       .string()
       .min(2, "instructions should be of minimum 2 characters length")
       .max(40, "instructions should be of maximum 280 characters length"),
 
+    note: yup
+      .string()
+      .min(2, "note should be of minimum 2 characters length")
+      .max(40, "note should be of maximum 280 characters length"),
+
     phone: yup
       .string()
-      .matches(phoneRegExp, "Phone number is not valid")
+      .phone("GH", true, "Please provide a Ghanaian Phone Number")
       .required("Phone number is required"),
+
+    senderPhone: yup
+      .string()
+      .matches(phoneRegExp, "Your phone number is not valid")
+      .required("Phone number is required"),
+
+    calendar: yup.date().required("Date of delivery is required"),
   });
 
   const fetchCartContent = async () => {
@@ -104,7 +130,8 @@ const CheckoutComponent = () => {
   const sum = products?.reduce((a: any, b: any) => a + b.price, 0);
   const totalPrice: number = sum ? sum : 0;
 
-  const finalPrice = deliveryPrice + totalPrice + tax;
+  const finalPrice =
+    deliveryPrice + totalPrice + 0.0195 * (deliveryPrice + totalPrice);
 
   const initialValues = {
     email: userEmail,
@@ -113,16 +140,41 @@ const CheckoutComponent = () => {
     address: "",
     apartment: "",
     city: "",
-    country: "United States",
-    region: "",
-    zip: "",
+    region: "Greater Accra",
     phone: "",
+    senderPhone: userPhone,
+    note: "",
     instructions: "",
     amount: "",
     cart: JSON.stringify(products),
     status: "Not paid",
     tracking: "Order placed",
     trackingID: "",
+    calendar: "",
+  };
+
+  const completeCheckout = async () => {
+    try {
+      setOpen(false);
+      await DataStore.save(new CheckoutNew(values));
+      await localforage.clear();
+      localStorage.clear()
+    } catch (error) {
+      console.log(error);
+    } finally {
+      location.replace(`/result?trackingID=${values.trackingID}`);
+    }
+  };
+
+  const currency: CurrencyType = "GHS";
+
+  const componentProps = {
+    email: values.email as string,
+    amount: (finalPrice * 100),
+    currency: currency,
+    publicKey,
+    text: "Proceed to payment",
+    onSuccess: () => completeCheckout(),
   };
 
   useEffect(() => {
@@ -140,7 +192,7 @@ const CheckoutComponent = () => {
               validationSchema={ValidationSchema}
               enableReinitialize
               initialValues={initialValues}
-              onSubmit={async (values, { resetForm }) => {
+              onSubmit={async (values) => {
                 await new Promise((resolve) => setTimeout(resolve, 500));
                 setLoading(true);
                 values.amount = JSON.stringify(finalPrice);
@@ -148,23 +200,12 @@ const CheckoutComponent = () => {
                   Math.random() * (100000 - 100 + 1) + 100
                 )}`;
                 try {
-                  await DataStore.save(new Checkout(values));
-                  await stripeCheckout({
-                    line: {
-                      name: `Order for ${values.firstName} ${values.trackingID}`,
-                      description: `Your complete order from ${BRAND_NAME}`,
-                      amount: (finalPrice * 100).toFixed(0),
-                      quantity: 1,
-                      currency: "usd",
-                    },
-                    client_reference_id: values.trackingID,
-                    customer_email: values.email,
-                  });
+                  setValues(values);
+                  setOpen(true);
                 } catch (err: any) {
                   console.log(err);
                 } finally {
                   setLoading(false);
-                  resetForm();
                 }
               }}
             >
@@ -203,6 +244,87 @@ const CheckoutComponent = () => {
                         </div>
                       </div>
 
+                      <div className="sm:col-span-2">
+                        <label
+                          htmlFor="senderPhone"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Your Phone Number
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            type="tel"
+                            name="senderPhone"
+                            id="senderPhone"
+                            autoComplete="tel"
+                            className={`block w-full border-gray-300 rounded-md shadow-sm ${
+                              errors.senderPhone && touched.senderPhone
+                                ? "focus:ring-red-500 focus:border-red-500"
+                                : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            } `}
+                          />
+                          {errors.senderPhone && touched.senderPhone && (
+                            <span className="text-red-500 hover:text-red-700">
+                              {errors.senderPhone}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="mt-4">
+                        <label
+                          htmlFor="date-address"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Delivery Date
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            type="date"
+                            id="calendar-address"
+                            name="calendar"
+                            autoComplete="calendar"
+                            className={`block w-full border-gray-300 rounded-md shadow-sm ${
+                              errors.calendar && touched.calendar
+                                ? "focus:ring-red-500 focus:border-red-500"
+                                : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            } `}
+                          />
+                          {errors.calendar && touched.calendar && (
+                            <span className="text-red-500 hover:text-red-700">
+                              {errors.calendar}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="mt-4">
+                        <label
+                          htmlFor="email-address"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Note
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            name="note"
+                            rows={4}
+                            id="note"
+                            className={`block w-full border-gray-300 rounded-md shadow-sm ${
+                              errors.note && touched.note
+                                ? "focus:ring-red-500 focus:border-red-500"
+                                : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            } `}
+                            as={Custom}
+                          />
+                          {errors.note && touched.note && (
+                            <span className="text-red-500 hover:text-red-700">
+                              {errors.note}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
                       <div className="mt-4">
                         <label
                           htmlFor="email-address"
@@ -234,7 +356,7 @@ const CheckoutComponent = () => {
 
                     <div className="mt-10 border-t border-gray-200 pt-10">
                       <h2 className="text-lg font-medium text-gray-900">
-                        Shipping information
+                        Recipient information
                       </h2>
 
                       <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
@@ -374,84 +496,32 @@ const CheckoutComponent = () => {
 
                         <div>
                           <label
-                            htmlFor="country"
+                            htmlFor="region"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Country
+                            Region
                           </label>
                           <div className="mt-1">
                             <Field
                               as="select"
-                              id="country"
-                              name="country"
-                              autoComplete="country-name"
-                              className={`block w-full border-gray-300 rounded-md shadow-sm ${
-                                errors.country && touched.country
-                                  ? "focus:ring-red-500 focus:border-red-500"
-                                  : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                              } `}
-                            >
-                              <option selected>United States</option>
-                              <option>Canada</option>
-                              <option>Mexico</option>
-                            </Field>
-                            {errors.country && touched.country && (
-                              <span className="text-red-500 hover:text-red-700">
-                                {errors.country}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="region"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            State / Province
-                          </label>
-                          <div className="mt-1">
-                            <Field
-                              type="text"
-                              name="region"
                               id="region"
-                              autoComplete="address-level1"
+                              name="region"
+                              autoComplete="region-name"
                               className={`block w-full border-gray-300 rounded-md shadow-sm ${
                                 errors.region && touched.region
                                   ? "focus:ring-red-500 focus:border-red-500"
                                   : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
                               } `}
-                            />
+                            >
+                              {regionList.map((region, i: number) => (
+                                <option key={i} selected>
+                                  {region}
+                                </option>
+                              ))}
+                            </Field>
                             {errors.region && touched.region && (
                               <span className="text-red-500 hover:text-red-700">
                                 {errors.region}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="postal-code"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Postal code
-                          </label>
-                          <div className="mt-1">
-                            <Field
-                              type="text"
-                              name="zip"
-                              id="postal-code"
-                              autoComplete="postal-code"
-                              className={`block w-full border-gray-300 rounded-md shadow-sm ${
-                                errors.zip && touched.zip
-                                  ? "focus:ring-red-500 focus:border-red-500"
-                                  : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                              } `}
-                            />
-                            {errors.zip && touched.zip && (
-                              <span className="text-red-500 hover:text-red-700">
-                                {errors.zip}
                               </span>
                             )}
                           </div>
@@ -466,7 +536,7 @@ const CheckoutComponent = () => {
                           </label>
                           <div className="mt-1">
                             <Field
-                              type="text"
+                              type="tel"
                               name="phone"
                               id="phone"
                               autoComplete="tel"
@@ -535,7 +605,7 @@ const CheckoutComponent = () => {
                                         as="span"
                                         className="mt-6 text-sm font-medium text-gray-900"
                                       >
-                                        ${deliveryMethod.price}
+                                        ₵{deliveryMethod.price}
                                       </RadioGroup.Description>
                                     </span>
                                   </span>
@@ -575,7 +645,7 @@ const CheckoutComponent = () => {
                         <li key={i} className="flex py-6 px-4 sm:px-6">
                           <div className="flex-shrink-0">
                             <img
-                              src={product.image}
+                              src={`https://res.cloudinary.com/deyudesls/image/upload/${product.image}`}
                               alt={`${product.title} image`}
                               className="w-20 rounded-md"
                               loading="lazy"
@@ -591,7 +661,7 @@ const CheckoutComponent = () => {
 
                             <div className="flex-1 pt-2 flex items-end justify-between">
                               <p className="mt-1 text-sm font-medium text-gray-900">
-                                ${product.price}
+                                ₵{product.price}
                               </p>
 
                               <div className="ml-4">
@@ -610,25 +680,25 @@ const CheckoutComponent = () => {
                         <div className="flex items-center justify-between">
                           <dt className="text-sm">Subtotal</dt>
                           <dd className="text-sm font-medium text-gray-900">
-                            ${totalPrice}
+                            ₵{totalPrice.toFixed(2)}
                           </dd>
                         </div>
                         <div className="flex items-center justify-between">
                           <dt className="text-sm">Shipping</dt>
                           <dd className="text-sm font-medium text-gray-900">
-                            ${deliveryPrice}
+                            ₵{deliveryPrice.toFixed(2)}
                           </dd>
                         </div>
                         <div className="flex items-center justify-between">
                           <dt className="text-sm">Taxes</dt>
                           <dd className="text-sm font-medium text-gray-900">
-                            ${tax}
+                            ₵{(0.0195 * totalPrice).toFixed(2)}
                           </dd>
                         </div>
                         <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                           <dt className="text-base font-medium">Total</dt>
                           <dd className="text-base font-medium text-gray-900">
-                            ${finalPrice}
+                            ₵{finalPrice.toFixed(2)}
                           </dd>
                         </div>
                       </dl>
@@ -680,6 +750,67 @@ const CheckoutComponent = () => {
           color="red"
         />
       )}
+
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+                  <div>
+                    <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                      <CheckIcon
+                        className="h-6 w-6 text-green-600"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div className="mt-3 text-center sm:mt-5">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg leading-6 font-medium text-gray-900"
+                      >
+                        Order created successfully
+                      </Dialog.Title>
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">
+                          Please allow the page to reload after you make
+                          payment.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-5 sm:mt-6">
+                    <PaystackButton
+                      className={"paystack-button"}
+                      {...componentProps}
+                    />
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
     </>
   );
 };

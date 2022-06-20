@@ -14,17 +14,17 @@ const FooterComponent: NextPage = () => {
           <div className="border-t border-gray-200">
             <div className="pt-16 pb-20">
               <div className="md:flex md:justify-center">
-                <LogoComponent height={100} width={100} />
+                <LogoComponent height={100} width={150} />
               </div>
               <div className="mt-16 max-w-5xl mx-auto xl:grid xl:grid-cols-2 xl:gap-8">
                 <div className="grid grid-cols-2 gap-8 xl:col-span-2">
                   <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
                     <div>
                       <h3 className="text-sm font-medium text-gray-900">
-                        Products
+                        Socials
                       </h3>
                       <ul role="list" className="mt-6 space-y-6">
-                        {footerNavigation.products.map((item) => (
+                        {footerNavigation.social.map((item) => (
                           <li key={item.name} className="text-sm">
                             <Link
                               href={item.href}
@@ -121,7 +121,7 @@ const FooterComponent: NextPage = () => {
                   className="flex items-center text-gray-500 hover:text-gray-600"
                 >
                   <FlagImageComponent />
-                  <span className="ml-3 text-sm">USA</span>
+                  <span className="ml-3 text-sm">GHANA</span>
                   <span className="sr-only">location and currency</span>
                 </a>
               </div>

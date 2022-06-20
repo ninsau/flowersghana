@@ -1,6 +1,6 @@
 import ProductComponent from "../../components/Product";
 import { withSSRContext } from "aws-amplify";
-import { Products } from "../../src/models";
+import { Bouquets } from "../../src/models";
 import { ProductsType } from "../../lib/types";
 import MetaComponent from "../../components/Meta";
 import { BRAND_NAME, BRAND_URL } from "../../lib";
@@ -18,7 +18,7 @@ const Product = (data: ProductsType) => {
             <MetaComponent
               key={i}
               title={`${product.title} | ${BRAND_NAME}`}
-              url={`${product.image}`}
+              url={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
             />
           ))}
           <ProductComponent {...data} />
@@ -33,7 +33,7 @@ export default Product;
 
 export async function getServerSideProps({ req, params }: any) {
   const SSR = withSSRContext({ req });
-  const data = await SSR.DataStore.query(Products, (item: any) =>
+  const data = await SSR.DataStore.query(Bouquets, (item: any) =>
     item.slug("eq", params.slug)
   );
 

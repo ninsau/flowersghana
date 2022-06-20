@@ -1,15 +1,25 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-fosuaawholegreenfood-dev-135110-authRole",
-      "UnauthRoleArn": "arn:aws:iam::476751718238:role/amplify-fosuaawholegreenfood-dev-135110-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::476751718238:role/amplify-fosuaawholegreenfood-dev-135110-authRole",
+      "AuthRoleName": "amplify-amplify0527a45fa1ed4-staging-20832-authRole",
+      "UnauthRoleArn": "arn:aws:iam::476751718238:role/amplify-amplify0527a45fa1ed4-staging-20832-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::476751718238:role/amplify-amplify0527a45fa1ed4-staging-20832-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-fosuaawholegreenfood-dev-135110-deployment",
-      "UnauthRoleName": "amplify-fosuaawholegreenfood-dev-135110-unauthRole",
-      "StackName": "amplify-fosuaawholegreenfood-dev-135110",
-      "StackId": "arn:aws:cloudformation:us-east-1:476751718238:stack/amplify-fosuaawholegreenfood-dev-135110/938b2320-e01f-11ec-a5df-0e8fc0582e9d",
-      "AmplifyAppId": "dx26bot97snat"
+      "DeploymentBucketName": "amplify-amplify0527a45fa1ed4-staging-20832-deployment",
+      "UnauthRoleName": "amplify-amplify0527a45fa1ed4-staging-20832-unauthRole",
+      "StackName": "amplify-amplify0527a45fa1ed4-staging-20832",
+      "StackId": "arn:aws:cloudformation:us-east-1:476751718238:stack/amplify-amplify0527a45fa1ed4-staging-20832/63ce8830-e448-11eb-87ae-0ef76ddd227b",
+      "AmplifyAppId": "d1narmfy9npl2x"
+    },
+    "categories": {
+      "auth": {
+        "flowersghana": {
+          "userPoolId": "us-east-1_CtFFhgDSv",
+          "userPoolName": "fosuaa",
+          "webClientId": "4kk9svakp66d7kj8af2357hhp",
+          "nativeClientId": "4kk9svakp66d7kj8af2357hhp"
+        }
+      }
     }
   }
 }

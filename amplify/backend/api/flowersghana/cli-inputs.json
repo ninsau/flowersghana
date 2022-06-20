@@ -1,9 +1,7 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "fosuaawholegreenfood",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-e5dbe460-0d24-4694-9039-a1d704db3569/amplify/backend/api/fosuaawholegreenfood/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -18,6 +16,8 @@
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
       }
-    }
+    },
+    "apiName": "flowersghana",
+    "gqlSchemaPath": "/tmp/amplify-542cfb5f-01b8-45b9-a200-05ab020bdf89/amplify/backend/api/flowersghana/schema.graphql"
   }
 }

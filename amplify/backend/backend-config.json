@@ -1,9 +1,8 @@
 {
   "api": {
-    "fosuaawholegreenfood": {
+    "flowersghana": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
@@ -19,8 +18,17 @@
             }
           ]
         }
-      }
+      },
+      "dependsOn": []
     }
   },
-  "auth": {}
+  "auth": {
+    "flowersghana": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
 }

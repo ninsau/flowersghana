@@ -42,9 +42,9 @@ const AddToCartComponent = (product: ProductType) => {
 
           try {
             localforage.setItem(product.title, {
-              image: product.image,
+              image: product.img,
               title: product.title,
-              price: (parseInt(product.price) * values.quantity),
+              price: (parseInt(product.amount) * values.quantity),
               quantity: values.quantity,
               availabilty: product.availability,
               slug: product.slug,

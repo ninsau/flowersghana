@@ -3,12 +3,12 @@ import _ from "lodash";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useData } from "../lib/hooks";
-import { Products } from "../src/models";
+import { Bouquets } from "../src/models";
 import { CategoryImageComponent } from "./Images";
 import NotificationComponent from "./Notification";
 
 const SearchComponent = (data: any) => {
-  const searchItems = useData(Products);
+  const searchItems = useData(Bouquets);
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
   const slug = data.data;
@@ -55,7 +55,7 @@ const SearchComponent = (data: any) => {
                 type="text"
                 name="text"
                 id="text"
-                onChange={_.debounce((e) => setSearchTerm(e.target.value), 100)}
+                onChange={_.debounce((e) => setSearchTerm(e.target.value), 900)}
                 className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 placeholder="Search keyword(s)"
                 defaultValue={searchTerm}
@@ -74,13 +74,13 @@ const SearchComponent = (data: any) => {
                   >
                     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
                       <CategoryImageComponent
-                        src={product.item.image}
+                        src={product.item.img}
                         alt={`${product.item.title} image`}
                       />
                     </div>
                     <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
                       <h3>{product.item.title}</h3>
-                      <p>${product.item.price}</p>
+                      <p>₵{product.item.amount}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">
                       {product.item.availability}

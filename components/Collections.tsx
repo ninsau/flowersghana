@@ -16,13 +16,13 @@ const CollectionsComponent = (data: ProductsType) => {
               <a key={i} href={`/product/${product.slug}`} className="group">
                 <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
                   <CategoryImageComponent
-                    src={product.image as unknown as string}
+                    src={product.img as unknown as string}
                     alt={`${product.title} image`}
                   />
                 </div>
                 <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
                   <h3>{product.title}</h3>
-                  <p>${product.price}</p>
+                  <p>₵{product.amount}</p>
                 </div>
                 <p className="mt-1 text-sm italic text-gray-500">
                   {product.availability}

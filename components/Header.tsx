@@ -18,6 +18,7 @@ import Banner from "./Banner";
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
+  
 
   return (
     <>
@@ -250,7 +251,7 @@ const HeaderComponent: NextPage = () => {
       <header className="relative z-10">
         <nav aria-label="Top">
           {/* Top navigation */}
-          <div className="bg-red-900">
+          <div className="bg-red-800">
             <div className="max-w-7xl mx-auto h-10 px-4 flex items-center justify-between sm:px-6 lg:px-8">
               {/* Currency selector */}
               <form className="hidden lg:block lg:flex-1">
@@ -337,7 +338,7 @@ const HeaderComponent: NextPage = () => {
                     <Link href="/">
                       <div style={{ cursor: "pointer" }}>
                         <span className="sr-only">{BRAND_NAME}</span>
-                        <LogoComponent height={50} width={50} />
+                        <LogoComponent height={50} width={100} />
                       </div>
                     </Link>
                   </div>
@@ -479,7 +480,7 @@ const HeaderComponent: NextPage = () => {
                     </button>
 
                     {/* Search */}
-                    <Link href="/search/s">
+                    <Link href="/search/z">
                       <div className="ml-2 p-2 text-gray-400 hover:text-gray-500 cursor">
                         <span className="sr-only">Search</span>
                         <SearchIcon className="w-6 h-6" aria-hidden="true" />
@@ -491,7 +492,7 @@ const HeaderComponent: NextPage = () => {
                   <Link href="/">
                     <div className="lg:hidden" style={{ cursor: "pointer" }}>
                       <span className="sr-only">{BRAND_NAME}</span>
-                      <LogoComponent height={50} width={50} />
+                      <LogoComponent height={50} width={100} />
                     </div>
                   </Link>
 
@@ -499,7 +500,7 @@ const HeaderComponent: NextPage = () => {
                     <div className="flex items-center lg:ml-8">
                       <div className="flex space-x-8">
                         <div className="hidden lg:flex">
-                          <Link href="/search/s">
+                          <Link href="/search/z">
                             <div className="-m-2 p-2 text-gray-400 hover:text-gray-500">
                               <span className="sr-only">Search</span>
                               <SearchIcon

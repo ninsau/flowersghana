@@ -13,7 +13,7 @@ export type ImageType = {
 };
 
 export type FooterType = {
-  products: Array<{ name: string; href: string }>;
+  social: Array<{ name: string; href: string }>;
   customerService: Array<{ name: string; href: string }>;
   company: Array<{ name: string; href: string }>;
   legal: Array<{ name: string; href: string }>;
@@ -41,8 +41,8 @@ export type InfosType = {
 export type ProductsType = {
   products: Array<{
     title: string;
-    price: string;
-    image: string;
+    amount: string;
+    img: string;
     tags: string;
     availability: string;
     category: string;
@@ -54,8 +54,8 @@ export type ProductsType = {
 
 export type ProductType = {
   title: string;
-  price: string;
-  image: string;
+  amount: string;
+  img: string;
   tags: string;
   availability: string;
   category: string;
@@ -85,4 +85,25 @@ export type CartStateType = {
 export type NotificationsType = {
   content: string;
   color: string;
+};
+
+export type CurrencyType = "NGN" | "GHS" | "USD" | "ZAR";
+
+export type ValuesType = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  apartment: string;
+  city: string;
+  region: string;
+  phone: string;
+  note: string;
+  instructions: string;
+  amount: string;
+  cart: string;
+  status: string;
+  tracking: string;
+  trackingID: string;
+  calendar: string;
 };

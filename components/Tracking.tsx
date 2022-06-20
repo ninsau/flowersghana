@@ -1,7 +1,7 @@
 import { CheckCircleIcon } from "@heroicons/react/solid";
 
 import { DataStore } from "aws-amplify";
-import { Checkout, Reviews } from "../src/models";
+import { CheckoutNew } from "../src/models";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 import { useSession } from "next-auth/react";
@@ -40,7 +40,7 @@ const TrackingComponent = () => {
         onSubmit={async (values) => {
           await new Promise((resolve) => setTimeout(resolve, 500));
           try {
-            const data = await DataStore.query(Checkout, (item: any) =>
+            const data = await DataStore.query(CheckoutNew, (item: any) =>
               item.and((item: any) =>
                 item.email("eq", values.email).trackingID("eq", values.tracking)
               )

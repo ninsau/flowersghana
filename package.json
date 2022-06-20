@@ -1,6 +1,6 @@
 {
-  "name": "fosuaawholegreenfoods",
-  "version": "0.1.0",
+  "name": "flowersghana",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,6 +26,7 @@
     "next-pwa": "^5.5.4",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-paystack": "^3.0.5",
     "stripe": "^9.8.0",
     "yup": "^0.32.11",
     "yup-phone": "^1.3.2",

@@ -2,19 +2,19 @@ import { NextPage } from "next";
 
 const offers = [
   {
-    name: "Fully Online",
-    description: "Shop and pay in one go",
+    name: "MoMo or Bank Card",
+    description: "Shop and pay online with ease",
     href: "#",
   },
   {
-    name: "Countrywide delivery",
-    description: "Free on all USA orders",
+    name: "Doorstep delivery",
+    description: "Free in Accra and Kumasi",
     href: "#",
   },
   {
     name: "Sign up on our website",
-    description: "Save so much money",
-    href: "#",
+    description: "Track your order",
+    href: "/account",
   },
 ];
 const ActionComponent: NextPage = () => {

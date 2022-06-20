@@ -11,6 +11,7 @@ import { collections } from "../lib";
 import TrendingProducts from "./Trending";
 import Link from "next/link";
 import SaleComponent from "./Sale";
+import AdditionsComponent from "./Additions";
 
 const LandingPageComponent: NextPage = () => {
   return (
@@ -19,7 +20,7 @@ const LandingPageComponent: NextPage = () => {
         <main>
           {/* Hero */}
           <div className="flex flex-col border-b border-gray-200 lg:border-0">
-            {/* <ActionComponent /> */}
+            <ActionComponent />
 
             <div className="relative">
               <div
@@ -31,13 +32,15 @@ const LandingPageComponent: NextPage = () => {
                   <div className="max-w-2xl mx-auto py-24 lg:py-64 lg:max-w-none">
                     <div className="lg:pr-16">
                       <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
-                        {BRAND_TAGLINE}
+                        {"Send someone a bouquet of beautiful flowers"}
                       </h1>
                       <p className="mt-4 text-xl text-gray-600">
-                        {BRAND_DESCRIPTION}
+                        {
+                          "All our flowers and plants are freshly cut, and are delivered directly from the farm."
+                        }
                       </p>
                       <div className="mt-6">
-                        <Link href="/collections/fish">
+                        <Link href="/collections/popular">
                           <a className="inline-block bg-green-600 border border-transparent py-3 px-8 rounded-md font-medium text-white hover:bg-green-700">
                             {BRAND_BUTTON_TEXT}
                           </a>
@@ -61,9 +64,9 @@ const LandingPageComponent: NextPage = () => {
                   id="trending-heading"
                   className="text-2xl font-extrabold tracking-tight text-gray-900"
                 >
-                  Trending foods
+                  Trending
                 </h2>
-                <Link href="/collections/trending">
+                <Link href="/collections/featured">
                   <a className="hidden sm:block text-sm font-semibold text-green-600 hover:text-green-500">
                     See everything<span aria-hidden="true"> &rarr;</span>
                   </a>
@@ -73,7 +76,7 @@ const LandingPageComponent: NextPage = () => {
               <TrendingProducts />
 
               <div className="mt-12 px-4 sm:hidden">
-                <Link href="/collections/trending">
+                <Link href="/collections/featured">
                   <a className="text-sm font-semibold text-green-600 hover:text-green-500">
                     See everything<span aria-hidden="true"> &rarr;</span>
                   </a>
@@ -98,25 +101,25 @@ const LandingPageComponent: NextPage = () => {
 
                 <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
                   {collections.map((collection) => (
-                    <div key={collection.name} className="group relative">
-                      <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                        <CollectionsImageComponent
-                          src={collection.imageSrc}
-                          alt={collection.imageAlt}
-                        />
-                      </div>
-                      <h3 className="mt-6 text-sm text-gray-500">
-                        <Link href={collection.href}>
+                    <Link key={collection.name} href={collection.href}>
+                      <div className="group relative cursor">
+                        <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                          <CollectionsImageComponent
+                            src={collection.imageSrc}
+                            alt={collection.imageAlt}
+                          />
+                        </div>
+                        <h3 className="mt-6 text-sm text-gray-500">
                           <>
                             <span className="absolute inset-0" />
                             {collection.name}
                           </>
-                        </Link>
-                      </h3>
-                      <p className="text-base font-semibold text-gray-900">
-                        {collection.description}
-                      </p>
-                    </div>
+                        </h3>
+                        <p className="text-base font-semibold text-gray-900">
+                          {collection.description}
+                        </p>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -138,7 +141,10 @@ const LandingPageComponent: NextPage = () => {
             <SaleComponent />
 
             <TestimonialsComponent />
+
+         
           </div>
+          <AdditionsComponent/>
         </main>
       </div>
     </>
