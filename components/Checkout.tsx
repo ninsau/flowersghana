@@ -170,7 +170,7 @@ const CheckoutComponent = () => {
 
   const componentProps = {
     email: values.email as string,
-    amount: (finalPrice * 100),
+    amount: Math.round(finalPrice * 100),
     currency: currency,
     publicKey,
     text: "Proceed to payment",
@@ -244,7 +244,7 @@ const CheckoutComponent = () => {
                         </div>
                       </div>
 
-                      <div className="sm:col-span-2">
+                      <div className="mt-4">
                         <label
                           htmlFor="senderPhone"
                           className="block text-sm font-medium text-gray-700"
@@ -684,7 +684,7 @@ const CheckoutComponent = () => {
                           </dd>
                         </div>
                         <div className="flex items-center justify-between">
-                          <dt className="text-sm">Shipping</dt>
+                          <dt className="text-sm">Delivery</dt>
                           <dd className="text-sm font-medium text-gray-900">
                             ₵{deliveryPrice.toFixed(2)}
                           </dd>
