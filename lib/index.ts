@@ -90,8 +90,7 @@ export const footerNavigation: FooterType = {
   ],
   bottomLinks: [
     { name: "Accessibility", href: "/accessibility" },
-    { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
+    { name: "Sitemap", href: "/sitemap.xml" },
   ],
 };
 
