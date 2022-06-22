@@ -23,7 +23,7 @@ export default NextAuth({
       session: {
         jwt: true,
       },
-      pages: {
-        signIn: '../../login' },
+      // pages: {
+      //   signIn: '../../login' },
       debug: true,
 })
