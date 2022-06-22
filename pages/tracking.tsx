@@ -1,11 +1,13 @@
-import TrackingComponent from "../components/Tracking"
+import MetaComponent from "../components/Meta";
+import TrackingComponent from "../components/Tracking";
 
-const Tracking = ()=> {
+const Tracking = () => {
   return (
-   <>
-   <TrackingComponent/>
-   </>
-  )
-}
+    <>
+      <MetaComponent title="Track your order" />
+      <TrackingComponent />
+    </>
+  );
+};
 
-export default Tracking
+export default Tracking;

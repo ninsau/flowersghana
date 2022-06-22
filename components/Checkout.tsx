@@ -95,12 +95,12 @@ const CheckoutComponent = () => {
     instructions: yup
       .string()
       .min(2, "instructions should be of minimum 2 characters length")
-      .max(40, "instructions should be of maximum 280 characters length"),
+      .max(280, "instructions should be of maximum 280 characters length"),
 
     note: yup
       .string()
       .min(2, "note should be of minimum 2 characters length")
-      .max(40, "note should be of maximum 280 characters length"),
+      .max(280, "note should be of maximum 280 characters length"),
 
     phone: yup
       .string()
@@ -273,7 +273,7 @@ const CheckoutComponent = () => {
 
                       <div className="mt-4">
                         <label
-                          htmlFor="date-address"
+                          htmlFor="calendar-address"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Delivery Date
@@ -342,7 +342,6 @@ const CheckoutComponent = () => {
                                 ? "focus:ring-red-500 focus:border-red-500"
                                 : "focus:ring-green-500 focus:border-green-500 sm:text-sm"
                             } `}
-                            defaultValue={""}
                             as={Custom}
                           />
                           {errors.instructions && touched.instructions && (
@@ -514,7 +513,7 @@ const CheckoutComponent = () => {
                               } `}
                             >
                               {regionList.map((region, i: number) => (
-                                <option key={i} selected>
+                                <option key={i}>
                                   {region}
                                 </option>
                               ))}
