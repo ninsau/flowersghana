@@ -185,7 +185,7 @@ const HeaderComponent: NextPage = () => {
                     ) : (
                       <>
                         <span
-                          onClick={() => signIn("cognito")}
+                          onClick={() => signIn()}
                           className="-m-2 p-2 block font-medium text-gray-900 cursor"
                         >
                           Create an account
@@ -195,7 +195,7 @@ const HeaderComponent: NextPage = () => {
                           aria-hidden="true"
                         />
                         <span
-                          onClick={() => signIn("cognito")}
+                          onClick={() => signIn()}
                           className="-m-2 p-2 block font-medium text-gray-900 cursor"
                         >
                           Sign in
@@ -310,14 +310,14 @@ const HeaderComponent: NextPage = () => {
                 ) : (
                   <>
                     <span
-                      onClick={() => signIn("cognito")}
+                      onClick={() => signIn()}
                       className="text-sm font-medium text-white hover:text-gray-100 cursor"
                     >
                       Create an account
                     </span>
                     <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
                     <span
-                      onClick={() => signIn("cognito")}
+                      onClick={() => signIn()}
                       className="text-sm font-medium text-white hover:text-gray-100 cursor"
                     >
                       Sign in
