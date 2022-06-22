@@ -5,7 +5,7 @@ import { ImageType } from "../lib/types";
 export const LogoComponent = ({ height, width }: any) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
       alt="logo"
       height={height}
       width={width}
@@ -70,7 +70,7 @@ export const DecorativeImageComponent = () => {
 export const FlagImageComponent = () => {
   return (
     <Image
-      src="https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_20/v1655655950/255px-Flag_of_Ghana.svg_r7zm4y.webp"
+      src="https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_20/v1655655950/255px-Flag_of_Ghana.svg_r7zm4y.webp"
       alt="ghana flag"
       height={15}
       width={20}

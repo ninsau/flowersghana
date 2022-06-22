@@ -16,9 +16,9 @@ export const BRAND_IMAGE: string =
   "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp";
 
 export const BRAND_FAVICON: string =
-  "https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_16/v1626707839/flowersghanaLogo.webp";
+  "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_16/v1626707839/flowersghanaLogo.webp";
 
-  export const HOME_IMAGE_URL: string = "https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_720/v1655655512/homeimage.webp"
+  export const HOME_IMAGE_URL: string = "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_720/v1655655512/homeimage.webp"
 
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");
@@ -108,7 +108,7 @@ export const collections: CollectionsType = [
     name: "Birthday",
     description: "Send birthday flowers to your friends",
     imageSrc:
-      "https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_389/v1655655769/photo-1513151233558-d860c5398176_yai8ft.webp",
+      "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_389/v1655655769/photo-1513151233558-d860c5398176_yai8ft.webp",
     imageAlt: "birthday flowers",
     href: "/collections/birthday",
   },
@@ -116,7 +116,7 @@ export const collections: CollectionsType = [
     name: "Add On Items",
     description: "Choose a variety of add-on items to send to your friends",
     imageSrc:
-      "https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_389/v1655655797/photo-1530103862676-de8c9debad1d_wca4sy.webp",
+      "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_389/v1655655797/photo-1530103862676-de8c9debad1d_wca4sy.webp",
     imageAlt: "balloons in the air",
     href: "/collections/add-on",
   },
@@ -124,7 +124,7 @@ export const collections: CollectionsType = [
     name: "Budget Bouquets",
     description: "Check out our budget bouquets",
     imageSrc:
-      "https://res.cloudinary.com/deyudesls/image/upload/c_scale,w_389/v1655655818/photo-1591870101203-9862f6cf75f5_zu0jhv.webp",
+      "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_389/v1655655818/photo-1591870101203-9862f6cf75f5_zu0jhv.webp",
     imageAlt: "brown envelope on table",
     href: "collections/budget",
   },
