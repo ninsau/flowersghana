@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import Link from "next/link";
 import { useDataWithEmail } from "../lib/hooks";
 import { CheckoutNew } from "../src/models";
 import { AccountProductComponent } from "./Images";
@@ -80,9 +79,9 @@ const AccountComponent = (email: any) => {
                           />
                           <div className="pt-1.5 min-w-0 flex-1 sm:pt-0">
                             <h3 className="text-sm font-medium text-gray-900">
-                              <Link href={`/product/${product.slug}`}>
+                              <a href={`/product/${product.slug}`}>
                                 {product.title}
-                              </Link>
+                              </a>
                             </h3>
                             <p className="text-sm text-gray-500 truncate">
                               <span
@@ -94,7 +93,7 @@ const AccountComponent = (email: any) => {
                               <span>{product.quantity}</span>
                             </p>
                             <p className="mt-1 font-medium text-gray-900">
-                              ${product.price}
+                              ₵{product.price}
                             </p>
                           </div>
                         </div>
@@ -103,9 +102,7 @@ const AccountComponent = (email: any) => {
                             type="button"
                             className="w-full flex items-center justify-center bg-green-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:w-full sm:flex-grow-0"
                           >
-                            <Link href={`/product/${product.slug}`}>
-                              Buy again
-                            </Link>
+                            <a href={`/product/${product.slug}`}>Buy again</a>
                           </button>
                           {/* <button
                           type="button"

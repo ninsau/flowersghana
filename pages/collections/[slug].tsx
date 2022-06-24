@@ -32,6 +32,8 @@ export async function getServerSideProps({ req, params }: any) {
       item.category("contains", params.slug).tags("contains", params.slug)
     )
   );
+  const subscription = SSR.DataStore.observe(Bouquets).subscribe(() => data);
+  subscription.unsubscribe();
 
   return {
     props: { products: JSON.parse(JSON.stringify(data)), slug: params.slug },

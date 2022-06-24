@@ -31,6 +31,8 @@ export async function getServerSideProps({ req, params }: any) {
   const data = await SSR.DataStore.query(InfoPages, (item: any) =>
     item.page("eq", params.slug)
   );
+  const subscription = SSR.DataStore.observe(InfoPages).subscribe(() => data);
+  subscription.unsubscribe();
 
   return {
     props: { infos: JSON.parse(JSON.stringify(data)) },

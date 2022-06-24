@@ -37,6 +37,8 @@ export async function getServerSideProps({ req, params }: any) {
   const data = await SSR.DataStore.query(Bouquets, (item: any) =>
     item.slug("eq", params.slug)
   );
+  const subscription = SSR.DataStore.observe(Bouquets).subscribe(() => data);
+  subscription.unsubscribe();
 
   return {
     props: { products: JSON.parse(JSON.stringify(data)), slug: params.slug },
