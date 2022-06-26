@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { BRAND_IMAGE, classNames, navigation } from "../lib";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const LayoutComponent = ({ children }: any) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -178,6 +178,12 @@ const LayoutComponent = ({ children }: any) => {
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
                     {session?.user?.name}
+                  </p>
+                  <p
+                    onClick={() => signOut()}
+                    className="text-xs cursor font-medium text-gray-500 group-hover:text-gray-700"
+                  >
+                    Sign Out
                   </p>
                 </div>
               </div>

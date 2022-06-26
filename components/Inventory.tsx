@@ -1,6 +1,6 @@
 import { truncate } from "lodash";
 import { useData } from "../lib/hooks";
-import { Products } from "../src/models";
+import { Bouquets } from "../src/models";
 import React, { Fragment } from "react";
 import { Transition, Dialog } from "@headlessui/react";
 import { Formik, Field, Form } from "formik";
@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/outline";
 
 const InventoryComponent = () => {
-  const products = useData(Products);
+  const products = useData(Bouquets);
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
   const [selected, setSelected] = React.useState<any>();
@@ -60,7 +60,7 @@ const InventoryComponent = () => {
 
   const deleteProduct = async () => {
     try {
-      const todelete = await DataStore.query(Products, toDelete as string);
+      const todelete = await DataStore.query(Bouquets, toDelete as string);
       DataStore.delete(todelete!);
     } catch (error) {
       console.log(error);
@@ -166,10 +166,10 @@ const InventoryComponent = () => {
                           {product.title}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {product.price}
+                          {product.amount}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {truncate(product.image)}
+                          {truncate(product.img)}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           {truncate(product.tags)}
@@ -246,16 +246,16 @@ const InventoryComponent = () => {
                           setTimeout(resolve, 500)
                         );
                         const original = await DataStore.query(
-                          Products,
+                          Bouquets,
                           values.id
                         );
 
                         try {
                           await DataStore.save(
-                            Products.copyOf(original!, (updated) => {
+                            Bouquets.copyOf(original!, (updated) => {
                               updated.title = values.title;
-                              updated.price = `${values.price}`;
-                              updated.image = values.image;
+                              updated.amount = values.amount;
+                              updated.img = values.img;
                               updated.tags = values.tags;
                               updated.availability = values.availability;
                               updated.category = values.category;
@@ -293,7 +293,7 @@ const InventoryComponent = () => {
 
                           <div>
                             <label
-                              htmlFor="price"
+                              htmlFor="amount"
                               className="block text-sm font-medium text-gray-700"
                             >
                               Price
@@ -301,8 +301,8 @@ const InventoryComponent = () => {
                             <div className="mt-1">
                               <Field
                                 type="number"
-                                name="price"
-                                id="price"
+                                name="amount"
+                                id="amount"
                                 className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 required
                               />
@@ -311,7 +311,7 @@ const InventoryComponent = () => {
 
                           <div>
                             <label
-                              htmlFor="image"
+                              htmlFor="img"
                               className="block text-sm font-medium text-gray-700"
                             >
                               Image
@@ -319,8 +319,8 @@ const InventoryComponent = () => {
                             <div className="mt-1">
                               <Field
                                 type="url"
-                                name="image"
-                                id="image"
+                                name="img"
+                                id="img"
                                 className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 required
                               />
@@ -478,8 +478,8 @@ const InventoryComponent = () => {
                     <Formik
                       initialValues={{
                         title: " ",
-                        price: "",
-                        image: imageUrl,
+                        amount: 0,
+                        img: "",
                         tags: " ",
                         availability: "In stock",
                         category: " ",
@@ -490,11 +490,11 @@ const InventoryComponent = () => {
                         await new Promise((resolve) =>
                           setTimeout(resolve, 500)
                         );
-
-                        values.price = `${values.price}`;
+                        values.img = imageUrl!;
+                        values.amount = values.amount;
 
                         try {
-                          await DataStore.save(new Products(values));
+                          await DataStore.save(new Bouquets(values));
                         } catch (error) {
                           console.log(error);
                         } finally {
@@ -525,7 +525,7 @@ const InventoryComponent = () => {
 
                           <div>
                             <label
-                              htmlFor="price"
+                              htmlFor="amount"
                               className="block text-sm font-medium text-gray-700"
                             >
                               Price
@@ -533,8 +533,8 @@ const InventoryComponent = () => {
                             <div className="mt-1">
                               <Field
                                 type="number"
-                                name="price"
-                                id="price"
+                                name="amount"
+                                id="amount"
                                 className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 required
                               />

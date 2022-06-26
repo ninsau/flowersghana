@@ -1,35 +1,28 @@
 import {
   BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
   CollectionIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   InformationCircleIcon,
   RssIcon,
-  UsersIcon,
 } from "@heroicons/react/outline";
 
-export const BRAND_NAME: string = "Fosuaa Whole Green Foods";
+export const BRAND_NAME: string = "Flowers Ghana";
 
-export const BRAND_TAGLINE: string = "Eat, and Enjoy Healthy Whole Foods";
+export const BRAND_TAGLINE: string =
+  "Send flowers to Ghana - Florist in Accra ";
 
 export const BRAND_DESCRIPTION: string =
-  "100% Healthy, Organic, Whole Foods. We are committed to providing you with the best quality of food and products.";
+  "Florist in Ghana - FlowerGhana delivers hand-crafted bouquets of FRESH flowers and plants in Ghana. SAME-DAY flower delivery in Ghana. Quality. Order online. Pay online.";
 
-export const BRAND_URL: string = "https://www.fosuaawholegreenfoods.com";
+export const BRAND_URL: string = "https://www.flowersghana.com";
 
-export const BRAND_BUTTON_TEXT: string = "Shop Now";
 
 export const BRAND_IMAGE: string =
-  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/v1653917523/fosuaa/fosuaa_logo.webp";
+  "https://res.cloudinary.com/deyudesls/image/upload/v1626707839/flowersghanaLogo.webp";
 
 export const BRAND_FAVICON: string =
-  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_16/v1653917523/fosuaa/fosuaa_logo.webp";
+  "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_16/v1626707839/flowersghanaLogo.webp";
 
-export const HOME_IMAGE_URL: string =
-  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_pad,w_720/v1656093366/fosuaa/photo-1596040033229-a9821ebd058d_dmxlrs.webp";
 
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");

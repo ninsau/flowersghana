@@ -6,7 +6,7 @@ export const orderUpdateMail = async (to: string, tracking: string) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        fromEmail: "orderupdate@fosuaawholegreenfoods.com",
+        fromEmail: "yourorder@flowersghana.com",
         toEmail: to,
         tracking: tracking,
       }),

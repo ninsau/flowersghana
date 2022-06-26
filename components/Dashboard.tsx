@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { useDataWithLimit } from "../lib/hooks";
-import { Checkout } from "../src/models";
+import { CheckoutNew } from "../src/models";
 import { ImageComponent } from "./Images";
 import React, { Fragment } from "react";
 import { Menu, Transition, Dialog } from "@headlessui/react";
@@ -15,25 +15,24 @@ import { DataStore } from "aws-amplify";
 import { orderUpdateMail } from "../lib/api-helper";
 
 const DashboardComponent = () => {
-  const orders = useDataWithLimit(Checkout, 1000);
+  const orders = useDataWithLimit(CheckoutNew, 1000);
   const [open, setOpen] = React.useState(false);
-  const [order, setOrder] = React.useState<Checkout | null>(null);
+  const [order, setOrder] = React.useState<CheckoutNew | null>(null);
   const [copy, setCopy] = React.useState("Copy");
   const [show, setShow] = React.useState(false);
 
   const updateTracking = React.useCallback(
     async (value: string, id: string) => {
-      const original = await DataStore.query(Checkout, id);
+      const original = await DataStore.query(CheckoutNew, id);
 
       try {
         await DataStore.save(
-          Checkout.copyOf(original!, (updated) => {
+          CheckoutNew.copyOf(original!, (updated) => {
             updated.tracking = value;
           })
         );
 
         await orderUpdateMail(original!.email!, value);
-        
       } catch (error) {
         console.log(error);
       } finally {
@@ -44,7 +43,7 @@ const DashboardComponent = () => {
   );
 
   const viewOrder = React.useCallback(
-    async (order: Checkout | null, state: boolean) => {
+    async (order: CheckoutNew | null, state: boolean) => {
       try {
         setOrder(order);
         setOpen(state);
@@ -55,13 +54,13 @@ const DashboardComponent = () => {
     []
   );
 
-  const allowCopy = React.useCallback(async (order: Checkout | null) => {
-    const final = `Recipient Address: ${order?.address}, ${order?.address}, ${order?.city},
-    ${order?.region}, ${order?.country}, ${order?.zip} \n\n
-    Recipient Name: ${order?.firstName} ${order?.lastName} \n\n
-    Recipient Phone: ${order?.phone} \n\n
-    Instructions:  ${order?.instructions}  \n\n
-    Sender Email: ${order?.email} \n\n`;
+  const allowCopy = React.useCallback(async (order: CheckoutNew | null) => {
+    const final = `Recipient Address: ${order?.address}, ${order?.apartment ?? " "}, ${order?.city},
+    ${order?.region}\n
+    Recipient Name: ${order?.firstName} ${order?.lastName} \n
+    Recipient Phone: ${order?.phone} \n
+    Instructions: ${order?.instructions ?? "none"}\n
+    Note: ${order?.note ?? "none"}\n`;
     try {
       copyText(final);
       setCopy("Copied!");
@@ -139,7 +138,7 @@ const DashboardComponent = () => {
                           Total amount
                         </dt>
                         <dd className="mt-1 font-medium text-gray-900">
-                          ${item.amount}
+                          ₵{item.amount}
                         </dd>
                       </div>
                     </dl>
@@ -245,7 +244,7 @@ const DashboardComponent = () => {
                         <div className="flex items-center sm:items-start">
                           <div className="flex-shrink-0 w-20 h-20 bg-gray-200 rounded-lg overflow-hidden sm:w-40 sm:h-40">
                             <ImageComponent
-                              src={product.image}
+                              src={`https://res.cloudinary.com/deyudesls/image/upload/${product.image}`}
                               alt={product.title}
                               height={180}
                               width={180}
@@ -254,7 +253,7 @@ const DashboardComponent = () => {
                           <div className="flex-1 ml-6 text-sm">
                             <div className="font-medium text-gray-900 sm:flex sm:justify-between">
                               <h5>{product.title}</h5>
-                              <p className="mt-2 sm:mt-0">${product.price}</p>
+                              <p className="mt-2 sm:mt-0">₵{product.price}</p>
                             </div>
                           </div>
                         </div>
@@ -322,16 +321,23 @@ const DashboardComponent = () => {
                     <div className="mt-3 text-center sm:mt-5">
                       <Dialog.Title
                         as="h3"
-                        className="text-lg leading-6 font-medium text-gray-900"
+                        className="text-lg leading-6 font-medium text-red-900"
                       >
-                        Order details
+                         {new Date(order?.deliveryDate!).toLocaleDateString("en-US", {
+                            weekday: "long",
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric"
+                          })}
+
+                        
                       </Dialog.Title>
 
                       <div className="mt-2">
                         <p className="text-sm leading-4">Recipient Address </p>
                         <p className="text-sm text-gray-500">
-                          {order?.address}, {order?.address}, {order?.city},{" "}
-                          {order?.region}, {order?.country}, {order?.zip}
+                          {order?.address}, {order?.apartment}, {order?.city},{" "}
+                          {order?.region}
                         </p>
                       </div>
                       <div className="mt-2">
@@ -343,12 +349,18 @@ const DashboardComponent = () => {
                       <div className="mt-2">
                         <p className="text-sm leading-4">Instructions </p>
                         <p className="text-sm text-gray-500">
-                          {order?.instructions}
+                          {order?.instructions ?? "none"}
                         </p>
                       </div>
                       <div className="mt-2">
-                        <p className="text-sm leading-4">Sender Email </p>
-                        <p className="text-sm text-gray-500">{order?.email}</p>
+                        <p className="text-sm leading-4">Notes </p>
+                        <p className="text-sm text-gray-500">
+                          {order?.note ?? "none"}
+                        </p>
+                      </div>
+                      <div className="mt-2">
+                        <p className="text-sm leading-4">Sender Details </p>
+                        <p className="text-sm text-gray-500">{order?.email}, {order?.phone}</p>
                       </div>
                     </div>
                   </div>

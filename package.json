@@ -1,6 +1,6 @@
 {
-  "name": "admin-fosuaa",
-  "version": "0.1.0",
+  "name": "admin-flowersghana",
+  "version": "3.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
