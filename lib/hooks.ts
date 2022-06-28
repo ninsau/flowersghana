@@ -27,7 +27,7 @@ export const useDataWithLimit = (model: any, count: number) => {
         model,
         Predicates.ALL,
         {
-          sort: (s) => s.deliveryDate(SortDirection.DESCENDING),
+          sort: (s) => s.createdAt(SortDirection.DESCENDING),
           page: 0,
           limit: count,
         }
@@ -60,18 +60,19 @@ export const useDataWithEmail = (model: any, email: string) => {
   return data;
 };
 
-
 export const useDataWithFilter = (model: any) => {
   const [data, setData] = useState<typeof model[]>([]);
 
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      const getData: typeof model[] = await DataStore.query(model,
+      const getData: typeof model[] = await DataStore.query(
+        model,
         Predicates.ALL,
         {
-          sort: (s) => s.title(SortDirection.ASCENDING)
-        });
+          sort: (s) => s.title(SortDirection.ASCENDING),
+        }
+      );
       setData(getData);
     }
     const subscription = DataStore.observe(model).subscribe(() => fetchPosts());
