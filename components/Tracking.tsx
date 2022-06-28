@@ -26,7 +26,8 @@ const TrackingComponent = () => {
 
     tracking: yup
       .string()
-      .length(7, "TrrackingId should be 7 characters in length")
+      .min(2, "Trackig ID should be of minimum 2 characters length")
+      .max(7, "Trackig ID should be of maximum 7 characters length")
       .required("Please type out your trackingID "),
   });
 
