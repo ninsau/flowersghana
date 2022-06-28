@@ -138,7 +138,7 @@ const ReviewsComponent = () => {
                         as="h3"
                         className="text-lg leading-6 font-medium text-gray-900"
                       >
-                        Delete product
+                        Delete review
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
