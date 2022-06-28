@@ -30,7 +30,6 @@ const TrackingComponent = () => {
       .required("Please type out your trackingID "),
   });
 
-  console.log(data);
   return (
     <>
       <Formik

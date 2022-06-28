@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import localforage from "localforage";
@@ -163,7 +163,9 @@ const CheckoutComponent = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      location.replace(`/result?trackingID=${values.trackingID}`);
+      location.replace(
+        `/result?trackingID=${values.trackingID}&email=${values.email}`
+      );
     }
   };
 

@@ -5,13 +5,13 @@ import * as yup from "yup";
 import NotificationComponent from "./Notification";
 import { useState } from "react";
 
-const CustomReview = (props: any) => (
-  <textarea rows={4} name="review" {...props} />
-);
-
 const AddReviewComponent = () => {
   const [added, setAdded] = useState<Boolean>(false);
   const [error, setError] = useState(null);
+
+  const CustomReview = (props: any) => (
+    <textarea rows={4} name="review" {...props} />
+  );
 
   const ReviewSchema = yup.object().shape({
     name: yup
@@ -38,7 +38,7 @@ const AddReviewComponent = () => {
       <Formik
         validationSchema={ReviewSchema}
         initialValues={{ name: "", review: "" }}
-        onSubmit={async (values, {resetForm}) => {
+        onSubmit={async (values, { resetForm }) => {
           await new Promise((resolve) => setTimeout(resolve, 500));
           try {
             await DataStore.save(
@@ -51,7 +51,7 @@ const AddReviewComponent = () => {
             setError(err);
           } finally {
             setAdded(true);
-            resetForm()
+            resetForm();
           }
         }}
       >

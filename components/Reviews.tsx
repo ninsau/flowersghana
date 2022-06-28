@@ -1,10 +1,10 @@
 import { format } from "date-fns";
-import { useData } from "../lib/hooks";
+import { useDataDescending } from "../lib/hooks";
 import { Reviews } from "../src/models";
 import AddReviewComponent from "./AddReview";
 
 const ReviewsComponent = () => {
-  const reviews: Reviews[] = useData(Reviews);
+  const reviews: Reviews[] = useDataDescending(Reviews);
 
   return (
     <>
