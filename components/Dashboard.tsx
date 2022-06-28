@@ -86,7 +86,7 @@ const DashboardComponent = () => {
               return (
                 <div
                   key={item.id}
-                  className="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border"
+                  className={`bg-white border-8 ${item.tracking === "Order placed" && "border-red-800"} ${item.tracking === "Delivered" && "border-green-200"} shadow-sm sm:rounded-lg sm:border`}
                 >
                   <h3 className="sr-only">
                     {`Order ${item.tracking} on

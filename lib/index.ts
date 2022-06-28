@@ -3,6 +3,7 @@ import {
   CollectionIcon,
   HomeIcon,
   InformationCircleIcon,
+  PresentationChartBarIcon,
   RssIcon,
 } from "@heroicons/react/outline";
 
@@ -44,6 +45,7 @@ export const navigation = [
   },
   { name: "Sale", href: "/sale", icon: BellIcon, current: false },
   { name: "Banner", href: "/banner", icon: RssIcon, current: false },
+  { name: "Reviews", href: "/reviews", icon: PresentationChartBarIcon, current: false },
 ];
 
 export const copyText = (info: any) => {

@@ -1,5 +1,5 @@
-import { truncate } from "lodash";
-import { useData } from "../lib/hooks";
+import _, { truncate } from "lodash";
+import { useDataWithFilter } from "../lib/hooks";
 import { Bouquets } from "../src/models";
 import React, { Fragment } from "react";
 import { Transition, Dialog } from "@headlessui/react";
@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/outline";
 
 const InventoryComponent = () => {
-  const products = useData(Bouquets);
+  const products = useDataWithFilter(Bouquets);
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
   const [selected, setSelected] = React.useState<any>();
@@ -318,7 +318,7 @@ const InventoryComponent = () => {
                             </label>
                             <div className="mt-1">
                               <Field
-                                type="url"
+                                type="text"
                                 name="img"
                                 id="img"
                                 className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -688,6 +688,7 @@ const InventoryComponent = () => {
                             )}
                             <button
                               type="button"
+                              onClick={() => setOpenAdd(false)}
                               className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:col-start-1 sm:text-sm"
                             >
                               Cancel
@@ -807,7 +808,7 @@ const InventoryComponent = () => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Are you sure you want to deactivate this product? All
+                          Are you sure you want to delete this product? All
                           details will be permanently removed from our database.
                           This action cannot be undone.
                         </p>
