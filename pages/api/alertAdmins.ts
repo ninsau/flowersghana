@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { sendAdminAlert } from "../../lib/sendmail";
 
-const AlertAdminsApi = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const AlertAdminsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const { body } = req;
-    const result = await sendAdminAlert(body.toEmail, body.fromEmail);
+    const result = await sendAdminAlert(
+      body.toEmail,
+      body.fromEmail,
+      body.delivery
+    );
 
     res.status(200).json(result);
   } else {

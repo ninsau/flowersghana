@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { useDataWithLimit } from "../lib/hooks";
 import { Sale } from "../src/models";
 
@@ -12,7 +13,7 @@ const SaleComponent = () => {
         className="relative max-w-7xl mx-auto pt-32 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8"
       >
         {sales.map((sale) => (
-          <>
+          <Fragment key={sale.id}>
             <div className="max-w-2xl mx-auto lg:max-w-none">
               <h2
                 id="sale-heading"
@@ -29,7 +30,7 @@ const SaleComponent = () => {
                 </a>
               </Link>
             </div>
-          </>
+          </Fragment>
         ))}
       </section>
     </>

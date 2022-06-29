@@ -1,18 +1,7 @@
 import NotificationComponent from "../components/Notification";
 import SuccessComponent from "../components/Success";
-import { adminUpdateMail, orderUpdateMail } from "../lib/api-helper";
 
 const Results = (data: any) => {
-  try {
-    if (data.props.data.email && data.props.data.trackingID) {
-      orderUpdateMail(data.props.data.email, data.props.data.trackingID);
-      adminUpdateMail(process.env.NEXT_PUBLIC_ADMIN_ONE!);
-      adminUpdateMail(process.env.NEXT_PUBLIC_ADMIN_TWO!);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
   return (
     <>
       <pre>

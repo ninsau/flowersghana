@@ -14,6 +14,7 @@ import { CheckoutNew } from "../src/models";
 import { PaystackButton } from "react-paystack";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
+import { adminUpdateMail, orderUpdateMail } from "../lib/api-helper";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -160,12 +161,16 @@ const CheckoutComponent = () => {
       await DataStore.save(new CheckoutNew(values));
       await localforage.clear();
       localStorage.clear();
+      await orderUpdateMail(values.email, values.trackingID);
+      await adminUpdateMail(
+        `${process.env.NEXT_PUBLIC_ADMIN_ONE!}, ${process.env
+          .NEXT_PUBLIC_ADMIN_TWO!}`,
+        values.deliveryDate
+      );
     } catch (error) {
       console.log(error);
     } finally {
-      location.replace(
-        `/result?trackingID=${values.trackingID}&email=${values.email}`
-      );
+      location.replace(`/result?trackingID=${values.trackingID}`);
     }
   };
 
