@@ -18,6 +18,9 @@ const ProductComponent = (data: ProductsType) => {
   const toggleCopy = (url: string) => {
     copyText(url);
     setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   };
 
   const toggleShare = (items: any) => {
