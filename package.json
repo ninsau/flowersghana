@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "partytown": "partytown copylib public/~partytown"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.6.2",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.5",
     "aws-amplify": "^4.3.24",
