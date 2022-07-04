@@ -29,7 +29,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
 
-          <script
+          {/* <script
             data-partytown-config
             dangerouslySetInnerHTML={{
               __html: `
@@ -39,7 +39,7 @@ class MyDocument extends Document {
           };
         `,
             }}
-          />
+          /> */}
         </Head>
 
         <body>
