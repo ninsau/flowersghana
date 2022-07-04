@@ -6,7 +6,7 @@ import HeaderComponent from "../components/Header";
 import FooterComponent from "../components/Footer";
 import { useSession, SessionProvider } from "next-auth/react";
 import { NextComponentType } from "next";
-import dynamic from "next/dynamic";
+import ScriptsComponent from "../components/Scripts";
 
 Amplify.configure({
   ...config,
@@ -21,7 +21,6 @@ function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }: CustomAppProps) {
-  const ScriptsComponent = dynamic(() => import("../components/Scripts"));
   return (
     <SessionProvider session={session}>
       {Component.auth ? (
