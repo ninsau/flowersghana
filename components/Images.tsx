@@ -80,7 +80,7 @@ export const FlagImageComponent = () => {
 export const CategoryImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_576,w_384/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
       alt={alt}
       height={576}
       width={384}
@@ -93,7 +93,7 @@ export const CategoryImageComponent = ({ src, alt }: ImageType) => {
 export const ProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_592,w_592/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
       alt={alt}
       height={592}
       width={592}
@@ -107,7 +107,7 @@ export const ProductImageComponent = ({ src, alt }: ImageType) => {
 export const CartProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_94,w_94/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
       alt={alt}
       height={94}
       width={94}
@@ -120,7 +120,7 @@ export const CartProductImageComponent = ({ src, alt }: ImageType) => {
 export const AccountProductComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_180,w_180/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
       alt={alt}
       height={180}
       width={180}
@@ -129,3 +129,5 @@ export const AccountProductComponent = ({ src, alt }: ImageType) => {
     />
   );
 };
+
+

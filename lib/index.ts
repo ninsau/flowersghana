@@ -19,11 +19,7 @@ export const BRAND_FAVICON: string =
   "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_16/v1626707839/flowersghanaLogo.webp";
 
 export const HOME_IMAGE_URL: string =
-  "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_1216,h_896/v1655655512/homeimage.webp";
-
-export const favi = (height: number, width: number) => {
-  return `https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`;
-};
+  "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_720/v1655655512/homeimage.webp";
 
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");
