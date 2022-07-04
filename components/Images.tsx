@@ -29,7 +29,7 @@ export const HeroImageComponent = () => {
     // />
     <img
       src={HOME_IMAGE_URL}
-      alt=""
+      alt="brighly colored flower"
       className="w-full h-full object-center object-cover"
       loading="lazy"
     />
@@ -60,8 +60,7 @@ export const DecorativeImageComponent = () => {
       alt="decoorative background image"
       height={896}
       width={1216}
-      blurDataURL={
-        HOME_IMAGE_URL      }
+      blurDataURL={HOME_IMAGE_URL}
       placeholder="blur"
     />
   );
@@ -94,8 +93,8 @@ export const CategoryImageComponent = ({ src, alt }: ImageType) => {
 export const ProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-    src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
-    alt={alt}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
+      alt={alt}
       height={592}
       width={592}
       quality={100}
@@ -108,8 +107,8 @@ export const ProductImageComponent = ({ src, alt }: ImageType) => {
 export const CartProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-    src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
-    alt={alt}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
+      alt={alt}
       height={94}
       width={94}
       blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
@@ -121,8 +120,8 @@ export const CartProductImageComponent = ({ src, alt }: ImageType) => {
 export const AccountProductComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-    src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
-    alt={alt}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
+      alt={alt}
       height={180}
       width={180}
       blurDataURL={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}

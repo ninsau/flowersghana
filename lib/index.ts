@@ -18,7 +18,12 @@ export const BRAND_IMAGE: string =
 export const BRAND_FAVICON: string =
   "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_16/v1626707839/flowersghanaLogo.webp";
 
-  export const HOME_IMAGE_URL: string = "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_720/v1655655512/homeimage.webp"
+export const HOME_IMAGE_URL: string =
+  "https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_720/v1655655512/homeimage.webp";
+
+export const favi = (height: number, width: number) => {
+  return `https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`;
+};
 
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");
@@ -85,8 +90,7 @@ export const footerNavigation: FooterType = {
     { name: "Terms of Service", href: "/terms" },
     { name: "Return Policy", href: "/returns" },
     { name: "Privacy Policy", href: "/privacy" },
-    {name: "Cookie Policy", href: "/cookie-policy"},
-
+    { name: "Cookie Policy", href: "/cookie-policy" },
   ],
   bottomLinks: [
     { name: "Accessibility", href: "/accessibility" },
@@ -155,11 +159,9 @@ export const regionList = [
 ];
 
 export const copyText = (url: string) => {
-  navigator.clipboard.writeText(
-    `https://www.flowersghana.com/product/${url}`
-  );
+  navigator.clipboard.writeText(`https://www.flowersghana.com/product/${url}`);
 };
 
-export  const share = (data:any) => {
-  navigator.share(data)
+export const share = (data: any) => {
+  navigator.share(data);
 };
