@@ -93,7 +93,7 @@ export const CategoryImageComponent = ({ src, alt }: ImageType) => {
 export const ProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_592,w_592/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/${src}`}
       alt={alt}
       height={592}
       width={592}

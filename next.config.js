@@ -1,3 +1,5 @@
+const withPWA = require("next-pwa");
+
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
@@ -10,6 +12,9 @@ const nextConfig = {
   experimental: {
     nextScriptWorkers: true,
   },
+  pwa: {
+    dest: "public",
+  },
 };
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
