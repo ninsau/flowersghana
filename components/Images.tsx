@@ -5,8 +5,8 @@ import { ImageType } from "../lib/types";
 export const LogoComponent = ({ height, width }: any) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/q_auto:best/v1626707839/flowersghanaLogo.webp`}
-      alt="logo"
+    src={`https://res.cloudinary.com/deyudesls/image/upload/q_auto:best,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
+    alt="logo"
       height={height}
       width={width}
     />

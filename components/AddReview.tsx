@@ -93,14 +93,14 @@ const AddReviewComponent = () => {
               <div className="mt-1">
                 <Field
                   name="review"
+                  type="text"
                   rows={4}
                   id="review"
                   className={`shadow-sm ${
                     errors.review &&
                     touched.review &&
                     "focus:ring-red-500 focus:border-red-500"
-                  } block w-full sm:text-sm border-gray-300 rounded-md`}
-                  as={CustomReview}
+                  }  block w-full sm:text-sm border-gray-300 rounded-md`}
                 />
                 {errors.review && touched.review && (
                   <span className="text-red-500 hover:text-red-700">
