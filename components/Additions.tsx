@@ -23,6 +23,8 @@ const AdditionsComponent = () => {
                   <img
                     src={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
                     alt={product.title}
+                    height="100%"
+                    width="100%"
                     className="w-full h-full object-center object-cover"
                     loading="lazy"
                   />

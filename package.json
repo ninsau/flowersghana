@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "partytown": "partytown copylib public/~partytown"
+    "analyze": "source-map-explorer .next/static/**/*.js",
+    "build:analyze": "npm run build && npm run analyze"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.6.2",
@@ -29,6 +30,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-paystack": "^3.0.5",
+    "source-map-explorer": "^2.5.2",
     "yup": "^0.32.11",
     "yup-phone": "^1.3.2",
     "zustand": "^3.5.7"

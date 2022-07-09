@@ -6,7 +6,7 @@ import NotificationComponent from "./Notification";
 import { useState } from "react";
 
 const CustomReview = (props: any) => (
-  <textarea rows={4} name="review" {...props} />
+  <textarea {...props} />
 );
 
 const AddReviewComponent = () => {
@@ -100,7 +100,6 @@ const AddReviewComponent = () => {
                     touched.review &&
                     "focus:ring-red-500 focus:border-red-500"
                   } block w-full sm:text-sm border-gray-300 rounded-md`}
-                  defaultValue={""}
                   as={CustomReview}
                 />
                 {errors.review && touched.review && (

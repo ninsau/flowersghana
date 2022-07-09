@@ -1,6 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { Partytown } from "@builder.io/partytown/react";
-import Script from "next/script";
 
 class MyDocument extends Document {
   render() {
@@ -29,18 +27,6 @@ class MyDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#269e1b" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
-
-          {/* <script
-            data-partytown-config
-            dangerouslySetInnerHTML={{
-              __html: `
-          partytown = {
-            lib: "/_next/static/~partytown/",
-            forward: ["gtag"]           
-          };
-        `,
-            }}
-          /> */}
         </Head>
 
         <body>

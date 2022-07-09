@@ -673,6 +673,8 @@ const CheckoutComponent = () => {
                             <img
                               src={`https://res.cloudinary.com/deyudesls/image/upload/${product.image}`}
                               alt={`${product.title} image`}
+                              height="100%"
+                              width="100%"
                               className="w-20 rounded-md"
                               loading="lazy"
                             />

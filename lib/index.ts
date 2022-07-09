@@ -131,8 +131,20 @@ export const collections: CollectionsType = [
 ];
 
 export const deliveryMethods = [
-  { id: 1, title: "Standard", turnaround: "4-8 hours for same day", price: 0 },
-  { id: 2, title: "Express", turnaround: "2-4 hours", price: 100 },
+  {
+    id: 1,
+    title: "Standard",
+    turnaround:
+      "Delivered within 4-8 hours from the time of order. Only applicable to same day deliveries.",
+    price: 0,
+  },
+  {
+    id: 2,
+    title: "Express",
+    turnaround:
+      "Delivered within 2-4 hours from the time of order. We start deliveries from 9am Mon-Sat.",
+    price: 100,
+  },
 ];
 
 export const regionList = [

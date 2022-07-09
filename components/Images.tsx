@@ -5,7 +5,7 @@ import { ImageType } from "../lib/types";
 export const LogoComponent = ({ height, width }: any) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/q_auto:best/v1626707839/flowersghanaLogo.webp`}
       alt="logo"
       height={height}
       width={width}
@@ -30,6 +30,8 @@ export const HeroImageComponent = () => {
     <img
       src={HOME_IMAGE_URL}
       alt="brighly colored flower"
+      height="100%"
+      width="100%"
       className="w-full h-full object-center object-cover"
       loading="lazy"
     />
@@ -107,7 +109,7 @@ export const ProductImageComponent = ({ src, alt }: ImageType) => {
 export const CartProductImageComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_94,w_94/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/h_94,w_94/${src}`}
       alt={alt}
       height={94}
       width={94}
@@ -120,7 +122,7 @@ export const CartProductImageComponent = ({ src, alt }: ImageType) => {
 export const AccountProductComponent = ({ src, alt }: ImageType) => {
   return (
     <Image
-      src={`https://res.cloudinary.com/deyudesls/image/upload/c_pad,h_180,w_180/${src}`}
+      src={`https://res.cloudinary.com/deyudesls/image/upload/h_180,w_180/${src}`}
       alt={alt}
       height={180}
       width={180}
